@@ -10,7 +10,7 @@ gulp.task('js', function () {
     .pipe(gulp.dest('output'));
 });
 
-gulp.task('build', ['js'], function(){
+gulp.task('default', ['js'], function(){
   return gulp.src('./index.html')
     .pipe(open(), {app: 'google-chrome'});
 });
