@@ -4,15 +4,40 @@
     <title>Diverse UI</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div>
+      <div class="sizes">
+        <label>
+          90
+          <input checked value="90" type="radio" name="size" />
+        </label>
+        <label>
+          120
+          <input value="120" type="radio" name="size" />
+        </label>
+        <label>
+          180
+          <input value="180" type="radio" name="size" />
+        </label>
+      </div>
+      <div class="gender">
+        <label>
+          Both
+          <input checked value="both" type="radio" name="gender" />
+        </label>
+        <label>
+          Female
+          <input value="female" type="radio" name="gender" />
+        </label>
+        <label>
+          Male
+          <input value="male" type="radio" name="gender" />
+        </label>
+      </div>
+      <div id="images"></div>
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.15.0/lodash.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react-dom.min.js"></script>
-    <script src="output/size.js"></script>
-    <script src="output/gender.js"></script>
-    <script src="output/images.js"></script>
-    <script src="output/index.js"></script>
+    <script src="output/rewrite.js"></script>
   </body>
 </html>
