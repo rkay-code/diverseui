@@ -53,16 +53,11 @@ var App = React.createClass({
 });
 
 var IMAGES = [
-  {gender: 'MALE'},
-  {gender: 'MALE'},
-  {gender: 'MALE'},
-  {gender: 'MALE'},
-  {gender: 'MALE'},
-  {gender: 'MALE'},
-  {gender: 'FEMALE'},
-  {gender: 'FEMALE'},
-  {gender: 'FEMALE'},
-  {gender: 'FEMALE'},
+  {gender: MALE, src: 'http://static5.depositphotos.com/1010683/424/i/950/depositphotos_4241802-Asian-man-with-glass.jpg'},
+  {gender: MALE, src: 'http://www.abcsofattraction.com/blog/wp-content/uploads/2012/10/poker-face-3.jpg'},
+  {gender: MALE, src: 'http://www.mens-hairstylists.com/wp-content/uploads/2015/10/Hairstyle-for-Asian-men.jpg'},
+  {gender: FEMALE, src: 'http://www.asianonlinesingles.com/wp-content/uploads/2012/04/Dating-Asian-Woman-and-be-Successful.jpg'},
+  {gender: FEMALE, src: 'http://blindgossip.com/wp-content/uploads/2011/08/asian-woman-1.jpg'},
 ];
 
 $(document).ready(function() {

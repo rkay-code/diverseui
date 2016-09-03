@@ -13,7 +13,6 @@ var Images = React.createClass({
         {
           _.map(images, function(image) {
             var style = {
-              backgroundColor: 'green',
               display: 'inline-block',
               height: size,
               margin: '30px',
@@ -21,11 +20,10 @@ var Images = React.createClass({
             };
 
             return (
-              <div
+              <img
                 style={style}
-              >
-                {image.gender}
-              </div>
+                src={image.src}
+              />
             );
           })
         }
