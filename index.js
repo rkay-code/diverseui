@@ -1,36 +1,73 @@
+var BOTH = 'BOTH';
+var MALE = 'MALE';
+var FEMALE = 'FEMALE';
+
 var App = React.createClass({
-  getInitialState: function() {
+  propTypes: {
+    images: React.PropTypes.array
+  },
+
+  getDefaultProps: function() {
     return {
-      color: 'red',
-      size: 100
+      images: []
     };
   },
 
-  changeColor: function() {
+  getInitialState: function() {
+    return {
+      size: 90,
+      gender: BOTH
+    };
+  },
+
+  selectSize: function(newSize) {
     this.setState({
-      color: 'blue'
+      size: newSize
+    });
+  },
+
+  selectGender: function(newGender) {
+    this.setState({
+      gender: newGender
     });
   },
 
   render: function() {
-    var _this = this;
+    var gender = this.state.gender;
     var size = this.state.size;
-    var color = this.state.color;
 
-    var style = {
-      backgroundColor: color
-    };
+    var images = _.filter(this.props.images, function(image) {
+      return gender === BOTH || image.gender === gender;
+    });
 
     return (
       <div>
-        <img onClick={function() { _this.setState({size: _this.state.size + 100}); }} width={size} height={size} src="https://i.imgur.com/MzxkAeG.jpg" />
-        <h1 onClick={this.changeColor} style={style}>hi</h1>
+        <div>
+          <Size size={size} onSelect={this.selectSize} />
+          <Gender gender={gender} onSelect={this.selectGender} />
+        </div>
+        <Images size={size} images={images} />
       </div>
     );
   }
 });
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('app')
-);
+var IMAGES = [
+  {gender: 'MALE'},
+  {gender: 'MALE'},
+  {gender: 'MALE'},
+  {gender: 'MALE'},
+  {gender: 'MALE'},
+  {gender: 'MALE'},
+  {gender: 'FEMALE'},
+  {gender: 'FEMALE'},
+  {gender: 'FEMALE'},
+  {gender: 'FEMALE'},
+];
+
+$(document).ready(function() {
+  ReactDOM.render(
+    <App images={IMAGES} />,
+    document.getElementById('app')
+  );
+});
