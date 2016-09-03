@@ -15,7 +15,7 @@ gulp.task('watch', function() {
 })
 
 gulp.task('stream', function () {
-    return gulp.src('*.js')
+    return gulp.src('scripts/*.js')
     .pipe(babel({
       plugins: ['transform-react-jsx']
     }))
