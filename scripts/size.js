@@ -15,7 +15,8 @@ var Size = React.createClass({
         {
           _.map(SIZES, function(currentSize) {
             var style = {
-              backgroundColor: 'red'
+              backgroundColor: 'red',
+              margin: '5px'
             };
 
             if (currentSize === size) {

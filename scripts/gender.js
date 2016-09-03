@@ -15,7 +15,8 @@ var Gender = React.createClass({
         {
           _.map(GENDERS, function(currentGender) {
             var style = {
-              backgroundColor: 'red'
+              backgroundColor: 'red',
+              margin: '5px'
             }
 
             if (currentGender === gender) {
