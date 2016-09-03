@@ -11,7 +11,7 @@ gulp.task('connect', function() {
 });
 
 gulp.task('watch', function() {
-  gulp.watch(['*.js'], ['stream']);
+  gulp.watch(['scripts/*.js'], ['stream']);
 })
 
 gulp.task('stream', function () {
