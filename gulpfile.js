@@ -4,18 +4,18 @@ var connect = require('gulp-connect');
 var watch = require('gulp-watch');
 
 gulp.task('connect', function() {
-  connect.server({
+  return connect.server({
     livereload: true,
     port: 8080
   });
 });
 
 gulp.task('watch', function() {
-  gulp.watch(['scripts/*.js'], ['stream']);
+  return gulp.watch(['scripts/*.js'], ['stream']);
 })
 
-gulp.task('stream', function () {
-    return gulp.src('scripts/*.js')
+gulp.task('stream', function() {
+  return gulp.src('scripts/*.js')
     .pipe(babel({
       plugins: ['transform-react-jsx']
     }))
