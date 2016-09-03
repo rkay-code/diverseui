@@ -1,3 +1,41 @@
-body {
-  color: red;
+.site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+header {
+  flex: none;
+}
+
+.site-body {
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+}
+
+.filter-nav {
+  order: -1;
+}
+
+.filter-nav,
+.ads {
+  padding: 1em;
+  border-radius: 3px;
+  background: rgba(147, 128, 108, 0.1);
+}
+
+@media (min-width: 768px) {
+  .site-body {
+    flex-direction: row;
+    flex: 1;
+  }
+
+  .faces {
+    flex: 1;
+  }
+
+  .filter-nav, .ads {
+    flex: 0 0 12em;
+  }
 }
