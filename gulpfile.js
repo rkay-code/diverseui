@@ -1,16 +1,26 @@
 var gulp  = require('gulp');
 var babel = require('gulp-babel');
-var open = require('gulp-open');
+var connect = require('gulp-connect');
+var watch = require('gulp-watch');
 
-gulp.task('js', function () {
-  return gulp.src('*.js')
+gulp.task('connect', function() {
+  connect.server({
+    livereload: true,
+    port: 8080
+  });
+});
+
+gulp.task('watch', function() {
+  gulp.watch(['*.js'], ['stream']);
+})
+
+gulp.task('stream', function () {
+    return gulp.src('*.js')
     .pipe(babel({
       plugins: ['transform-react-jsx']
     }))
-    .pipe(gulp.dest('output'));
+    .pipe(gulp.dest('output'))
+    .pipe(connect.reload());
 });
 
-gulp.task('default', ['js'], function(){
-  return gulp.src('./index.html')
-    .pipe(open(), {app: 'google-chrome'});
-});
+gulp.task('default', ['connect', 'stream', 'watch']);
