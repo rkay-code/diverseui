@@ -9,9 +9,10 @@
   "dependencies": {
     "babel-plugin-transform-react-jsx": "^6.8.0",
     "gulp": "^3.9.1",
-    "gulp-connect": "^3.2.1",
     "gulp-babel": "^6.1.2",
     "gulp-cli": "^1.2.2",
+    "gulp-connect": "^3.2.1",
+    "gulp-sass": "^2.2.0",
     "gulp-watch": "^4.3.5"
   }
 }

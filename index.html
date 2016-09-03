@@ -1,43 +1,51 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Diverse UI</title>
-  </head>
-  <body>
-    <div>
-      <div class="sizes">
-        <label>
-          90
-          <input checked value="90" type="radio" name="size" />
-        </label>
-        <label>
-          120
-          <input value="120" type="radio" name="size" />
-        </label>
-        <label>
-          180
-          <input value="180" type="radio" name="size" />
-        </label>
-      </div>
-      <div class="gender">
-        <label>
-          Both
-          <input checked value="both" type="radio" name="gender" />
-        </label>
-        <label>
-          Female
-          <input value="female" type="radio" name="gender" />
-        </label>
-        <label>
-          Male
-          <input value="male" type="radio" name="gender" />
-        </label>
-      </div>
-      <div id="images"></div>
-    </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.15.0/lodash.min.js"></script>
-    <script src="output/index.js"></script>
-  </body>
+<head>
+  <title>Diverse UI</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <link rel="stylesheet" type="text/css" href="styles/styles.css" />
+</head>
+
+<body class="site">
+  <header>
+
+  </header>
+  <div class="site-body">
+    <main class="faces">
+      <div id="images"></div>
+    </main>
+    <nav class="filter-nav">
+      <div>
+        <div id="size-slider"></div>
+        <div id="slider-label"></div>
+        <div class="gender">
+          <label>
+            Both
+            <input checked value="both" type="radio" name="gender" />
+          </label>
+          <label>
+            Female
+            <input value="female" type="radio" name="gender" />
+          </label>
+          <label>
+            Male
+            <input value="male" type="radio" name="gender" />
+          </label>
+        </div>
+      </div>
+    </nav>
+    <aside class="ads">
+      <div>
+      </div>
+    </aside>
+  </div>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.15.0/lodash.min.js"></script>
+  <script src="output/index.js"></script>
+</body>
+
 </html>

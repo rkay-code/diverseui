@@ -1,6 +1,6 @@
 var gulp  = require('gulp');
-var babel = require('gulp-babel');
 var connect = require('gulp-connect');
+var sass = require('gulp-sass');
 var watch = require('gulp-watch');
 
 gulp.task('connect', function() {
@@ -11,16 +11,23 @@ gulp.task('connect', function() {
 });
 
 gulp.task('watch', function() {
-  return gulp.watch(['scripts/*.js'], ['stream']);
-})
+  return gulp.watch(['scripts/*.js', '*.html', 'styles/*.css'], ['stream']);
+});
+
+gulp.task('sass', function() {
+  return gulp.src('styles/*.scss')
+    .pipe(sass.sync().on('error', sass.logError))
+    .pipe(gulp.dest('styles'));
+});
+
+gulp.task('sass:watch', function() {
+  gulp.watch('styles/*.scss', ['sass']);
+});
 
 gulp.task('stream', function() {
   return gulp.src('scripts/*.js')
-    .pipe(babel({
-      plugins: ['transform-react-jsx']
-    }))
     .pipe(gulp.dest('output'))
     .pipe(connect.reload());
 });
 
-gulp.task('default', ['connect', 'stream', 'watch']);
+gulp.task('default', ['connect', 'sass', 'sass:watch', 'stream', 'watch']);

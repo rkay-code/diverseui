@@ -22,17 +22,29 @@ $(document).ready(function() {
     $('#images').html(imageNodes.join(''));
   };
 
-  $('input[type=radio][name="size"]').change(function() {
-    size = this.value;
-
-    showImages(size, gender);
-  });
-
   $('input[type=radio][name="gender"]').change(function() {
     gender = this.value;
 
     showImages(size, gender);
   });
 
+  $('#size-slider').slider({
+    value: 90,
+    min: 32,
+    max: 180,
+    change: function(event, ui) {
+      size = ui.value;
+      showImages(size, gender);
+    },
+    slide: function(event, ui) {
+      $('#slider-label').html(ui.value);
+      size = ui.value;
+      showImages(size, gender);
+    }
+  });
+
+  $("#slider-label").html(size);
+
   showImages(size, gender);
+
 });
