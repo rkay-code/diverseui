@@ -29,8 +29,8 @@ $(document).ready(function() {
   });
 
   $('#size-slider').slider({
-    range: "min",
-    value: 90,
+    range: 'min',
+    value: size,
     min: 32,
     max: 180,
     step: 1,
@@ -45,8 +45,5 @@ $(document).ready(function() {
     }
   });
 
-  $("#slider-label").html(size + 'px');
-
   showImages(size, gender);
-
 });
