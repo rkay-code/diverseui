@@ -37,7 +37,7 @@ header {
 
     h2 {
       margin: 0;
-      font-family: 'skippy-sharp';
+      font-family: 'skippy-sharp', cursive;
       font-size: 32px;
     }
 
@@ -80,6 +80,7 @@ header {
   background: $light-grey;
   border: none;
   height: 0.3em;
+  cursor: pointer;
 }
 .ui-state-default,
 .ui-widget-content .ui-state-default,
