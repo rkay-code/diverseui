@@ -6,5 +6,6 @@
     <script>
       window.Data = {{ images|tojson|safe }};
     </script>
+    <script src="{{ url_for('static', filename='scripts/index.js') }}"></script>
   </body>
 </html>
