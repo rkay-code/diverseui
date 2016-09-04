@@ -2,12 +2,13 @@
 $black: #2F363D;
 $grey: #8C8C8C;
 $green: #5FBB97;
-$light-grey: #E8E8E8;
+$light-grey: lighten($grey, 40%);
 $light-green: lighten($green, 25%);
 body {
   font-family: 'apertura', sans-serif;
   color: $grey;
   font-weight: 400;
+  margin: 0;
 }
 h1,
 h2,
@@ -24,19 +25,26 @@ h3 {
   flex-direction: column;
 }
 header {
-  flex: none;
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid #eee;
+  background: $light-grey;
   margin-bottom: 25px;
+
   .header-section {
     display: flex;
-    margin: 15px;
+    align-items: center;
+    margin: 15px 75px;
+
     h2 {
       margin: 0;
+      font-family: 'skippy-sharp';
+      font-size: 32px;
     }
+
     a {
-      margin: 0 10px;
+      margin: 0 15px;
+      color: #8C8C8C;
+      text-decoration: none;
     }
   }
 }
@@ -44,6 +52,8 @@ header {
   display: flex;
   flex: 1 0 auto;
   flex-direction: column;
+  width: 80%;
+  margin: auto;
 }
 .filter-nav {
   order: -1;

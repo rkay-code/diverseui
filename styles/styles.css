@@ -2,7 +2,8 @@
 body {
   font-family: 'apertura', sans-serif;
   color: #8C8C8C;
-  font-weight: 400; }
+  font-weight: 400;
+  margin: 0; }
 
 h1,
 h2,
@@ -19,23 +20,29 @@ h3 {
   flex-direction: column; }
 
 header {
-  flex: none;
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid #eee;
+  background: #f2f2f2;
   margin-bottom: 25px; }
   header .header-section {
     display: flex;
-    margin: 15px; }
+    align-items: center;
+    margin: 15px 75px; }
     header .header-section h2 {
-      margin: 0; }
+      margin: 0;
+      font-family: 'skippy-sharp';
+      font-size: 32px; }
     header .header-section a {
-      margin: 0 10px; }
+      margin: 0 15px;
+      color: #8C8C8C;
+      text-decoration: none; }
 
 .site-body {
   display: flex;
   flex: 1 0 auto;
-  flex-direction: column; }
+  flex-direction: column;
+  width: 80%;
+  margin: auto; }
 
 .filter-nav {
   order: -1; }
@@ -57,7 +64,7 @@ header {
 
 .ui-slider {
   width: 80%;
-  background: #E8E8E8;
+  background: #f2f2f2;
   border: none;
   height: 0.3em; }
 
@@ -98,7 +105,7 @@ header {
       left: 0;
       height: 16px;
       width: 16px;
-      background: #E8E8E8; }
+      background: #f2f2f2; }
     .gender .input-group .control--radio .control__indicator {
       border-radius: 50%; }
     .gender .input-group .control:hover input ~ .control__indicator,
