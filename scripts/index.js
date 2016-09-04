@@ -29,21 +29,23 @@ $(document).ready(function() {
   });
 
   $('#size-slider').slider({
+    range: "min",
     value: 90,
     min: 32,
     max: 180,
+    step: 1,
     change: function(event, ui) {
       size = ui.value;
       showImages(size, gender);
     },
     slide: function(event, ui) {
-      $('#slider-label').html(ui.value);
+      $('#slider-label').html(ui.value + 'px');
       size = ui.value;
       showImages(size, gender);
     }
   });
 
-  $("#slider-label").html(size);
+  $("#slider-label").html(size + 'px');
 
   showImages(size, gender);
 

@@ -1,3 +1,18 @@
+/* site layout and general styles */
+body {
+  font-family: 'apertura', sans-serif;
+  color: #8C8C8C;
+  font-weight: 400; }
+
+h1,
+h2,
+h3 {
+  color: #2F363D;
+  font-weight: 500; }
+
+:focus {
+  outline: none; }
+
 .site {
   display: flex;
   min-height: 100vh;
@@ -17,8 +32,77 @@ header {
 .filter-nav,
 .ads {
   padding: 1em;
-  border-radius: 3px;
-  background: rgba(147, 128, 108, 0.1); }
+  border-radius: 3px; }
+
+/* filter navigation styles */
+.size-label {
+  margin-bottom: 10px; }
+  .size-label h3,
+  .size-label h4 {
+    display: inline-block;
+    margin: 0; }
+  .size-label h4 {
+    margin-left: 5px; }
+
+.ui-slider {
+  width: 80%;
+  background: #E8E8E8;
+  border: none;
+  height: 0.3em; }
+
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default {
+  background: #5FBB97;
+  border-radius: 50%;
+  border: none;
+  top: -.3em;
+  height: 1em;
+  width: 1em;
+  cursor: pointer; }
+
+.ui-slider-horizontal .ui-slider-range {
+  background: #b8e1d1; }
+
+.gender {
+  margin-top: 50px; }
+  .gender h3 {
+    margin-bottom: 10px; }
+  .gender .input-group {
+    margin-left: 10px; }
+    .gender .input-group .control {
+      display: block;
+      position: relative;
+      padding-left: 30px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      font-size: 16px; }
+    .gender .input-group .control input {
+      position: absolute;
+      z-index: -1;
+      opacity: 0; }
+    .gender .input-group .control__indicator {
+      position: absolute;
+      top: 2px;
+      left: 0;
+      height: 16px;
+      width: 16px;
+      background: #E8E8E8; }
+    .gender .input-group .control--radio .control__indicator {
+      border-radius: 50%; }
+    .gender .input-group .control:hover input ~ .control__indicator,
+    .gender .input-group .control input:focus ~ .control__indicator {
+      background: #b8e1d1; }
+    .gender .input-group .control input:checked ~ .control__indicator {
+      background: #5FBB97; }
+    .gender .input-group .control:hover input:not([disabled]):checked ~ .control__indicator,
+    .gender .input-group .control input:checked:focus ~ .control__indicator {
+      background: #5FBB97; }
+
+/* images styles */
+.faces img {
+  margin: 10px;
+  box-shadow: 0px 1px 1px #ccc; }
 
 @media (min-width: 768px) {
   .site-body {
@@ -26,5 +110,6 @@ header {
     flex: 1; }
   .faces {
     flex: 1; }
-  .filter-nav, .ads {
+  .filter-nav,
+  .ads {
     flex: 0 0 12em; } }

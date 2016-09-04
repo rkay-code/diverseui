@@ -3,34 +3,53 @@
 
 <head>
   <title>Diverse UI</title>
+
   <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
   <link rel="stylesheet" type="text/css" href="styles/styles.css" />
+
+  <script src="https://use.typekit.net/zzo2jwa.js"></script>
+  <script>
+    try {
+      Typekit.load({
+        async: true
+      });
+    } catch (e) {}
+  </script>
 </head>
 
 <body class="site">
   <header>
-
+    <
   </header>
   <div class="site-body">
     <main class="faces">
       <div id="images"></div>
     </main>
     <nav class="filter-nav">
-      <div>
+      <div class="size">
+        <div class="size-label">
+          <h3>Size:</h3>
+          <h4 id="slider-label"></h4>
+        </div>
         <div id="size-slider"></div>
-        <div id="slider-label"></div>
-        <div class="gender">
-          <label>
-            Both
-            <input checked value="both" type="radio" name="gender" />
+        <!-- <div id="slider-label"></div> -->
+      </div>
+      <div class="gender">
+        <div class="gender-label">
+          <h3>Gender:</h3>
+        </div>
+        <div class="input-group">
+          <label for="gender-both" class="control control--radio"> Both
+            <input checked value="both" type="radio" name="gender" id="gender-both" />
+            <div class="control__indicator"></div>
           </label>
-          <label>
-            Female
-            <input value="female" type="radio" name="gender" />
+          <label for="gender-female" class="control control--radio"> Female
+            <input value="female" type="radio" name="gender" id="gender-female" />
+            <div class="control__indicator"></div>
           </label>
-          <label>
-            Male
-            <input value="male" type="radio" name="gender" />
+          <label for="gender-male" class="control control--radio"> Male
+            <input value="male" type="radio" name="gender" id="gender-male" />
+            <div class="control__indicator"></div>
           </label>
         </div>
       </div>
