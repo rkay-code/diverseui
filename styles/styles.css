@@ -19,7 +19,18 @@ h3 {
   flex-direction: column; }
 
 header {
-  flex: none; }
+  flex: none;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 25px; }
+  header .header-section {
+    display: flex;
+    margin: 15px; }
+    header .header-section h2 {
+      margin: 0; }
+    header .header-section a {
+      margin: 0 10px; }
 
 .site-body {
   display: flex;
