@@ -36,12 +36,10 @@ header {
   justify-content: space-between;
   background: $light-grey;
   margin-bottom: 25px;
-
   .header-section {
     display: flex;
     align-items: center;
     margin: 20px 100px;
-
     h2 {
       margin: 0;
       font-family: 'ff-market-web', cursive;
@@ -168,6 +166,11 @@ header {
     }
   }
 }
+/* ads styles */
+.ads div {
+  display: flex;
+}
+
 /* load more button styles */
 #load-more {
   background-color: $accent;
