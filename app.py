@@ -36,10 +36,8 @@ class Image(db.Model):
 
     def to_json(self):
         return {
-            'id': self.id,
             'url': self.url,
             'gender': self.gender,
-            'created_at': self.created_at
         }
 
 basic_auth = BasicAuth(app)
