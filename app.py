@@ -58,6 +58,8 @@ class BasicAuthAdminView(AdminIndexView):
 
 class ImageView(BasicAuthModelView):
     form_excluded_columns = ['created_at']
+    page_size = 50
+    column_filters = ('gender', )
 
 admin = Admin(app, index_view=BasicAuthAdminView(), name='Diverse UI', template_mode='bootstrap3')
 admin.add_view(ImageView(Image, db.session))
