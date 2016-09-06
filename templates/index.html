@@ -13,7 +13,7 @@
   <!-- facebook -->
   <meta property="og:title" content="Diverse UI">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="{{ url_for('static', filename='img/diverseui-mock.png') }}">
+  <meta property="og:image" content="{{ url_for('static', filename='img/diverseui-mock.png', _external=True) }}">
   <meta property="og:description" content="Diverse user images for UI design">
 
   <!-- twitter -->
@@ -25,7 +25,7 @@
 
   <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/styles.css') }}" />
-  <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon.png') }}" />
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon.png', _external=True) }}" />
 
   <script src="https://use.typekit.net/zzo2jwa.js"></script>
   <script>
