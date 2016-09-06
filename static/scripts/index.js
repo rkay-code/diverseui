@@ -6,24 +6,32 @@ $(document).ready(function() {
   var gender = 'both';
   var count = PER_PAGE;
 
-  var showImages = function() {
-    var images = _.filter(IMAGES, function(image) {
+  var filteredImages = function() {
+    return _.filter(IMAGES, function(image) {
       return gender === 'both' || image.gender === gender;
-    }).slice(0, count);
+    });
+  };
+
+  var showImages = function() {
+    var filtered = filteredImages();
+    var images = filtered.slice(0, count);
 
     var imageNodes = _.map(images, function(i) {
       return '<img width="' + size + '" height="' + size + '" src="' + i.url + '" />';
     });
 
     $('#images').html(imageNodes.join(''));
+
+    if (count >= filtered.length) {
+      count = filtered.length;
+      $('#load-more-container').html('');
+    } else if ($('#load-more-container').html().trim().length === 0) {
+      $('#load-more-container').html('<button type="button" id="load-more">Load More</button>');
+    }
   };
 
-  $('#load-more').on('click', function() {
+  $('#load-more-container').on('click', '#load-more', function() {
     count += PER_PAGE;
-
-    if (count >= IMAGES.length) {
-      $('#load-more').remove();
-    }
 
     showImages();
   });

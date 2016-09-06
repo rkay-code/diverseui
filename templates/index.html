@@ -5,7 +5,6 @@
   <title>Diverse UI</title>
 
   <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-  <link rel="stylesheet" type="text/css" href="styles/styles.css" />
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/styles.css') }}" />
   <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon.png') }}" />
 
@@ -38,7 +37,9 @@
   <div class="site-body">
     <main class="faces">
       <div id="images"></div>
-      <button type="button" id="load-more">Load More</button>
+      <div id="load-more-container">
+        <button type="button" id="load-more">Load More</button>
+      </div>
     </main>
     <nav class="filter-nav">
       <div class="size">
