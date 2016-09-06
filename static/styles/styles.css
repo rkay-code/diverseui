@@ -131,6 +131,21 @@ header {
     .gender .input-group .control input:checked:focus ~ .control__indicator {
       background: #F05D5E; }
 
+/* load more button styles */
+#load-more {
+  background-color: #F05D5E;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  font-family: 'proxima-nova', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  margin: 0 10px 20px 10px;
+  padding: 12px 0;
+  width: 100%; }
+
 /* images styles */
 .faces img {
   margin: 10px;
