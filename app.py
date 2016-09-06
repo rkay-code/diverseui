@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, render_template, send_from_directory
+from flask import Flask, render_template, send_from_directory, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_basicauth import BasicAuth
 from flask_admin import Admin, AdminIndexView, expose
@@ -93,6 +93,14 @@ def index():
 
     return render_template('index.html',
                            images=[image.to_json() for image in images])
+
+
+@app.route('/submit', methods=['GET', 'POST'])
+def submit():
+    if request.method == 'POST':
+        return render_template('submit.html', submitted=True)
+    else:
+        return render_template('submit.html', submitted=False)
 
 if __name__ == '__main__':
     app.secret_key = os.environ.get('SECRET_KEY', 'somethingsecret')

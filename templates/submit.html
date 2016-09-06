@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    {% if submitted %}
+      <p>Thanks for submitting! We'll review your submission and let you know when it's live.</p>
+    {% else %}
+      <form method="post" action="">
+        <label>
+          Gender
+          <input type="text" name="gender" placeholder="Gender" />
+        </label>
+        <button type="submit">Submit</button>
+      </form>
+    {% endif %}
+  </body>
+</html>
