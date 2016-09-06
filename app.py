@@ -15,6 +15,7 @@ app.config.update(dict(
     BASIC_AUTH_USERNAME=os.environ.get('BASIC_AUTH_USERNAME', 'dev'),
     BASIC_AUTH_PASSWORD=os.environ.get('BASIC_AUTH_PASSWORD', 'secret')
 ))
+app.secret_key = os.environ.get('SECRET_KEY', 'somethingsecret')
 
 db = SQLAlchemy(app)
 
@@ -101,6 +102,5 @@ def submit():
         return render_template('submit.html', submitted=False)
 
 if __name__ == '__main__':
-    app.secret_key = os.environ.get('SECRET_KEY', 'somethingsecret')
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
