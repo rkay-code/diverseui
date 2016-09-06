@@ -10,7 +10,13 @@
 
 * `postgres`
 
+* `npm`
+
 ## Development
+
+* `npm install`
+
+* `gulp`
 
 * `virtual env`
 
