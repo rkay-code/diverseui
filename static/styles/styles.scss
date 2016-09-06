@@ -172,6 +172,9 @@ header {
 }
 
 /* load more button styles */
+#load-more-container {
+  padding-bottom: 20px;
+}
 #load-more {
   background-color: $accent;
   border-radius: 5px;
