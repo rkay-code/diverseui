@@ -1,21 +1,23 @@
 import os
 
-from flask import Flask, render_template, redirect, Response
+from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_basicauth import BasicAuth
-from flask_admin import Admin, AdminIndexView, expose
+from flask_admin import Admin, AdminIndexView
 from flask_admin.contrib.sqla import ModelView
 
 app = Flask(__name__)
 app.config.from_object(__name__)
 app.config.update(dict(
-    SQLALCHEMY_DATABASE_URI=os.environ.get('DATABASE_URL', 'postgresql://localhost/diverseui'),
+    SQLALCHEMY_DATABASE_URI=os.environ.get('DATABASE_URL',
+                                           'postgresql://localhost/diverseui'),
     SQLALCHEMY_TRACK_MODIFICATIONS=True,
     BASIC_AUTH_USERNAME=os.environ.get('BASIC_AUTH_USERNAME', 'dev'),
     BASIC_AUTH_PASSWORD=os.environ.get('BASIC_AUTH_PASSWORD', 'secret')
 ))
 
 db = SQLAlchemy(app)
+
 
 class Image(db.Model):
     __tablename__ = 'images'
@@ -42,12 +44,14 @@ class Image(db.Model):
 
 basic_auth = BasicAuth(app)
 
+
 class BasicAuthModelView(ModelView):
     def is_accessible(self):
         return basic_auth.authenticate()
 
     def inaccessible_callback(self, name, **kwargs):
         return basic_auth.challenge()
+
 
 class BasicAuthAdminView(AdminIndexView):
     def is_accessible(self):
@@ -56,13 +60,18 @@ class BasicAuthAdminView(AdminIndexView):
     def inaccessible_callback(self, name, **kwargs):
         return basic_auth.challenge()
 
+
 class ImageView(BasicAuthModelView):
     form_excluded_columns = ['created_at']
     page_size = 50
     column_filters = ('gender', )
 
-admin = Admin(app, index_view=BasicAuthAdminView(), name='Diverse UI', template_mode='bootstrap3')
+admin = Admin(app,
+              index_view=BasicAuthAdminView(),
+              name='Diverse UI',
+              template_mode='bootstrap3')
 admin.add_view(ImageView(Image, db.session))
+
 
 @app.route('/', methods=['GET'])
 def index():
