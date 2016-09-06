@@ -9,7 +9,6 @@
   "dependencies": {
     "gulp": "^3.9.1",
     "gulp-cli": "^1.2.2",
-    "gulp-connect": "^3.2.1",
     "gulp-sass": "^2.2.0",
     "gulp-watch": "^4.3.5"
   }
