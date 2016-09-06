@@ -1,5 +1,26 @@
 {% extends 'admin/master.html' %}
 
 {% block body %}
-  <p>Hello world</p>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Gender</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Female</td>
+        <td>{{ counts.female }}</td>
+      </tr>
+      <tr>
+        <td>Male</td>
+        <td>{{ counts.male }}</td>
+      </tr>
+      <tr>
+        <td>Both</td>
+        <td>{{ counts.both }}</td>
+      </tr>
+    </tbody>
+  </table>
 {% endblock %}

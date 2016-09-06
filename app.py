@@ -3,7 +3,7 @@ import os
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_basicauth import BasicAuth
-from flask_admin import Admin, AdminIndexView
+from flask_admin import Admin, AdminIndexView, expose
 from flask_admin.contrib.sqla import ModelView
 
 app = Flask(__name__)
@@ -59,6 +59,14 @@ class BasicAuthAdminView(AdminIndexView):
 
     def inaccessible_callback(self, name, **kwargs):
         return basic_auth.challenge()
+
+    @expose('/')
+    def index(self):
+        counts = {}
+        counts['both'] = Image.query.count()
+        counts['female'] = Image.query.filter_by(gender='female').count()
+        counts['male'] = Image.query.filter_by(gender='male').count()
+        return self.render('admin/index.html', counts=counts)
 
 
 class ImageView(BasicAuthModelView):
