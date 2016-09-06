@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, render_template
+from flask import Flask, render_template, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
 from flask_basicauth import BasicAuth
 from flask_admin import Admin, AdminIndexView, expose
@@ -27,7 +27,7 @@ class Image(db.Model):
     gender = db.Column(db.String())
     created_at = db.Column(db.DateTime, server_default=db.func.now())
 
-    def __init__(self, url, gender):
+    def __init__(self, url='', gender=''):
         self.url = url
         self.gender = gender
 
@@ -81,6 +81,12 @@ admin = Admin(app,
 admin.add_view(ImageView(Image, db.session))
 
 
+@app.route('/favicon.ico', methods=['GET'])
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static', 'img'),
+                               'favicon.ico')
+
+
 @app.route('/', methods=['GET'])
 def index():
     images = Image.query.order_by('random()').all()
@@ -89,5 +95,6 @@ def index():
                            images=[image.to_json() for image in images])
 
 if __name__ == '__main__':
+    app.secret_key = os.environ.get('SECRET_KEY', 'somethingsecret')
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
