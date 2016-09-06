@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, render_template
+from flask import Flask, render_template, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
 from flask_basicauth import BasicAuth
 from flask_admin import Admin, AdminIndexView, expose
@@ -79,6 +79,12 @@ admin = Admin(app,
               name='Diverse UI',
               template_mode='bootstrap3')
 admin.add_view(ImageView(Image, db.session))
+
+
+@app.route('/favicon.ico', methods=['GET'])
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static', 'img'),
+                               'favicon.ico')
 
 
 @app.route('/', methods=['GET'])
