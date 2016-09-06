@@ -23,28 +23,26 @@ h3 {
 header {
   display: flex;
   justify-content: space-between;
-  background: #f2f2f3;
+  background: #f4f5f5;
   margin-bottom: 25px; }
   header .header-section {
     display: flex;
     align-items: center;
-    margin: 15px 100px; }
+    margin: 20px 100px; }
     header .header-section h2 {
       margin: 0;
       font-family: 'ff-market-web', cursive;
       font-size: 32px; }
+    header .header-section img {
+      height: 30px; }
     header .header-section a {
       margin: 0 15px;
       color: #8C8C8C;
       text-decoration: none; }
-    header .header-section button {
+    header .header-section .button {
       background: #F05D5E;
       color: #fff;
-      border: none;
-      font-size: 1em;
-      font-weight: 300;
-      font-family: 'proxima-nova', sans-serif;
-      padding: 5px 15px;
+      padding: 7px 20px;
       border-radius: 5px;
       margin-left: 5px; }
 
@@ -76,7 +74,7 @@ header {
 
 .ui-slider {
   width: 80%;
-  background: #f2f2f3;
+  background: #f4f5f5;
   border: none;
   height: 0.3em;
   cursor: pointer; }
@@ -121,7 +119,7 @@ header {
       left: 0;
       height: 16px;
       width: 16px;
-      background: #f2f2f3; }
+      background: #f4f5f5; }
     .gender .input-group .control--radio .control__indicator {
       border-radius: 50%; }
     .gender .input-group .control:hover input ~ .control__indicator,

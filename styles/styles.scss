@@ -1,9 +1,9 @@
 /* site layout and general styles */
 $black: #3F4045;
 $grey: #757780;
-$green: #F05D5E;
-$light-grey: lighten($grey, 47%);
-$light-green: lighten($green, 25%);
+$accent: #F05D5E;
+$light-grey: lighten($grey, 48%);
+$light-accent: lighten($accent, 25%);
 body {
   font-family: 'proxima-nova', sans-serif;
   color: $grey;
@@ -34,12 +34,15 @@ header {
   .header-section {
     display: flex;
     align-items: center;
-    margin: 15px 100px;
+    margin: 20px 100px;
 
     h2 {
       margin: 0;
       font-family: 'ff-market-web', cursive;
       font-size: 32px;
+    }
+    img {
+      height: 30px;
     }
 
     a {
@@ -47,14 +50,10 @@ header {
       color: #8C8C8C;
       text-decoration: none;
     }
-    button {
-      background: $green;
+    .button {
+      background: $accent;
       color: #fff;
-      border: none;
-      font-size: 1em;
-      font-weight: 300;
-      font-family: 'proxima-nova', sans-serif;
-      padding: 5px 15px;
+      padding: 7px 20px;
       border-radius: 5px;
       margin-left: 5px;
     }
@@ -98,7 +97,7 @@ header {
 .ui-state-default,
 .ui-widget-content .ui-state-default,
 .ui-widget-header .ui-state-default {
-  background: $green;
+  background: $accent;
   border-radius: 50%;
   border: none;
   top: -.3em;
@@ -107,7 +106,7 @@ header {
   cursor: pointer;
 }
 .ui-slider-horizontal .ui-slider-range {
-  background: $light-green;
+  background: $light-accent;
 }
 .gender {
   margin-top: 50px;
@@ -146,14 +145,14 @@ header {
     }
     .control:hover input ~ .control__indicator,
     .control input:focus ~ .control__indicator {
-      background: $light-green;
+      background: $light-accent;
     }
     .control input:checked ~ .control__indicator {
-      background: $green;
+      background: $accent;
     }
     .control:hover input:not([disabled]):checked ~ .control__indicator,
     .control input:checked:focus ~ .control__indicator {
-      background: $green;
+      background: $accent;
     }
   }
 }
