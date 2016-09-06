@@ -27,7 +27,7 @@ class Image(db.Model):
     gender = db.Column(db.String())
     created_at = db.Column(db.DateTime, server_default=db.func.now())
 
-    def __init__(self, url, gender):
+    def __init__(self, url='', gender=''):
         self.url = url
         self.gender = gender
 
