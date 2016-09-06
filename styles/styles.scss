@@ -1,14 +1,15 @@
 /* site layout and general styles */
-$black: #2F363D;
-$grey: #8C8C8C;
-$green: #5FBB97;
-$light-grey: lighten($grey, 40%);
+$black: #3F4045;
+$grey: #757780;
+$green: #F05D5E;
+$light-grey: lighten($grey, 47%);
 $light-green: lighten($green, 25%);
 body {
-  font-family: 'apertura', sans-serif;
+  font-family: 'proxima-nova', sans-serif;
   color: $grey;
-  font-weight: 400;
+  font-weight: 300;
   margin: 0;
+  background: #fff;
 }
 h1,
 h2,
@@ -33,11 +34,11 @@ header {
   .header-section {
     display: flex;
     align-items: center;
-    margin: 15px 75px;
+    margin: 15px 100px;
 
     h2 {
       margin: 0;
-      font-family: 'skippy-sharp', cursive;
+      font-family: 'ff-market-web', cursive;
       font-size: 32px;
     }
 
@@ -45,6 +46,17 @@ header {
       margin: 0 15px;
       color: #8C8C8C;
       text-decoration: none;
+    }
+    button {
+      background: $green;
+      color: #fff;
+      border: none;
+      font-size: 1em;
+      font-weight: 300;
+      font-family: 'proxima-nova', sans-serif;
+      padding: 5px 15px;
+      border-radius: 5px;
+      margin-left: 5px;
     }
   }
 }
@@ -73,6 +85,7 @@ header {
   }
   h4 {
     margin-left: 5px;
+    font-weight: 600;
   }
 }
 .ui-slider {
@@ -101,10 +114,14 @@ header {
   h3 {
     margin-bottom: 10px;
   }
+  label:hover {
+    color: darken($grey, 20%);
+  }
   .input-group {
     margin-left: 10px;
+    display: flex;
+    flex-direction: column;
     .control {
-      display: block;
       position: relative;
       padding-left: 30px;
       margin-bottom: 10px;
@@ -159,4 +176,18 @@ header {
   .ads {
     flex: 0 0 12em;
   }
+}
+
+@media (min-width: 320px) and (max-width: 768px) {
+  header {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .gender .input-group {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .gender {
+    margin-top: 25px;
+}
 }
