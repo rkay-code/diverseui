@@ -10,11 +10,11 @@
     </thead>
     <tbody>
       <tr>
-        <td>Pending</td>
+        <td><a href="{{ url_for('image.index_view', flt0_9='pending') }}">Pending</a></td>
         <td>{{ counts.pending }}</td>
       </tr>
       <tr>
-        <td>Accepted</td>
+        <td><a href="{{ url_for('image.index_view', flt0_9='accepted') }}">Accepted</a></td>
         <td>{{ counts.accepted }}</td>
       </tr>
     </tbody>
