@@ -6,6 +6,7 @@ from sqlalchemy.sql.expression import func
 from flask_basicauth import BasicAuth
 from flask_admin import Admin, AdminIndexView, expose
 from flask_admin.contrib.sqla import ModelView
+from flask_admin.model.template import macro
 
 app = Flask(__name__)
 app.config.from_object(__name__)
@@ -79,9 +80,11 @@ class BasicAuthAdminView(AdminIndexView):
 
 
 class ImageView(BasicAuthModelView):
+    list_template = 'admin/model/object_list.html'
     form_excluded_columns = ['created_at', 'verification_url', 'status']
     page_size = 50
     column_filters = ('gender', 'status')
+    column_formatters = dict(url=macro('render_url'))
 
 admin = Admin(app,
               index_view=BasicAuthAdminView(),
