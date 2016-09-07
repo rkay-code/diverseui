@@ -1,66 +1,53 @@
-
-
 /* site layout and general styles */
-$black: #3F4045;
-$grey: #757780;
-$accent: #F05D5E;
-$light-grey: lighten($grey, 48%);
-$light-accent: lighten($accent, 25%);
 html {
-  box-sizing: border-box;
-}
+  box-sizing: border-box; }
+
 *, *:before, *:after {
-  box-sizing: inherit;
-}
+  box-sizing: inherit; }
+
 body {
   font-family: 'proxima-nova', sans-serif;
-  color: $grey;
+  color: #757780;
   font-weight: 300;
   margin: 0;
-  background: #fff;
-}
+  background: #fff; }
+
 h1,
 h2,
 h3 {
-  color: $black;
-  font-weight: 500;
-}
- :focus {
-  outline: none;
-}
+  color: #3F4045;
+  font-weight: 500; }
+
+:focus {
+  outline: none; }
+
 .site {
   display: flex;
   min-height: 100vh;
-  flex-direction: column;
-}
+  flex-direction: column; }
+
 header {
   display: flex;
   justify-content: space-between;
-  background: $light-grey;
-  margin-bottom: 25px;
-  .header-section {
+  background: #f4f5f5;
+  margin-bottom: 25px; }
+  header .header-section {
     display: flex;
     align-items: center;
-    margin: 20px 100px;
-    h2 {
+    margin: 20px 100px; }
+    header .header-section h2 {
       margin: 0;
       font-family: 'ff-market-web', cursive;
-      font-size: 32px;
-    }
-    img {
-      height: 30px;
-    }
-
-    a {
+      font-size: 32px; }
+    header .header-section img {
+      height: 30px; }
+    header .header-section a {
       margin: 0 15px;
       color: #8C8C8C;
-      text-decoration: none;
-  }
-  .button {
-    color: #fff;
-  }
-}
-}
+      text-decoration: none; }
+    header .header-section .button {
+      color: #fff; }
+
 .button {
   background: #F05D5E;
   color: #fff;
@@ -69,116 +56,103 @@ header {
   text-decoration: none;
   flex-grow: 1;
   align-items: center;
-  text-align: center;
-}
+  text-align: center; }
+
 .site-body {
   display: flex;
   flex: 1 0 auto;
   flex-direction: column;
   width: 80%;
-  margin: auto;
-}
+  margin: auto; }
+
 .filter-nav {
-  order: -1;
-}
+  order: -1; }
+
 .filter-nav,
 .ads {
   padding: 1em;
-  border-radius: 3px;
-}
+  border-radius: 3px; }
+
 /* filter navigation styles */
 .size-label {
-  margin-bottom: 10px;
-  h3,
-  h4 {
+  margin-bottom: 10px; }
+  .size-label h3,
+  .size-label h4 {
     display: inline-block;
-    margin: 0;
-  }
-  h4 {
+    margin: 0; }
+  .size-label h4 {
     margin-left: 5px;
-    font-weight: 600;
-  }
-}
+    font-weight: 600; }
+
 .ui-slider {
   width: 80%;
-  background: $light-grey;
+  background: #f4f5f5;
   border: none;
   height: 0.3em;
-  cursor: pointer;
-}
+  cursor: pointer; }
+
 .ui-state-default,
 .ui-widget-content .ui-state-default,
 .ui-widget-header .ui-state-default {
-  background: $accent;
+  background: #F05D5E;
   border-radius: 50%;
   border: none;
   top: -.3em;
   height: 1em;
   width: 1em;
-  cursor: pointer;
-}
+  cursor: pointer; }
+
 .ui-slider-horizontal .ui-slider-range {
-  background: $light-accent;
-}
+  background: #fbd2d2; }
+
 .gender {
-  margin-top: 50px;
-  h3 {
-    margin-bottom: 10px;
-  }
-  label:hover {
-    color: darken($grey, 20%);
-  }
-  .input-group {
+  margin-top: 50px; }
+  .gender h3 {
+    margin-bottom: 10px; }
+  .gender label:hover {
+    color: #44454b; }
+  .gender .input-group {
     margin-left: 10px;
     display: flex;
-    flex-direction: column;
-    .control {
+    flex-direction: column; }
+    .gender .input-group .control {
       position: relative;
       padding-left: 30px;
       margin-bottom: 10px;
       cursor: pointer;
-      font-size: 16px;
-    }
-    .control input {
+      font-size: 16px; }
+    .gender .input-group .control input {
       position: absolute;
       z-index: -1;
-      opacity: 0;
-    }
-    .control__indicator {
+      opacity: 0; }
+    .gender .input-group .control__indicator {
       position: absolute;
       top: 2px;
       left: 0;
       height: 16px;
       width: 16px;
-      background: $light-grey;
-    }
-    .control--radio .control__indicator {
-      border-radius: 50%;
-    }
-    .control:hover input ~ .control__indicator,
-    .control input:focus ~ .control__indicator {
-      background: $light-accent;
-    }
-    .control input:checked ~ .control__indicator {
-      background: $accent;
-    }
-    .control:hover input:not([disabled]):checked ~ .control__indicator,
-    .control input:checked:focus ~ .control__indicator {
-      background: $accent;
-    }
-  }
-}
+      background: #f4f5f5; }
+    .gender .input-group .control--radio .control__indicator {
+      border-radius: 50%; }
+    .gender .input-group .control:hover input ~ .control__indicator,
+    .gender .input-group .control input:focus ~ .control__indicator {
+      background: #fbd2d2; }
+    .gender .input-group .control input:checked ~ .control__indicator {
+      background: #F05D5E; }
+    .gender .input-group .control:hover input:not([disabled]):checked ~ .control__indicator,
+    .gender .input-group .control input:checked:focus ~ .control__indicator {
+      background: #F05D5E; }
+
 /* ads styles */
 .ads div {
-  display: flex;
-}
+  display: flex; }
 
 /* load more button styles */
 #load-more-container {
-  padding-bottom: 20px;
-}
+  padding-bottom: 20px; }
+
 #load-more {
-  background-color: $accent;
+  background-color: #F05D5E;
   border-radius: 5px;
   border: none;
   color: #fff;
@@ -188,8 +162,8 @@ header {
   font-size: 20px;
   font-weight: 400;
   padding: 12px 0;
-  width: 100%;
-}
+  width: 100%; }
+
 /* images styles */
 #images {
   margin: 0 -10px;
@@ -197,38 +171,29 @@ header {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  align-content: flex-start;
-  img {
+  align-content: flex-start; }
+  #images img {
     box-shadow: 0px 1px 1px #ccc;
     flex-basis: auto;
     align-self: flex-start;
-    margin: 8px;
-  }
-}
+    margin: 8px; }
+
 @media (min-width: 768px) {
   .site-body {
     flex-direction: row;
-    flex: 1;
-  }
+    flex: 1; }
   .faces {
-    width: 100%;
-  }
+    width: 100%; }
   .filter-nav,
   .ads {
-    flex: 0 0 12em;
-  }
-}
+    flex: 0 0 12em; } }
 
 @media (min-width: 320px) and (max-width: 768px) {
   header {
     flex-wrap: wrap;
-    justify-content: center;
-  }
+    justify-content: center; }
   .gender .input-group {
     flex-direction: row;
-    justify-content: space-between;
-  }
+    justify-content: space-between; }
   .gender {
-    margin-top: 25px;
-}
-}
+    margin-top: 25px; } }

@@ -1,0 +1,11 @@
+@import 'styles';
+
+@media (min-width: 320px) and (max-width: 768px) {
+  .gender .input-group {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .gender {
+    margin-top: 25px;
+}
+}
