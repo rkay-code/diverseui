@@ -197,3 +197,57 @@ header {
     justify-content: space-between; }
   .gender {
     margin-top: 25px; } }
+
+.form-header {
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.08);
+  padding: 75px 0; }
+  .form-header .logo-img {
+    height: 75px; }
+  .form-header h1 {
+    font-size: 40px;
+    font-weight: 300;
+    margin: 0; }
+  .form-header h2 {
+    font-weight: 300;
+    margin: 25px 0 0 0; }
+
+.form-body {
+  background-color: #fff;
+  font-family: 'proxima-nova', sans-serif;
+  font-weight: 300;
+  color: #757780; }
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  margin: 50px auto;
+  align-items: center; }
+  .container .button {
+    border: none;
+    font-family: 'proxima-nova', sans-serif;
+    font-size: 14px; }
+  .container ol {
+    padding: 0; }
+
+.questions li {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0; }
+  .questions li input {
+    border: none;
+    border-bottom: 1px solid #757780;
+    line-height: 20px;
+    margin: 20px 0;
+    font-size: 16px; }
+  .questions li input:active, .questions li input:focus {
+    border-bottom: 2px solid #F05D5E; }
+  .questions li label {
+    font-size: 20px; }
+    .questions li label span {
+      font-size: 14px; }
+  .questions li input[type="file"] {
+    border-bottom: none; }

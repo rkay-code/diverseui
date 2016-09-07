@@ -3,7 +3,7 @@ var sass = require('gulp-sass');
 var watch = require('gulp-watch');
 
 gulp.task('sass', function() {
-  return gulp.src('static/styles/*.scss')
+  return gulp.src('static/styles/styles.scss')
     .pipe(sass.sync().on('error', sass.logError))
     .pipe(gulp.dest('static/styles'));
 });

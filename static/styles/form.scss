@@ -1,0 +1,67 @@
+.form-header {
+	flex-direction: column;
+	align-items: center;
+	color: #fff;
+	background: rgba(0, 0, 0, 0.08);
+	padding: 75px 0;
+	.logo-img {
+		height: 75px;
+	}
+	h1 {
+		font-size: 40px;
+		font-weight: 300;
+		margin: 0;
+	}
+	h2 {
+		font-weight: 300;
+		margin: 25px 0 0 0;
+	}
+}
+
+.form-body {
+	background-color: #fff;
+	font-family: 'proxima-nova', sans-serif;
+	font-weight: 300;
+	color: $grey;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	width: 45%;
+	margin: 50px auto;
+	align-items: center;
+	.button {
+		border: none;
+font-family: 'proxima-nova', sans-serif;
+font-size: 14px;
+	}
+	ol {
+		padding: 0;
+	}
+}
+
+.questions li {
+	display: flex;
+	flex-direction: column;
+	margin: 20px 0;
+	input {
+		border: none;
+		border-bottom: 1px solid $grey;
+		line-height: 20px;
+		margin: 20px 0;
+		font-size: 16px;
+	}
+	input:active, input:focus {
+		border-bottom: 2px solid $accent;
+	}
+	label {
+		font-size: 20px;
+		span {
+			font-size: 14px;
+		}
+	}
+	input[type="file"] {
+		border-bottom: none;
+	}
+}
