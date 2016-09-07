@@ -2,9 +2,11 @@ import os
 
 from flask import Flask, render_template, send_from_directory, request
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.sql.expression import func
 from flask_basicauth import BasicAuth
 from flask_admin import Admin, AdminIndexView, expose
 from flask_admin.contrib.sqla import ModelView
+from flask_admin.model.template import macro
 
 app = Flask(__name__)
 app.config.from_object(__name__)
@@ -26,11 +28,18 @@ class Image(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     url = db.Column(db.String(), unique=True)
     gender = db.Column(db.String())
+    race = db.Column(db.String())
+    status = db.Column(db.String())
+    verification_url = db.Column(db.String(), server_default='pending')
     created_at = db.Column(db.DateTime, server_default=db.func.now())
 
-    def __init__(self, url='', gender=''):
+    def __init__(self, url='', gender='', race='',
+                 status='', verification_url=''):
         self.url = url
         self.gender = gender
+        self.race = race
+        self.status = status
+        self.verification_url = verification_url
 
     def __repr__(self):
         return '<Image url={0} gender={1}>'.format(self.url, self.gender)
@@ -65,13 +74,17 @@ class BasicAuthAdminView(AdminIndexView):
         counts['both'] = Image.query.count()
         counts['female'] = Image.query.filter_by(gender='female').count()
         counts['male'] = Image.query.filter_by(gender='male').count()
+        counts['accepted'] = Image.query.filter_by(status='accepted').count()
+        counts['pending'] = Image.query.filter_by(status='pending').count()
         return self.render('admin/index.html', counts=counts)
 
 
 class ImageView(BasicAuthModelView):
-    form_excluded_columns = ['created_at']
+    list_template = 'admin/model/object_list.html'
+    form_excluded_columns = ['created_at', 'verification_url', 'status']
     page_size = 50
-    column_filters = ('gender', )
+    column_filters = ('gender', 'status')
+    column_formatters = dict(url=macro('render_url'))
 
 admin = Admin(app,
               index_view=BasicAuthAdminView(),
@@ -88,7 +101,10 @@ def favicon():
 
 @app.route('/', methods=['GET'])
 def index():
-    images = Image.query.order_by('random()').all()
+    images = Image.query\
+        .filter_by(status='accepted')\
+        .order_by(func.random())\
+        .all()
 
     return render_template('index.html',
                            images=[image.to_json() for image in images])
