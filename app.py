@@ -1,6 +1,10 @@
 import os
-
+import uuid
+import boto
+import boto.s3
+from boto.s3.key import Key
 from flask import Flask, render_template, send_from_directory, request
+from werkzeug.utils import secure_filename
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql.expression import func
 from sqlalchemy.exc import IntegrityError
@@ -115,12 +119,25 @@ def index():
 @app.route('/submit', methods=['GET', 'POST'])
 def submit():
     if request.method == 'POST':
-        url = request.form['url']
+        image = request.files['image']
+        fname = 'faces/{0}-{1}'.format(str(uuid.uuid4()),
+                                       secure_filename(image.filename))
+
+        conn = boto.connect_s3(os.environ['AWS_ACCESS_KEY_ID_DIVERSEUI'],
+                               os.environ['AWS_SECREY_KEY_DIVERSEUI'])
+        bucket = conn.get_bucket('diverse-ui')
+
+        k = Key(bucket, fname)
+        k.set_contents_from_file(image)
+        k.make_public()
+
+        url = 'https://s3-us-west-2.amazonaws.com/diverse-ui/{}'.format(fname)
+        email = request.form['email']
         gender = request.form['gender']
         race = request.form['race']
         verification_url = request.form['verification_url']
 
-        i = Image(url, gender, race, verification_url)
+        i = Image(url, email, gender, race, verification_url)
 
         db.session.add(i)
 
