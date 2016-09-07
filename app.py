@@ -73,13 +73,15 @@ class BasicAuthAdminView(AdminIndexView):
         counts['both'] = Image.query.count()
         counts['female'] = Image.query.filter_by(gender='female').count()
         counts['male'] = Image.query.filter_by(gender='male').count()
+        counts['accepted'] = Image.query.filter_by(status='accepted').count()
+        counts['pending'] = Image.query.filter_by(status='pending').count()
         return self.render('admin/index.html', counts=counts)
 
 
 class ImageView(BasicAuthModelView):
-    form_excluded_columns = ['created_at']
+    form_excluded_columns = ['created_at', 'verification_url', 'status']
     page_size = 50
-    column_filters = ('gender', )
+    column_filters = ('gender', 'status')
 
 admin = Admin(app,
               index_view=BasicAuthAdminView(),
