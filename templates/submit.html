@@ -23,27 +23,27 @@
   {% if submitted %}
   <p>Thanks for submitting! We'll review your submission and let you know when it's live.</p>
   {% else %}
-  <form class="photo-form" autocomplete="off" method="post" action="">
+  <form class="photo-form" enctype="multipart/form-data" autocomplete="off" method="post" action="">
       <ol class="questions">
         <li>
           <span><label for="q1">What's your e-mail address?</label></span>
-          <input id="q1" name="q1" type="text" required="" />
+          <input id="q1" name="email" type="text" required="" value="{{ fields.email }}" />
         </li>
         <li>
           <label for="q2">What gender do you identify with?<br /><span>*Optional, used to help us make sure we're keeping our images diverse!</span></label>
-          <input id="q2" name="q2" type="text"/>
+          <input id="q2" name="gender" type="text" value="{{ fields.gender }}" />
         </li>
         <li>
           <span><label for="q3">What race do you identify with?<br /><span>*Optional, used to help us make sure we're keeping our images diverse!</span></label></span>
-          <input id="q3" name="q3" type="text"/>
+          <input id="q3" name="race" type="text" value="{{ fields.race }}" />
         </li>
         <li>
           <span><label for="q4">What's a social account we can use to verify your identity?<br /></label></span>
-          <input id="q4" name="q4" type="text" required=""/>
+          <input id="q4" name="verification_url" type="text" required="" value="{{ fields.verification_url }}" />
         </li>
         <li>
           <span><label for="q6">Attach your photo:</label></span>
-          <input  id="q6" name="q6" type="file" accept="image/*" class="img-input" required="">
+          <input  id="q6" name="image" type="file" accept="image/*" class="img-input" required="">
         </li>
         <li>
           By hitting submit, you're giving us permission to use your photo at diverseui.com - a UI mockup tool for designers. If you change your mind, e-mail us at hello@diverseui.com to get it removed.
