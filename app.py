@@ -28,14 +28,17 @@ class Image(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     url = db.Column(db.String(), unique=True)
+    email = db.Column(db.String())
     gender = db.Column(db.String())
     race = db.Column(db.String())
     status = db.Column(db.String())
     verification_url = db.Column(db.String(), server_default='pending')
     created_at = db.Column(db.DateTime, server_default=db.func.now())
 
-    def __init__(self, url='', gender='', race='', verification_url=''):
+    def __init__(self, url='', email='', gender='',
+                 race='', verification_url=''):
         self.url = url
+        self.email = email
         self.gender = gender
         self.race = race
         self.verification_url = verification_url
