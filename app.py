@@ -2,6 +2,7 @@ import os
 
 from flask import Flask, render_template, send_from_directory, request
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.sql.expression import func
 from flask_basicauth import BasicAuth
 from flask_admin import Admin, AdminIndexView, expose
 from flask_admin.contrib.sqla import ModelView
@@ -95,7 +96,10 @@ def favicon():
 
 @app.route('/', methods=['GET'])
 def index():
-    images = Image.query.order_by('random()').all()
+    images = Image.query\
+        .filter_by(status='accepted')\
+        .order_by(func.random())\
+        .all()
 
     return render_template('index.html',
                            images=[image.to_json() for image in images])
