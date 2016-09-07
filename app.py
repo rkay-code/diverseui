@@ -26,11 +26,18 @@ class Image(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     url = db.Column(db.String(), unique=True)
     gender = db.Column(db.String())
+    race = db.Column(db.String())
+    status = db.Column(db.String())
+    verification_url = db.Column(db.String(), server_default='pending')
     created_at = db.Column(db.DateTime, server_default=db.func.now())
 
-    def __init__(self, url='', gender=''):
+    def __init__(self, url='', gender='', race='',
+                 status='', verification_url=''):
         self.url = url
         self.gender = gender
+        self.race = race
+        self.status = status
+        self.verification_url = verification_url
 
     def __repr__(self):
         return '<Image url={0} gender={1}>'.format(self.url, self.gender)
