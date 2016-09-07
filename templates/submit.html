@@ -1,20 +1,10 @@
-<!DOCTYPE html>
-<html>
+{% extends 'layout.html' %}
 
-<head>
+{% block stylesheets %}
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/styles.css') }}" />
-  <script src="https://use.typekit.net/zzo2jwa.js"></script>
-  <script>
-    try {
-      Typekit.load({
-        async: true
-      });
-    } catch (e) {}
-  </script>
-</head>
+{% endblock %}
 
-<body class="form-body">
-
+{% block body %}
   <header class="form-header">
     <img src="{{ url_for('static', filename='img/diverselogo.png') }}" class="logo-img"/>
     <h2>Submit your photo for use on our site below!</h2>
@@ -52,7 +42,5 @@
       <button class="submit button" type="submit">Submit</button>
   </form>
   {% endif %}
-</div>
-</body>
-
-</html>
+  </div>
+{% endblock %}

@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Diverse UI</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="author" content="Renee Padgham &amp; Yefim Vedernikoff">
+  <meta name="description" content="Diverse user images for UI design">
+
+  <!-- facebook -->
+  <meta property="og:title" content="Diverse UI">
+  <meta property="og:url" content="http://www.diverseui.com">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="{{ url_for('static', filename='img/diverseui-mock.png', _external=True) }}">
+  <meta property="og:description" content="Diverse user images for UI design">
+
+  <!-- twitter -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:url" content="http://www.diverseui.com">
+  <meta name="twitter:title" content="Diverse UI">
+  <meta name="twitter:description" content="Diverse user images for UI design">
+  <meta name="twitter:image" content="{{ url_for('static', filename='img/diverseui-mock.png', _external=True) }}">
+
+  {% block stylesheets %}{% endblock %}
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon.png', _external=True) }}" />
+
+  <script src="https://use.typekit.net/zzo2jwa.js"></script>
+  <script>
+    try {
+      Typekit.load({
+        async: true
+      });
+    } catch (e) {}
+  </script>
+</head>
+
+<body class="site">
+  {% block body %}{% endblock %}
+  {% block javascripts %}{% endblock %}
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-68765997-3', 'auto');
+    ga('send', 'pageview');
+  </script>
+</body>
+
+</html>

@@ -214,12 +214,6 @@ header {
     font-weight: 300;
     margin: 25px 0 0 0; }
 
-.form-body {
-  background-color: #fff;
-  font-family: 'proxima-nova', sans-serif;
-  font-weight: 300;
-  color: #757780; }
-
 .container {
   display: flex;
   flex-direction: column;
