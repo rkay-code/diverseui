@@ -20,7 +20,8 @@ app.config.update(dict(
                                            'postgresql://localhost/diverseui'),
     SQLALCHEMY_TRACK_MODIFICATIONS=True,
     BASIC_AUTH_USERNAME=os.environ.get('BASIC_AUTH_USERNAME', 'dev'),
-    BASIC_AUTH_PASSWORD=os.environ.get('BASIC_AUTH_PASSWORD', 'secret')
+    BASIC_AUTH_PASSWORD=os.environ.get('BASIC_AUTH_PASSWORD', 'secret'),
+    MAX_CONTENT_LENGTH=2 * 1024 * 1024
 ))
 app.secret_key = os.environ.get('SECRET_KEY', 'somethingsecret')
 
