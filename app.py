@@ -153,6 +153,11 @@ def submit():
     else:
         return render_template('submit.html', submitted=False, fields={})
 
+
+@app.errorhandler(413)
+def request_entity_too_large(e):
+    return render_template('submit.html', submitted=False, fields={}), 413
+
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
