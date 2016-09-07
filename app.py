@@ -35,8 +35,8 @@ class Image(db.Model):
     email = db.Column(db.String())
     gender = db.Column(db.String())
     race = db.Column(db.String())
-    status = db.Column(db.String())
-    verification_url = db.Column(db.String(), server_default='pending')
+    status = db.Column(db.String(), nullable=False, server_default='pending')
+    verification_url = db.Column(db.String())
     created_at = db.Column(db.DateTime, server_default=db.func.now())
 
     def __init__(self, url='', email='', gender='',
