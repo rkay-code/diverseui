@@ -3,6 +3,7 @@ import os
 from flask import Flask, render_template, send_from_directory, request
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql.expression import func
+from sqlalchemy.exc import IntegrityError
 from flask_basicauth import BasicAuth
 from flask_admin import Admin, AdminIndexView, expose
 from flask_admin.contrib.sqla import ModelView
@@ -33,12 +34,10 @@ class Image(db.Model):
     verification_url = db.Column(db.String(), server_default='pending')
     created_at = db.Column(db.DateTime, server_default=db.func.now())
 
-    def __init__(self, url='', gender='', race='',
-                 status='', verification_url=''):
+    def __init__(self, url='', gender='', race='', verification_url=''):
         self.url = url
         self.gender = gender
         self.race = race
-        self.status = status
         self.verification_url = verification_url
 
     def __repr__(self):
@@ -81,7 +80,7 @@ class BasicAuthAdminView(AdminIndexView):
 
 class ImageView(BasicAuthModelView):
     list_template = 'admin/model/object_list.html'
-    form_excluded_columns = ['created_at', 'verification_url', 'status']
+    form_excluded_columns = ['created_at', 'verification_url']
     page_size = 50
     column_filters = ('gender', 'status')
     column_formatters = dict(url=macro('render_url'))
@@ -113,9 +112,25 @@ def index():
 @app.route('/submit', methods=['GET', 'POST'])
 def submit():
     if request.method == 'POST':
-        return render_template('submit.html', submitted=True)
+        url = request.form['url']
+        gender = request.form['gender']
+        race = request.form['race']
+        verification_url = request.form['verification_url']
+
+        i = Image(url, gender, race, verification_url)
+
+        db.session.add(i)
+
+        try:
+            db.session.commit()
+        except IntegrityError:
+            return render_template('submit.html',
+                                   submitted=False,
+                                   fields=request.form)
+
+        return render_template('submit.html', submitted=True, fields={})
     else:
-        return render_template('submit.html', submitted=False)
+        return render_template('submit.html', submitted=False, fields={})
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
