@@ -155,3 +155,7 @@ a {
 .header-content-wrap .header-section .current {
   color: #ED254E;
   font-weight: 600; }
+
+@media (min-width: 320px) and (max-width: 768px) {
+  .about {
+    width: 85%; } }
