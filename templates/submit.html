@@ -1,11 +1,55 @@
 {% extends 'layout.html' %}
 
 {% block stylesheets %}
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/form-compiled.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/normalize.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/form-compiled.css') }}" />
+<script src="{{ url_for('static', filename='scripts/modernizr.custom.js') }}"></script>
 {% endblock %}
 
 {% block body %}
-  <header class="form-header">
+<div class="container">
+	{% if submitted %}
+	<p>Thanks for submitting! We'll review your submission and let you know when it's live.</p>
+	{% else %}
+			<div class="fs-form-wrap" id="fs-form-wrap">
+				<div class="fs-title">
+					<a href="/"><img src="{{ url_for('static', filename='img/diverselogo-white.png') }}" /></a>
+				</div>
+				<form name="photoForm" class="photo-form fs-form fs-form-full" enctype="multipart/form-data" autocomplete="off" method="post" action="">
+					<ol class="fs-fields">
+            <li>
+              <label class="fs-field-label fs-anim-upper">Select a file:</label>
+              <input type="file" name="file-3[]" id="file-3" accept="image/*" class="inputfile inputfile-3 fs-anim-lower" data-multiple-caption="{count} files selected" multiple />
+					    <label for="file-3" class="fs-anim-lower"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg> <span>Choose a file&hellip;</span></label>
+            </li>
+						<li>
+							<label class="fs-field-label fs-anim-upper" for="q1" data-info="We'll notify you when your picture is live - we think spam is kinda gross.">What's your e-mail address?</label>
+							<input class="fs-anim-lower" id="q1" name="email" type="email" placeholder="morty@gmail.com" value="{{ fields.email }}" required=""/>
+						</li>
+						<li>
+							<label class="fs-field-label fs-anim-upper" for="q2" data-info="Optional, used to help us make sure we're keeping our images diverse!">What gender do you identify with?</label>
+							<input class="fs-anim-lower" id="q2" name="gender" type="text" placeholder="undefined" value="{{ fields.gender }}"/>
+						</li>
+            <li>
+							<label class="fs-field-label fs-anim-upper" for="q3" data-info="Optional, used to help us make sure we're keeping our images diverse!">What race do you identify with?</label>
+							<input class="fs-anim-lower" id="q3" name="race" type="text" placeholder="cromulon" value="{{ fields.race }}"/>
+						</li>
+						<li>
+							<label class="fs-field-label fs-anim-upper" for="q5">What's a social account we can use to verify your identity?</label>
+							<input class="fs-anim-lower" id="q5" name="verification_url" type="text" value="{{ fields.verification_url }}" placeholder="https://twitter.com/25shmeckles" required/>
+						</li>
+            <li>
+							<label class="fs-field-label fs-anim-upper" for="q6" data-info="You have to type 'yes' here or we can't take your submission :(. If you change your mind, e-mail us at hello@diverseui.com to get it removed.">Do you give us permission to use your image on diverseui.com? </label>
+							<input class="fs-anim-lower" id="q6" type="text" placeholder="yes" required/>
+						</li>
+					</ol><!-- /fs-fields -->
+					<button id="submit" class="fs-submit submit" type="submit">Submit</button>
+				</form><!-- /fs-form -->
+			</div><!-- /fs-form-wrap -->
+			{% endif %}
+		</div><!-- /container -->
+
+  <!-- <header class="form-header">
     <img src="{{ url_for('static', filename='img/diverselogo.png') }}" class="logo-img"/>
     <h2>Submit your photo for use on our site below!</h2>
   </header>
@@ -42,5 +86,30 @@
       <button class="submit button" type="submit">Submit</button>
   </form>
   {% endif %}
-  </div>
+  </div> -->
+
+<script src="{{ url_for('static', filename='scripts/classie.js') }}"></script>
+<script src="{{ url_for('static', filename='scripts/fullscreenForm.js') }}"></script>
+<script src="{{ url_for('static', filename='scripts/custom-file-input.js') }}"></script>
+<script>
+			(function() {
+				var formWrap = document.getElementById( 'fs-form-wrap' );
+
+				// [].slice.call( document.querySelectorAll( 'select.cs-select' ) ).forEach( function(el) {
+				// 	new SelectFx( el, {
+				// 		stickyPlaceholder: false,
+				// 		onChange: function(val){
+				// 			document.querySelector('span.cs-placeholder').style.backgroundColor = val;
+				// 		}
+				// 	});
+				// } );
+
+				new FForm( formWrap, {
+					onReview : function() {
+						classie.add( document.body, 'overview' );
+					}
+				} );
+			})();
+		</script>
+
 {% endblock %}
