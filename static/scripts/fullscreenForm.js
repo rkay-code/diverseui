@@ -472,7 +472,7 @@
 				message = 'Please input a valid email address before continuing';
 				break;
 			case 'INVALIDURL':
-				message = 'Please input a valid url before continuing';
+				message = 'Please input a valid url (don\'t forget the http://)';
 				break;
 			case 'TOOBIG':
 				message = 'Please attach a file < 2MB';
