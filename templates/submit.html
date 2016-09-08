@@ -9,13 +9,19 @@
 {% block body %}
 <div class="container">
 	{% if submitted %}
-	<p>Thanks for submitting! We'll review your submission and let you know when it's live.</p>
+	<div class="submit-msg">
+		<h1>Thanks for submitting!<br />We'll review your submission and let you know when it's live.</h1>
+		<h3>
+			<a href="/">Go back to diverseui.com</a>
+		</h3>
+	</div>
+
 	{% else %}
 			<div class="fs-form-wrap" id="fs-form-wrap">
 				<div class="fs-title">
 					<a href="/"><img src="{{ url_for('static', filename='img/diverselogo-white.png') }}" /></a>
 				</div>
-				<form name="photoForm" class="photo-form fs-form fs-form-full" enctype="multipart/form-data" autocomplete="off" method="post" action="">
+				<form id="photo-form" name="photoForm" class="photo-form fs-form fs-form-full" enctype="multipart/form-data" autocomplete="off" method="post" action="">
 					<ol class="fs-fields">
             <li>
               <label class="fs-field-label fs-anim-upper" data-info="Keep it under 2MB please!">Upload your face :)</label>
@@ -43,7 +49,7 @@
 							<input data-yesno="true" class="fs-anim-lower" id="q6" type="text" placeholder="yes" required/>
 						</li>
 					</ol><!-- /fs-fields -->
-					<button id="submit" class="fs-submit submit" type="submit">Submit</button>
+						<button class="fs-submit submit" type="submit">Submit</button>
 				</form><!-- /fs-form -->
 			</div><!-- /fs-form-wrap -->
 			{% endif %}
@@ -58,9 +64,6 @@
 
 
 				new FForm( formWrap, {
-					onReview : function() {
-						classie.add( document.body, 'overview' );
-					}
 				} );
 			})();
 		</script>

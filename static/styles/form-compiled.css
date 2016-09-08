@@ -156,29 +156,9 @@ body {
   -webkit-animation: animFadeIn 0.5s;
   animation: animFadeIn 0.5s; }
 
-@-webkit-keyframes animFadeIn {
-  0% {
-    opacity: 0; }
-  100% {
-    opacity: 1; } }
-
-@keyframes animFadeIn {
-  0% {
-    opacity: 0; }
-  100% {
-    opacity: 1; } }
-
 .fs-form.fs-show .fs-fields {
   -webkit-animation: animMove 0.5s;
   animation: animMove 0.5s; }
-
-@-webkit-keyframes animMove {
-  from {
-    top: 100px; } }
-
-@keyframes animMove {
-  from {
-    top: 100px; } }
 
 /* we need to use top here because otherwise all our fixed elements will become absolute */
 /* Visibility control of elements */
@@ -469,64 +449,18 @@ button.fs-continue,
   -webkit-animation: animMoveUpFromDown 0.4s both;
   animation: animMoveUpFromDown 0.4s both; }
 
-@-webkit-keyframes animMoveUpFromDown {
-  from {
-    -webkit-transform: translateY(100%); }
-  to {
-    -webkit-transform: translateY(0); } }
-
-@keyframes animMoveUpFromDown {
-  from {
-    -webkit-transform: translateY(100%);
-    transform: translateY(100%); }
-  to {
-    -webkit-transform: translateY(0);
-    transform: translateY(0); } }
-
 .fs-numbers.fs-show-next .fs-number-current {
   -webkit-animation: animMoveUp 0.4s both;
   animation: animMoveUp 0.4s both; }
-
-@-webkit-keyframes animMoveUp {
-  to {
-    -webkit-transform: translateY(-100%); } }
-
-@keyframes animMoveUp {
-  to {
-    -webkit-transform: translateY(-100%);
-    transform: translateY(-100%); } }
 
 /* Show previous number */
 .fs-numbers.fs-show-prev .fs-number-new {
   -webkit-animation: animMoveDownFromUp 0.4s both;
   animation: animMoveDownFromUp 0.4s both; }
 
-@-webkit-keyframes animMoveDownFromUp {
-  from {
-    -webkit-transform: translateY(-100%); }
-  to {
-    -webkit-transform: translateY(0); } }
-
-@keyframes animMoveDownFromUp {
-  from {
-    -webkit-transform: translateY(-100%);
-    transform: translateY(-100%); }
-  to {
-    -webkit-transform: translateY(0);
-    transform: translateY(0); } }
-
 .fs-numbers.fs-show-prev .fs-number-current {
   -webkit-animation: animMoveDown 0.4s both;
   animation: animMoveDown 0.4s both; }
-
-@-webkit-keyframes animMoveDown {
-  to {
-    -webkit-transform: translateY(100%); } }
-
-@keyframes animMoveDown {
-  to {
-    -webkit-transform: translateY(100%);
-    transform: translateY(100%); } }
 
 /* Continue button and submit button */
 button.fs-submit,
@@ -537,17 +471,21 @@ button.fs-continue {
   font-weight: 700;
   color: rgba(255, 255, 255, 0.75); }
 
-.fs-form-overview .fs-submit,
+.fs-form-submit .fs-submit,
 .no-js .fs-form .fs-submit {
   display: block;
-  float: right; }
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  margin: 0 40px 60px 0;
+  font-size: 20px; }
 
 button.fs-continue {
   position: absolute;
   right: 0;
   bottom: 0;
   margin: 0 40px 60px 0;
-  font-size: 1.25em; }
+  font-size: 20px; }
 
 button.fs-submit:hover,
 button.fs-submit:focus,
@@ -612,17 +550,6 @@ button.fs-continue:hover {
   -webkit-animation-delay: 0.1s;
   animation-delay: 0.1s; }
 
-@-webkit-keyframes animHideNext {
-  to {
-    opacity: 0;
-    -webkit-transform: translate3d(0, -500px, 0); } }
-
-@keyframes animHideNext {
-  to {
-    opacity: 0;
-    -webkit-transform: translate3d(0, -500px, 0);
-    transform: translate3d(0, -500px, 0); } }
-
 /* Show new li when navigating to next question */
 .fs-form .fs-display-next .fs-show .fs-anim-lower,
 .fs-form .fs-display-next .fs-show .fs-anim-upper {
@@ -632,17 +559,6 @@ button.fs-continue:hover {
 .fs-form .fs-display-next .fs-show .fs-anim-lower {
   -webkit-animation-delay: 0.25s;
   animation-delay: 0.25s; }
-
-@-webkit-keyframes animShowNext {
-  from {
-    opacity: 0;
-    -webkit-transform: translate3d(0, 500px, 0); } }
-
-@keyframes animShowNext {
-  from {
-    opacity: 0;
-    -webkit-transform: translate3d(0, 500px, 0);
-    transform: translate3d(0, 500px, 0); } }
 
 /* Hide current li when navigating to previous question */
 .fs-form .fs-display-prev .fs-hide {
@@ -657,17 +573,6 @@ button.fs-continue:hover {
   -webkit-animation-delay: 0.1s;
   animation-delay: 0.1s; }
 
-@-webkit-keyframes animHidePrev {
-  to {
-    opacity: 0;
-    -webkit-transform: translate3d(0, 500px, 0); } }
-
-@keyframes animHidePrev {
-  to {
-    opacity: 0;
-    -webkit-transform: translate3d(0, 500px, 0);
-    transform: translate3d(0, 500px, 0); } }
-
 /* Show new li when navigating to previous question */
 .fs-form .fs-display-prev .fs-show .fs-anim-lower,
 .fs-form .fs-display-prev .fs-show .fs-anim-upper {
@@ -678,20 +583,27 @@ button.fs-continue:hover {
   -webkit-animation-delay: 0.25s;
   animation-delay: 0.25s; }
 
-@-webkit-keyframes animShowPrev {
-  from {
-    opacity: 0;
-    -webkit-transform: translate3d(0, -500px, 0); } }
-
-@keyframes animShowPrev {
-  from {
-    opacity: 0;
-    -webkit-transform: translate3d(0, -500px, 0);
-    transform: translate3d(0, -500px, 0); } }
-
 /* Remove IE clear cross */
 input[type=text]::-ms-clear {
   display: none; }
+
+.submit-msg {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center; }
+  .submit-msg h1 {
+    color: #fff;
+    font-weight: 700; }
+  .submit-msg h3:hover {
+    transform: scale(1.25, 1.25);
+    transition: all 20ms ease-in-out; }
+  .submit-msg h3 a {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer; }
 
 /* Adjust form for smaller screens */
 @media screen and (min-width: 320px) and (max-width: 768px) {
@@ -725,8 +637,10 @@ input[type=text]::-ms-clear {
   .fs-continue::after {
     content: ''; }
   button.fs-submit {
-    width: 100%;
-    font-size: 1.25em; }
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    font-size: 22px; }
   .fs-message-error {
     top: 350px;
     left: 0;
@@ -801,3 +715,113 @@ input[type=text]::-ms-clear {
 .overview .inputfile-3 + label:hover,
 .overview .inputfile-3:active + label {
   color: #fff; }
+
+@-webkit-keyframes animShowPrev {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -500px, 0); } }
+
+@keyframes animShowPrev {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -500px, 0);
+    transform: translate3d(0, -500px, 0); } }
+
+@-webkit-keyframes animFadeIn {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@keyframes animFadeIn {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@-webkit-keyframes animMove {
+  from {
+    top: 100px; } }
+
+@keyframes animMove {
+  from {
+    top: 100px; } }
+
+@-webkit-keyframes animMoveUpFromDown {
+  from {
+    -webkit-transform: translateY(100%); }
+  to {
+    -webkit-transform: translateY(0); } }
+
+@keyframes animMoveUpFromDown {
+  from {
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%); }
+  to {
+    -webkit-transform: translateY(0);
+    transform: translateY(0); } }
+
+@-webkit-keyframes animMoveDownFromUp {
+  from {
+    -webkit-transform: translateY(-100%); }
+  to {
+    -webkit-transform: translateY(0); } }
+
+@keyframes animMoveDownFromUp {
+  from {
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%); }
+  to {
+    -webkit-transform: translateY(0);
+    transform: translateY(0); } }
+
+@-webkit-keyframes animMoveUp {
+  to {
+    -webkit-transform: translateY(-100%); } }
+
+@keyframes animMoveUp {
+  to {
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%); } }
+
+@-webkit-keyframes animMoveDown {
+  to {
+    -webkit-transform: translateY(100%); } }
+
+@keyframes animMoveDown {
+  to {
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%); } }
+
+@-webkit-keyframes animShowNext {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 500px, 0); } }
+
+@keyframes animShowNext {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 500px, 0);
+    transform: translate3d(0, 500px, 0); } }
+
+@-webkit-keyframes animHidePrev {
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 500px, 0); } }
+
+@keyframes animHidePrev {
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 500px, 0);
+    transform: translate3d(0, 500px, 0); } }
+
+@-webkit-keyframes animHideNext {
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -500px, 0); } }
+
+@keyframes animHideNext {
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -500px, 0);
+    transform: translate3d(0, -500px, 0); } }

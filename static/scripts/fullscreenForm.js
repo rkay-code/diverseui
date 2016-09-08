@@ -237,6 +237,11 @@
 		// clear any previous error messages
 		this._clearError();
 
+		if (this.isLastStep) {
+			document.getElementById('photo-form').submit();
+			return;
+		}
+
 		// current field
 		var currentFld = this.fields[ this.current ];
 
@@ -275,54 +280,42 @@
 		}
 
 		// after animation ends remove added classes from fields
-		var self = this,
-			onEndAnimationFn = function( ev ) {
-				if( support.animations ) {
-					this.removeEventListener( animEndEventName, onEndAnimationFn );
-				}
+		var self = this;
+		var onEndAnimationFn = function(ev) {
+			if (support.animations) {
+				this.removeEventListener(animEndEventName, onEndAnimationFn);
+			}
 
-				classie.remove( self.fieldsList, 'fs-display-' + self.navdir );
-				classie.remove( currentFld, 'fs-hide' );
+			classie.remove(self.fieldsList, 'fs-display-' + self.navdir);
+			classie.remove(currentFld, 'fs-hide');
 
-				if( self.isLastStep ) {
-					// show the complete form and hide the controls
-					self._hideCtrl( self.ctrlNav );
-					self._hideCtrl( self.ctrlProgress );
-					self._hideCtrl( self.ctrlContinue );
-					self._hideCtrl( self.ctrlFldStatus );
-					// replace class fs-form-full with fs-form-overview
-					classie.remove( self.formEl, 'fs-form-full' );
-					classie.add( self.formEl, 'fs-form-overview' );
-					classie.add( self.formEl, 'fs-show' );
-					// callback
-					self.options.onReview();
-				}
-				else {
-					classie.remove( nextField, 'fs-show' );
+			if (self.current === self.fieldsCount - 1) {
+				self.shouldSubmit = true;
+				self._hideCtrl(self.ctrlContinue);
+				classie.add(self.formEl, 'fs-form-submit');
+			}
 
-					if( self.options.ctrlNavPosition ) {
-						self.ctrlFldStatusCurr.innerHTML = self.ctrlFldStatusNew.innerHTML;
-						self.ctrlFldStatus.removeChild( self.ctrlFldStatusNew );
-						classie.remove( self.ctrlFldStatus, 'fs-show-' + self.navdir );
-					}
-				}
-				self.isAnimating = false;
-			};
+			classie.remove(nextField, 'fs-show');
 
-		if( support.animations ) {
+			if (self.options.ctrlNavPosition) {
+				self.ctrlFldStatusCurr.innerHTML = self.ctrlFldStatusNew.innerHTML;
+				self.ctrlFldStatus.removeChild( self.ctrlFldStatusNew );
+				classie.remove(self.ctrlFldStatus, 'fs-show-' + self.navdir);
+			}
+			self.isAnimating = false;
+		};
+
+		if (support.animations ) {
 			if( this.navdir === 'next' ) {
 				if( this.isLastStep ) {
 					currentFld.querySelector( '.fs-anim-upper' ).addEventListener( animEndEventName, onEndAnimationFn );
-				}
-				else {
+				} else {
 					nextField.querySelector( '.fs-anim-lower' ).addEventListener( animEndEventName, onEndAnimationFn );
 				}
-			}
-			else {
+			} else {
 				nextField.querySelector( '.fs-anim-upper' ).addEventListener( animEndEventName, onEndAnimationFn );
 			}
-		}
-		else {
+		} else {
 			onEndAnimationFn();
 		}
 	}
