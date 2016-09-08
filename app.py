@@ -124,18 +124,18 @@ def index():
 def submit():
     if request.method == 'POST':
         image = request.files['image']
-        fname = 'faces/{0}-{1}'.format(str(uuid.uuid4()),
-                                       secure_filename(image.filename))
+        fname = '{0}-{1}'.format(str(uuid.uuid4()),
+                                 secure_filename(image.filename))
 
         conn = boto.connect_s3(os.environ['AWS_ACCESS_KEY_ID_DIVERSEUI'],
                                os.environ['AWS_SECREY_KEY_DIVERSEUI'])
         bucket = conn.get_bucket('diverse-ui')
 
-        k = Key(bucket, fname)
+        k = Key(bucket, 'faces/{}'.format(fname))
         k.set_contents_from_file(image)
         k.make_public()
 
-        url = 'https://s3-us-west-2.amazonaws.com/diverse-ui/{}'.format(fname)
+        url = 'https://d3iw72m71ie81c.cloudfront.net/{}'.format(fname)
         email = request.form['email']
         gender = request.form['gender']
         race = request.form['race']
