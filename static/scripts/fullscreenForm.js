@@ -410,9 +410,27 @@
 
 		switch (input.type.toLowerCase()) {
 			case 'email':
+				if (input.value === '') {
+					error = 'NOEMAIL';
+				} else if (input.value.indexOf('@') === -1) {
+					error = 'INVALIDEMAIL';
+				}
+				break;
+			case 'url':
+				var expression = /[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/gi;
+				var r = new RegExp(expression);
+				if (input.value === '') {
+					error = 'NOURL';
+				} else if (!input.value.match(r)) {
+					error = 'INVALIDURL';
+				}
+				break;
 			case 'text':
 				if (input.value === '') {
 					error = 'NOVAL';
+				} else if (input.getAttribute('data-yesno') &&
+						!(input.value === 'yes' || input.value === 'y')) {
+					error = 'NOYES';
 				}
 				break;
 			case 'file':
@@ -437,20 +455,29 @@
 	// TODO
 	FForm.prototype._showError = function( err ) {
 		var message = '';
-		switch( err ) {
+		switch (err) {
 			case 'NOVAL':
 				message = 'Please fill the field before continuing';
 				break;
+			case 'NOEMAIL':
+				message = 'Please input an email before continuing';
+				break;
+			case 'NOURL':
+				message = 'Please input a verification url before continuing';
+				break;
 			case 'NOFILE':
-				message = 'Please attach a file';
+				message = 'Please attach a file before continuing';
 				break;
 			case 'INVALIDEMAIL':
-				message = 'Please input a valid email address';
+				message = 'Please input a valid email address before continuing';
+				break;
+			case 'INVALIDURL':
+				message = 'Please input a valid url before continuing';
 				break;
 			case 'TOOBIG':
 				message = 'Please attach a file < 2MB';
 				break;
-			case 'NOYES' :
+			case 'NOYES':
 				message = 'Please enter the word yes';
 				break;
 		};

@@ -36,11 +36,11 @@
 						</li>
 						<li>
 							<label class="fs-field-label fs-anim-upper" for="q5">What's a social account we can use to verify your identity?</label>
-							<input class="fs-anim-lower" id="q5" name="verification_url" type="text" value="{{ fields.verification_url }}" placeholder="https://twitter.com/25shmeckles" required/>
+							<input class="fs-anim-lower" id="q5" name="verification_url" type="url" value="{{ fields.verification_url }}" placeholder="https://twitter.com/25shmeckles" required/>
 						</li>
             <li>
 							<label class="fs-field-label fs-anim-upper" for="q6" data-info="You have to type 'yes' here or we can't take your submission :(. If you change your mind, e-mail us at hello@diverseui.com to get it removed.">Do you give us permission to use your image on diverseui.com? </label>
-							<input class="fs-anim-lower" id="q6" type="text" placeholder="yes" required/>
+							<input data-yesno="true" class="fs-anim-lower" id="q6" type="text" placeholder="yes" required/>
 						</li>
 					</ol><!-- /fs-fields -->
 					<button id="submit" class="fs-submit submit" type="submit">Submit</button>
