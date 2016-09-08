@@ -653,7 +653,7 @@ input[type=text]::-ms-clear {
   display: none;
 }
 /* Adjust form for smaller screens */
-@media (min-width: 320px) and (max-width: 768px){
+@media screen and (min-width: 320px) and (max-width: 768px){
   body {
     min-height: 500px;
   }
