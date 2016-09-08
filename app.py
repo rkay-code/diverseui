@@ -120,6 +120,11 @@ def index():
                            images=[image.to_json() for image in images])
 
 
+@app.route('/about', methods=['GET'])
+def about():
+    return render_template('about.html')
+
+
 @app.route('/submit', methods=['GET', 'POST'])
 def submit():
     if request.method == 'POST':
