@@ -400,22 +400,34 @@
 
 	// TODO: this is a very basic validation function. Only checks for required fields..
 	FForm.prototype._validate = function() {
-		var fld = this.fields[ this.current ],
-			input = fld.querySelector( 'input[required]' ),
-			error;
+		var fld = this.fields[this.current];
+		var input = fld.querySelector('input[required]');
+		var error;
 
-		if( !input ) return true;
+		if (!input) {
+			return true;
+		}
 
-		switch( input.tagName.toLowerCase() ) {
-			case 'input' :
-				if( input.value === '' ) {
+		switch (input.type.toLowerCase()) {
+			case 'email':
+			case 'text':
+				if (input.value === '') {
 					error = 'NOVAL';
+				}
+				break;
+			case 'file':
+				if (window.FileReader && input.files) {
+					if (!input.files[0]) {
+						error = 'NOFILE';
+					} else if ((input.files[0].size / 1024) / 1024 > 2) {
+						error = 'TOOBIG';
+					}
 				}
 				break;
 		}
 
-		if( error != undefined ) {
-			this._showError( error );
+		if (error != undefined) {
+			this._showError(error);
 			return false;
 		}
 
@@ -426,14 +438,17 @@
 	FForm.prototype._showError = function( err ) {
 		var message = '';
 		switch( err ) {
-			case 'NOVAL' :
+			case 'NOVAL':
 				message = 'Please fill the field before continuing';
 				break;
-			case 'INVALIDEMAIL' :
+			case 'NOFILE':
+				message = 'Please attach a file';
+				break;
+			case 'INVALIDEMAIL':
 				message = 'Please input a valid email address';
 				break;
-			case 'LARGEFILE' :
-				message = 'Please upload a file < 2mb';
+			case 'TOOBIG':
+				message = 'Please attach a file < 2MB';
 				break;
 			case 'NOYES' :
 				message = 'Please enter the word yes';
