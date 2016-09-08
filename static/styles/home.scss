@@ -16,9 +16,12 @@
     display: inline-block;
     margin: 0;
   }
+  h3 {
+    font-weight: 600;
+  }
   h4 {
     margin-left: 5px;
-    font-weight: 600;
+    font-size: 18px;
   }
 }
 .ui-slider {
@@ -46,6 +49,7 @@
   margin-top: 50px;
   h3 {
     margin-bottom: 10px;
+    font-weight: 600;
   }
   label:hover {
     color: darken($grey, 20%);
@@ -96,21 +100,11 @@
 }
 
 /* load more button styles */
-#load-more-container {
-  padding-bottom: 20px;
-}
-#load-more {
-  background-color: $accent;
-  border-radius: 5px;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-  display: block;
-  font-family: 'proxima-nova', sans-serif;
-  font-size: 20px;
-  font-weight: 400;
-  padding: 12px 0;
-  width: 100%;
+.load-more-container {
+  padding: 40px 0;
+display: flex;
+width: 50%;
+margin: auto;
 }
 /* images styles */
 #images {

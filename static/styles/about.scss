@@ -1,0 +1,22 @@
+@import 'styles';
+
+.about {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  margin: auto;
+  .about-section-container {
+    margin: 40px 0;
+  }
+  .question {
+    margin: 30px 0;
+  }
+}
+a {
+  text-decoration: none;
+  color: #ED254E;
+}
+.header-content-wrap .header-section .current {
+  color: #ED254E;
+  font-weight: 600;
+}
