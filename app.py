@@ -22,7 +22,8 @@ app.config.update(dict(
     SQLALCHEMY_TRACK_MODIFICATIONS=True,
     BASIC_AUTH_USERNAME=os.environ.get('BASIC_AUTH_USERNAME', 'dev'),
     BASIC_AUTH_PASSWORD=os.environ.get('BASIC_AUTH_PASSWORD', 'secret'),
-    MAX_CONTENT_LENGTH=2 * 1024 * 1024
+    MAX_CONTENT_LENGTH=2 * 1024 * 1024,
+    TEMPLATES_AUTO_RELOAD=os.environ.get('TEMPLATES_RELOAD', 'True') == 'True'
 ))
 app.secret_key = os.environ.get('SECRET_KEY', 'somethingsecret')
 
