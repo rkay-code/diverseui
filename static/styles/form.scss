@@ -726,6 +726,7 @@ input[type=text]::-ms-clear {
   margin-top: 10px;
 	margin-left: 0;
 }
+}
 .js .inputfile {
   width: 0.1px;
   height: 0.1px;
@@ -775,9 +776,5 @@ input[type=text]::-ms-clear {
 .inputfile-3 + label:hover,
 .inputfile-3:active + label {
   color: #fff;
-}
-}
-.show-submit {
-  display: block !important;
 }
 }

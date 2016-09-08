@@ -879,47 +879,53 @@ input[type=text]::-ms-clear {
   .fs-form-full .fs-fields > li label[data-info]::after {
     display: block;
     margin-top: 10px;
-    margin-left: 0; }
-  .js .inputfile {
-    width: 0.1px;
-    height: 0.1px;
-    opacity: 0;
-    overflow: hidden;
-    position: absolute;
-    z-index: -1; }
-  .inputfile + label {
-    max-width: 80%;
-    font-size: 20px;
-    font-weight: 700;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    cursor: pointer;
-    display: inline-block;
-    overflow: hidden;
-    padding: 10px 0; }
-  .no-js .inputfile + label {
-    display: none; }
-  .inputfile:focus + label,
-  .inputfile.has-focus + label {
-    outline: none; }
-  .inputfile + label svg {
-    width: 1em;
-    height: 1em;
-    vertical-align: middle;
-    fill: currentColor;
-    margin-top: -0.25em;
-    margin-right: 0.25em; }
-  .inputfile-3 + label {
-    color: rgba(255, 255, 255, 0.75); }
-  .inputfile-3:focus + label,
-  .inputfile-3.has-focus + label,
-  .inputfile-3 + label:hover,
-  .inputfile-3:active + label {
-    color: #fff; }
-  .overview .inputfile-3:focus + label,
-  .overview .inputfile-3.has-focus + label,
-  .overview .inputfile-3 + label:hover,
-  .overview .inputfile-3:active + label {
-    color: #fff; }
-  .show-submit {
-    display: block !important; } }
+    margin-left: 0; } }
+
+.js .inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1; }
+
+.inputfile + label {
+  max-width: 80%;
+  font-size: 20px;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+  display: inline-block;
+  overflow: hidden;
+  padding: 10px 0; }
+
+.no-js .inputfile + label {
+  display: none; }
+
+.inputfile:focus + label,
+.inputfile.has-focus + label {
+  outline: none; }
+
+.inputfile + label svg {
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+  fill: currentColor;
+  margin-top: -0.25em;
+  margin-right: 0.25em; }
+
+.inputfile-3 + label {
+  color: rgba(255, 255, 255, 0.75); }
+
+.inputfile-3:focus + label,
+.inputfile-3.has-focus + label,
+.inputfile-3 + label:hover,
+.inputfile-3:active + label {
+  color: #fff; }
+
+.overview .inputfile-3:focus + label,
+.overview .inputfile-3.has-focus + label,
+.overview .inputfile-3 + label:hover,
+.overview .inputfile-3:active + label {
+  color: #fff; }
