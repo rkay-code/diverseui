@@ -12,6 +12,7 @@ from flask_basicauth import BasicAuth
 from flask_admin import Admin, AdminIndexView, expose
 from flask_admin.contrib.sqla import ModelView
 from flask_admin.model.template import macro
+from flask_compress import Compress
 
 app = Flask(__name__)
 app.config.from_object(__name__)
@@ -24,6 +25,8 @@ app.config.update(dict(
     MAX_CONTENT_LENGTH=2 * 1024 * 1024
 ))
 app.secret_key = os.environ.get('SECRET_KEY', 'somethingsecret')
+
+Compress(app)
 
 db = SQLAlchemy(app)
 
