@@ -51,7 +51,7 @@ header {
   justify-content: space-between;
   margin-bottom: 25px;
 }
-.header-content-wrap, .footer-content-wrap {
+.header-content-wrap {
   display: flex;
   justify-content: space-between;
   width: 90%;
@@ -143,6 +143,26 @@ transition: all 5ms ease-in-out;
   flex-direction: column;
   width: 90%;
   margin: auto;
+}
+
+footer {
+  .footer-content-wrap {
+    display: flex;
+    width: 90%;
+    margin: auto;
+    justify-content: space-between;
+    padding: 25px 0;
+    .footer-section {
+      flex-grow: 1;
+      a {
+        text-decoration: none;
+        color: #ED254E;
+      }
+      &:nth-child(2) {
+        text-align: right;
+      }
+    }
+  }
 }
 
 @media (min-width: 320px) and (max-width: 768px) {
