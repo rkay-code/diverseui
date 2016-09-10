@@ -2,7 +2,9 @@
 
 {% block stylesheets %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/normalize.css') }}" />
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/form-compiled.css') }}" />
+{% assets filters="cssmin", output="form-%(version)s.css", "styles/form-compiled.css" %}
+  <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}" />
+{% endassets %}
 <script src="{{ url_for('static', filename='scripts/modernizr.custom.js') }}"></script>
 {% endblock %}
 
@@ -54,18 +56,18 @@
 			</div><!-- /fs-form-wrap -->
 			{% endif %}
 		</div><!-- /container -->
+{% endblock %}
 
-<script src="{{ url_for('static', filename='scripts/classie.js') }}"></script>
-<script src="{{ url_for('static', filename='scripts/fullscreenForm.js') }}"></script>
-<script src="{{ url_for('static', filename='scripts/custom-file-input.js') }}"></script>
-<script>
-			(function() {
-				var formWrap = document.getElementById( 'fs-form-wrap' );
+{% block javascripts %}
+  {% assets filters="jsmin", output="form-%(version)s.js",
+            "scripts/classie.js", "scripts/fullscreenForm.js", "scripts/custom-file-input.js" %}
+    <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+  {% endassets %}
+  <script>
+    (function() {
+      var formWrap = document.getElementById( 'fs-form-wrap' );
 
-
-				new FForm( formWrap, {
-				} );
-			})();
-		</script>
-
+      new FForm(formWrap, {});
+    })();
+  </script>
 {% endblock %}

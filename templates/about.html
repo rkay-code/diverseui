@@ -2,7 +2,9 @@
 
 {% block stylesheets %}
   <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/about-compiled.css') }}" />
+  {% assets filters="cssmin", output="about-%(version)s.css", "styles/about-compiled.css" %}
+    <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}" />
+  {% endassets %}
 {% endblock %}
 
 {% block body %}

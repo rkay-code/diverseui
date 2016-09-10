@@ -12,7 +12,7 @@ from flask_basicauth import BasicAuth
 from flask_admin import Admin, AdminIndexView, expose
 from flask_admin.contrib.sqla import ModelView
 from flask_admin.model.template import macro
-from flask_compress import Compress
+from flask_assets import Environment
 
 app = Flask(__name__)
 app.config.from_object(__name__)
@@ -27,7 +27,7 @@ app.config.update(dict(
 ))
 app.secret_key = os.environ.get('SECRET_KEY', 'somethingsecret')
 
-Compress(app)
+Environment(app)
 
 db = SQLAlchemy(app)
 
