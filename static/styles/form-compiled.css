@@ -427,6 +427,12 @@ button.fs-continue,
 .fs-fields textarea:-ms-input-placeholder {
   color: rgba(0, 0, 0, 0.1); }
 
+.subtext {
+  font-weight: 700;
+  font-size: 16px;
+  margin-top: -2em;
+  padding-bottom: 1em; }
+
 /* Hide placeholder when focused in Webkit browsers */
 .fs-fields input:focus::-webkit-input-placeholder {
   color: transparent; }
