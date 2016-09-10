@@ -25,6 +25,7 @@
   <meta name="twitter:description" content="Diverse user images for UI design">
   <meta name="twitter:image" content="{{ url_for('static', filename='img/diverseui-mock.png', _external=True) }}">
 
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/normalize.css') }}" />
   {% block stylesheets %}{% endblock %}
   <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon.png', _external=True) }}" />
 

@@ -1,11 +1,11 @@
 {% extends 'layout.html' %}
 
 {% block stylesheets %}
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/normalize.css') }}" />
-{% assets filters="cssmin", output="form-%(version)s.css", "styles/form-compiled.css" %}
-  <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}" />
-{% endassets %}
-<script src="{{ url_for('static', filename='scripts/modernizr.custom.js') }}"></script>
+  {% assets filters="cssmin", output="form-%(version)s.css", "styles/form-compiled.css" %}
+    <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}" />
+  {% endassets %}
+
+  <script src="{{ url_for('static', filename='scripts/modernizr.custom.js') }}"></script>
 {% endblock %}
 
 {% block body %}
