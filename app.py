@@ -82,9 +82,12 @@ class BasicAuthAdminView(AdminIndexView):
     @expose('/')
     def index(self):
         counts = {}
-        counts['both'] = Image.query.count()
-        counts['female'] = Image.query.filter_by(gender='female').count()
-        counts['male'] = Image.query.filter_by(gender='male').count()
+        counts['female'] = Image.query\
+                                .filter_by(gender='female', status='accepted')\
+                                .count()
+        counts['male'] = Image.query\
+                              .filter_by(gender='male', status='accepted')\
+                              .count()
         counts['accepted'] = Image.query.filter_by(status='accepted').count()
         counts['pending'] = Image.query.filter_by(status='pending').count()
         return self.render('admin/index.html', counts=counts)
