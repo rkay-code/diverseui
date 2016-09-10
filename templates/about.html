@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block stylesheets %}
-  {% assets filters="cssmin", output="about-%(version)s.css", "styles/about-compiled.css" %}
+  {% assets filters="cssmin", output="dist/about-%(version)s.css", "styles/about-compiled.css" %}
     <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}" />
   {% endassets %}
 {% endblock %}

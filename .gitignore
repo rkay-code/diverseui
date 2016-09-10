@@ -2,3 +2,6 @@ node_modules
 output
 env
 *.pyc
+
+static/.webassets-cache/
+static/dist/

@@ -2,7 +2,7 @@
 
 {% block stylesheets %}
   <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-  {% assets filters="cssmin", output="home-%(version)s.css", "styles/home-compiled.css" %}
+  {% assets filters="cssmin", output="dist/home-%(version)s.css", "styles/home-compiled.css" %}
     <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}" />
   {% endassets %}
 {% endblock %}
@@ -83,7 +83,7 @@
   <script>
     window.Data = {{ images|tojson|safe }};
   </script>
-  {% assets filters="jsmin", output="built-%(version)s.js", "scripts/index.js" %}
+  {% assets filters="jsmin", output="dist/index-%(version)s.js", "scripts/index.js" %}
     <script type="text/javascript" src="{{ ASSET_URL }}"></script>
   {% endassets %}
   <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57ce4aa9dc707ca6"></script>

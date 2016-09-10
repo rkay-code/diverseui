@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block stylesheets %}
-  {% assets filters="cssmin", output="form-%(version)s.css", "styles/form-compiled.css" %}
+  {% assets filters="cssmin", output="dist/form-%(version)s.css", "styles/form-compiled.css" %}
     <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}" />
   {% endassets %}
 
@@ -59,7 +59,7 @@
 {% endblock %}
 
 {% block javascripts %}
-  {% assets filters="jsmin", output="form-%(version)s.js",
+  {% assets filters="jsmin", output="dist/form-%(version)s.js",
             "scripts/classie.js", "scripts/fullscreenForm.js", "scripts/custom-file-input.js" %}
     <script type="text/javascript" src="{{ ASSET_URL }}"></script>
   {% endassets %}
