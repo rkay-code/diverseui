@@ -59,15 +59,17 @@
 {% endblock %}
 
 {% block javascripts %}
-  {% assets filters="jsmin", output="dist/form-%(version)s.js",
-            "scripts/classie.js", "scripts/fullscreenForm.js", "scripts/custom-file-input.js" %}
-    <script type="text/javascript" src="{{ ASSET_URL }}"></script>
-  {% endassets %}
-  <script>
-    (function() {
-      var formWrap = document.getElementById( 'fs-form-wrap' );
+  {% if not submitted %}
+    {% assets filters="jsmin", output="dist/form-%(version)s.js",
+              "scripts/classie.js", "scripts/fullscreenForm.js", "scripts/custom-file-input.js" %}
+      <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+    {% endassets %}
+    <script>
+      (function() {
+        var formWrap = document.getElementById( 'fs-form-wrap' );
 
-      new FForm(formWrap, {});
-    })();
-  </script>
+        new FForm(formWrap, {});
+      })();
+    </script>
+  {% endif %}
 {% endblock %}

@@ -234,6 +234,11 @@
 				if (self.current !== self.fieldsCount - 1) {
 					ev.preventDefault();
 					self._nextField();
+				} else {
+					// We're on the last step
+					if (!self._validate()) {
+						ev.preventDefault();
+					}
 				}
 			}
 		});
