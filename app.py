@@ -140,6 +140,11 @@ def about():
     return render_template('about.html')
 
 
+@app.route('/terms', methods=['GET'])
+def terms():
+    return render_template('terms.html')
+
+
 @app.route('/submit', methods=['GET', 'POST'])
 def submit():
     if request.method == 'POST':
