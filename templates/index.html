@@ -14,8 +14,8 @@
         <img src="{{ url_for('static', filename='img/diverselogo.png') }}" />
       </div>
       <div class="header-section">
-        <a href="/about" class="link">About</a>
-        <a href="/submit" class="button">Submit</a>
+        <a href="{{ url_for('about') }}" class="link">About</a>
+        <a href="{{ url_for('submit') }}" class="button">Submit</a>
       </div>
     </div>
   </header>
@@ -72,7 +72,7 @@
       <div class="footer-section">
         <p>Made with 💖 and ☕ in San Francisco by <a href="http://www.reneepadgham.com" target="_blank">Renee</a> and <a href="http://www.yef.im" target="_blank">Yefim</a>.</p>
       </div>
-  </div>
+    </div>
   </footer>
 {% endblock %}
 

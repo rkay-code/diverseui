@@ -10,11 +10,11 @@
 <header>
   <div class="header-content-wrap">
     <div class="header-section">
-      <a href="/"><img src="{{ url_for('static', filename='img/diverselogo.png') }}" /></a>
+      <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='img/diverselogo.png') }}" /></a>
     </div>
     <div class="header-section">
-      <a href="/about" class="current">About</a>
-      <a href="/submit" class="button">Submit</a>
+      <a href="{{ url_for('about') }}" class="current">About</a>
+      <a href="{{ url_for('submit') }}" class="button">Submit</a>
     </div>
   </div>
 </header>
@@ -31,7 +31,7 @@
     <h1>Known Shortcomings</h1>
     <h4>
       Finding these images wasn’t easy. They aren’t perfect. We avoided caricatures, but that doesn’t mean some images don’t feel a bit exaggerated, staged, or professional.
-      We didn’t have a good way to recognize or account for preferred gender representation. In fact, <a href="/submit">submitting your photo</a> is one of the best ways to help out.
+      We didn’t have a good way to recognize or account for preferred gender representation. In fact, <a href="{{ url_for('submit') }}">submitting your photo</a> is one of the best ways to help out.
       You can help us make the most awesome set of real people on the internet.
     </h4>
   </div>
@@ -45,7 +45,7 @@
 
   <div class="question">
     <h2>How can I add my photo to the collection?</h2>
-    <h4>Our favorite question! Use this <a href="/submit">submit form</a>.</h4>
+    <h4>Our favorite question! Use this <a href="{{ url_for('submit') }}">submit form</a>.</h4>
   </div>
 
   <div class="question">
