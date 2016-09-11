@@ -132,6 +132,13 @@ def about():
 @app.route('/submit', methods=['GET', 'POST'])
 def submit():
     if request.method == 'POST':
+        permissions = request.form['permissions']
+
+        if not (permissions == 'y' or permissions == 'yes'):
+            return render_template('submit.html',
+                                   submitted=False,
+                                   fields=request.form)
+
         image = request.files['image']
         fname = '{0}-{1}'.format(str(uuid.uuid4()),
                                  secure_filename(image.filename))

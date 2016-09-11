@@ -48,10 +48,10 @@
           <li>
             <label class="fs-field-label fs-anim-upper" for="q6" data-info="You have to type 'yes' here or we can't take your submission :(. If you change your mind, e-mail us at hello@diverseui.com to get it removed.">Do you give us permission to use your image on diverseui.com?</label>
             <span class="subtext fs-anim-upper">This means allowing designers to use your photo in mockups that could be viewed publicly in live products.</span>
-            <input data-yesno="true" class="fs-anim-lower" id="q6" type="text" placeholder="yes" required />
+            <input data-yesno="true" class="fs-anim-lower" id="q6" type="text" name="permissions" placeholder="yes" required />
           </li>
         </ol><!-- /fs-fields -->
-        <button class="fs-submit submit" type="submit">Submit</button>
+        <button id="submit-photo" class="fs-submit submit" type="submit">Submit</button>
       </form><!-- /fs-form -->
     </div><!-- /fs-form-wrap -->
     {% endif %}

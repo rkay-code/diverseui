@@ -8,8 +8,7 @@
  * Copyright 2014, Codrops
  * http://www.codrops.com
  */
-;( function( window ) {
-
+;(function(window) {
 	'use strict';
 
 	var support = { animations : Modernizr.cssanimations },
@@ -20,12 +19,13 @@
 	/**
 	 * extend obj function
 	 */
-	function extend( a, b ) {
-		for( var key in b ) {
-			if( b.hasOwnProperty( key ) ) {
+	function extend(a, b) {
+		for (var key in b) {
+			if (b.hasOwnProperty(key)) {
 				a[key] = b[key];
 			}
 		}
+
 		return a;
 	}
 
@@ -33,30 +33,31 @@
 	 * createElement function
 	 * creates an element with tag = tag, className = opt.cName, innerHTML = opt.inner and appends it to opt.appendTo
 	 */
-	function createElement( tag, opt ) {
-		var el = document.createElement( tag )
-		if( opt ) {
-			if( opt.cName ) {
+	function createElement(tag, opt) {
+		var el = document.createElement(tag)
+		if (opt) {
+			if (opt.cName) {
 				el.className = opt.cName;
 			}
-			if( opt.inner ) {
+			if (opt.inner) {
 				el.innerHTML = opt.inner;
 			}
-			if( opt.appendTo ) {
-				opt.appendTo.appendChild( el );
+			if (opt.appendTo) {
+				opt.appendTo.appendChild(el);
 			}
 		}
+
 		return el;
 	}
 
 	/**
 	 * FForm function
 	 */
-	function FForm( el, options ) {
+	function FForm(el, options) {
 		this.el = el;
-		this.options = extend( {}, this.options );
-  		extend( this.options, options );
-  		this._init();
+		this.options = extend({}, this.options);
+		extend(this.options, options);
+		this._init();
 	}
 
 	/**
@@ -79,22 +80,22 @@
 	 */
 	FForm.prototype._init = function() {
 		// the form element
-		this.formEl = this.el.querySelector( 'form' );
+		this.formEl = this.el.querySelector('form');
 
 		// list of fields
-		this.fieldsList = this.formEl.querySelector( 'ol.fs-fields' );
+		this.fieldsList = this.formEl.querySelector('ol.fs-fields');
 
 		// current field position
 		this.current = 0;
 
 		// all fields
-		this.fields = [].slice.call( this.fieldsList.children );
+		this.fields = [].slice.call(this.fieldsList.children);
 
 		// total fields
 		this.fieldsCount = this.fields.length;
 
 		// show first field
-		classie.add( this.fields[ this.current ], 'fs-current' );
+		classie.add(this.fields[this.current], 'fs-current');
 
 		// create/add controls
 		this._addControls();
@@ -157,7 +158,10 @@
 	 */
 	FForm.prototype._addErrorMsg = function() {
 		// error message
-		this.msgError = createElement( 'span', { cName : 'fs-message-error', appendTo : this.el } );
+		this.msgError = createElement('span', {
+			cName: 'fs-message-error',
+			appendTo: this.el
+		});
 	}
 
 	/**
@@ -166,18 +170,31 @@
 	FForm.prototype._initEvents = function() {
 		var self = this;
 
+		this.formEl.addEventListener('submit', function(ev) {
+			if (self.submitting) {
+				ev.preventDefault();
+				return;
+			}
+
+			self.submitting = true;
+
+			var button = document.getElementById('submit-photo');
+			button.disabled = true;
+			button.innerHTML = 'Submitting...';
+		});
+
 		// show next field
-		this.ctrlContinue.addEventListener( 'click', function() {
+		this.ctrlContinue.addEventListener('click', function() {
 			self._nextField();
-		} );
+		});
 
 		// navigation dots
-		if( this.options.ctrlNavDots ) {
-			this.ctrlNavDots.forEach( function( dot, pos ) {
-				dot.addEventListener( 'click', function() {
-					self._showField( pos );
-				} );
-			} );
+		if (this.options.ctrlNavDots) {
+			this.ctrlNavDots.forEach(function(dot, pos) {
+				dot.addEventListener('click', function() {
+					self._showField(pos);
+				});
+			});
 		}
 
 		// jump to next field without clicking the continue button (for fields/list items with the attribute "data-input-trigger")
@@ -210,48 +227,49 @@
 		} );
 
 		// keyboard navigation events - jump to next field when pressing enter
-		document.addEventListener( 'keydown', function( ev ) {
-			if( !self.isLastStep && ev.target.tagName.toLowerCase() !== 'textarea' ) {
-				var keyCode = ev.keyCode || ev.which;
-				if( keyCode === 13 ) {
+		document.addEventListener('keydown', function(ev) {
+			var keyCode = ev.keyCode || ev.which;
+
+			if (keyCode === 13) {
+				if (self.current !== self.fieldsCount - 1) {
 					ev.preventDefault();
 					self._nextField();
 				}
 			}
-		} );
+		});
 	};
 
 	/**
 	 * nextField function
 	 * jumps to the next field
 	 */
-	FForm.prototype._nextField = function( backto ) {
-		if( this.isLastStep || !this._validate() || this.isAnimating ) {
+	FForm.prototype._nextField = function(backto) {
+		if (this.isLastStep || !this._validate() || this.isAnimating) {
 			return false;
 		}
+
 		this.isAnimating = true;
 
 		// check if on last step
-		this.isLastStep = this.current === this.fieldsCount-1 && backto === undefined ? true : false;
+		this.isLastStep = this.current === this.fieldsCount - 1 && backto === undefined ? true : false;
 
 		// clear any previous error messages
 		this._clearError();
 
-		if (this.isLastStep) {
-			document.getElementById('photo-form').submit();
-			return;
-		}
-
 		// current field
-		var currentFld = this.fields[ this.current ];
+		var currentFld = this.fields[this.current];
 
 		// save the navigation direction
-		this.navdir = backto !== undefined ? backto < this.current ? 'prev' : 'next' : 'next';
+		this.navdir = backto !== undefined
+                    ? backto < this.current
+                      ? 'prev'
+                      : 'next'
+                    : 'next';
 
 		// update current field
 		this.current = backto !== undefined ? backto : this.current + 1;
 
-		if( backto === undefined ) {
+		if (backto === undefined) {
 			// update progress bar (unless we navigate backwards)
 			this._progress();
 
@@ -260,23 +278,23 @@
 		}
 
 		// add class "fs-display-next" or "fs-display-prev" to the list of fields
-		classie.add( this.fieldsList, 'fs-display-' + this.navdir );
+		classie.add(this.fieldsList, 'fs-display-' + this.navdir);
 
 		// remove class "fs-current" from current field and add it to the next one
 		// also add class "fs-show" to the next field and the class "fs-hide" to the current one
-		classie.remove( currentFld, 'fs-current' );
-		classie.add( currentFld, 'fs-hide' );
+		classie.remove(currentFld, 'fs-current');
+		classie.add(currentFld, 'fs-hide');
 
-		if( !this.isLastStep ) {
+		if (!this.isLastStep) {
 			// update nav
 			this._updateNav();
 
 			// change the current field number/status
 			this._updateFieldNumber();
 
-			var nextField = this.fields[ this.current ];
-			classie.add( nextField, 'fs-current' );
-			classie.add( nextField, 'fs-show' );
+			var nextField = this.fields[this.current];
+			classie.add(nextField, 'fs-current');
+			classie.add(nextField, 'fs-show');
 		}
 
 		// after animation ends remove added classes from fields
@@ -290,7 +308,6 @@
 			classie.remove(currentFld, 'fs-hide');
 
 			if (self.current === self.fieldsCount - 1) {
-				self.shouldSubmit = true;
 				self._hideCtrl(self.ctrlContinue);
 				classie.add(self.formEl, 'fs-form-submit');
 			}
@@ -305,9 +322,9 @@
 			self.isAnimating = false;
 		};
 
-		if (support.animations ) {
-			if( this.navdir === 'next' ) {
-				if( this.isLastStep ) {
+		if (support.animations) {
+			if (this.navdir === 'next') {
+				if (this.isLastStep) {
 					currentFld.querySelector( '.fs-anim-upper' ).addEventListener( animEndEventName, onEndAnimationFn );
 				} else {
 					nextField.querySelector( '.fs-anim-lower' ).addEventListener( animEndEventName, onEndAnimationFn );
