@@ -7,8 +7,8 @@ gulp.task('sass', function() {
   return gulp.src('static/styles/*.scss')
     .pipe(sass.sync().on('error', sass.logError))
     .pipe(rename(function (path) {
-    path.basename += "-compiled";
-    path.extname = ".css"
+      path.basename += '-compiled';
+      path.extname = '.css';
     }))
     .pipe(gulp.dest('static/styles'));
 });
