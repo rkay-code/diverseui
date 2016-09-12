@@ -1,3 +1,4 @@
+blinker==1.4
 boto==2.42.0
 click==6.6
 cssmin==0.2.0
