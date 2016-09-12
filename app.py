@@ -2,11 +2,13 @@ import os
 import uuid
 import boto
 import boto.s3
+import boto.ses
 from boto.s3.key import Key
 from flask import Flask, render_template, send_from_directory, request
 from werkzeug.utils import secure_filename
-from flask_sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy, event
 from sqlalchemy.sql.expression import func
+from sqlalchemy.orm.attributes import get_history
 from sqlalchemy.exc import IntegrityError
 from flask_basicauth import BasicAuth
 from flask_admin import Admin, AdminIndexView, expose
@@ -55,11 +57,35 @@ class Image(db.Model):
     def __repr__(self):
         return '<Image url={0} gender={1}>'.format(self.url, self.gender)
 
+    @staticmethod
+    def after_update(mapper, connection, target):
+        status_history = get_history(target, 'status')
+        email = target.email
+        # If the image went from pending to accepted, send an email
+        if status_history.has_changes() and\
+                status_history.deleted[0] == 'pending' and\
+                status_history.added[0] == 'accepted':
+            conn = boto.ses.connect_to_region(
+                'us-east-1',
+                aws_access_key_id=os.environ['AWS_ACCESS_KEY_ID_DIVERSEUI'],
+                aws_secret_access_key=os.environ['AWS_SECRET_KEY_DIVERSEUI'])
+            conn.send_email(
+                'Renee at Diverse UI <hello@diverseui.com>',
+                'Thanks for submitting to Diverse UI!',
+                ("Hello,\n\n"
+                 "Thanks for submitting your photo to Diverse UI. "
+                 "We wanted to let you know your photo is now live! "
+                 "Go check it out and see if you can find yourself :)"
+                 "\n\n- Renee\nwww.diverseui.com"),
+                [email])
+
     def to_json(self):
         return {
             'url': self.url,
             'gender': self.gender,
         }
+
+event.listen(Image, 'after_update', Image.after_update)
 
 basic_auth = BasicAuth(app)
 
