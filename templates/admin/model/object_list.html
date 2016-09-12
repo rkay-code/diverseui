@@ -3,3 +3,7 @@
 {% macro render_url(model, column) %}
   <img width="100" height="100" src="{{ model.url }}" />
 {% endmacro %}
+
+{% macro render_verification_url(model, column) %}
+  <a href="{{ model.verification_url }}" target="_blank">{{ model.verification_url }}</a>
+{% endmacro %}

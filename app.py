@@ -98,7 +98,10 @@ class ImageView(BasicAuthModelView):
     form_excluded_columns = ['created_at', 'verification_url']
     page_size = 50
     column_filters = ('gender', 'status')
-    column_formatters = dict(url=macro('render_url'))
+    column_formatters = dict(
+        url=macro('render_url'),
+        verification_url=macro('render_verification_url')
+    )
 
 admin = Admin(app,
               index_view=BasicAuthAdminView(),
@@ -161,7 +164,7 @@ def submit():
                                  secure_filename(image.filename))
 
         conn = boto.connect_s3(os.environ['AWS_ACCESS_KEY_ID_DIVERSEUI'],
-                               os.environ['AWS_SECREY_KEY_DIVERSEUI'])
+                               os.environ['AWS_SECRET_KEY_DIVERSEUI'])
         bucket = conn.get_bucket('diverse-ui')
 
         k = Key(bucket, 'faces/{}'.format(fname))
