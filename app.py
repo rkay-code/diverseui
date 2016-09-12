@@ -121,7 +121,8 @@ def robotstxt():
 
 @app.route('/sitemap.xml', methods=['GET'])
 def sitemap():
-    pass
+    return send_from_directory(os.path.join(app.root_path, 'static', 'txt'),
+                               'sitemap.xml')
 
 
 @app.route('/', methods=['GET'])
