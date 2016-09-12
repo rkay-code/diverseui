@@ -26,7 +26,7 @@ $(document).ready(function() {
       count = filtered.length;
       $('#load-more-container').html('');
     } else if ($('#load-more-container').html().trim().length === 0) {
-      $('#load-more-container').html('<button type="button" id="load-more">Load More</button>');
+      $('#load-more-container').html('<button type="button" id="load-more" class="button">Load More</button>');
     }
   };
 
