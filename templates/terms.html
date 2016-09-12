@@ -8,17 +8,6 @@
 
 
 {% block body %}
-<header>
-  <div class="header-content-wrap">
-    <div class="header-section">
-      <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='img/diverselogo.png') }}" /></a>
-    </div>
-    <div class="header-section">
-      <a href="{{ url_for('about') }}" class="current">About</a>
-      <a href="{{ url_for('submit') }}" class="button">Submit</a>
-    </div>
-  </div>
-</header>
 <section class="terms-links">
   <p>
     Find our <a href="#terms">Terms of Service</a> and <a href="#privacy">Privacy Policy</a> below.
@@ -154,16 +143,4 @@
       We are committed to conducting our business in accordance with these principles in order to ensure that the confidentiality of personal information is protected and maintained. Diverse UI may change this privacy policy from time to time at Diverse UI's sole discretion.
     </p>
 </section>
-
-<footer>
-  <div class="footer-content-wrap">
-    <div class="footer-section">
-      <p>&copy; Diverse UI 2016  |  <a href="/terms">Terms of Service</a></p>
-    </div>
-    <div class="footer-section">
-      <p>Made with 💖 and ☕ in San Francisco by <a href="http://www.reneepadgham.com" target="_blank">Renee</a> and <a href="http://www.yef.im" target="_blank">Yefim</a>.</p>
-    </div>
-</div>
-</footer>
-
 {% endblock %}

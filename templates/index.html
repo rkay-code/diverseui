@@ -8,17 +8,6 @@
 {% endblock %}
 
 {% block body %}
-  <header>
-    <div class="header-content-wrap">
-      <div class="header-section">
-        <img src="{{ url_for('static', filename='img/diverselogo.png') }}" />
-      </div>
-      <div class="header-section">
-        <a href="{{ url_for('about') }}" class="link">About</a>
-        <a href="{{ url_for('submit') }}" class="button">Submit</a>
-      </div>
-    </div>
-  </header>
   <div class="site-body">
     <main class="faces">
       <div id="images">
@@ -64,16 +53,6 @@
       </div>
     </aside>
   </div>
-  <footer>
-    <div class="footer-content-wrap">
-      <div class="footer-section">
-        <p>&copy; Diverse UI 2016  |  <a href="/terms">Terms of Service</a></p>
-      </div>
-      <div class="footer-section">
-        <p>Made with 💖 and ☕ in San Francisco by <a href="http://www.reneepadgham.com" target="_blank">Renee</a> and <a href="http://www.yef.im" target="_blank">Yefim</a>.</p>
-      </div>
-    </div>
-  </footer>
 {% endblock %}
 
 {% block javascripts %}

@@ -8,6 +8,8 @@
   <script src="{{ url_for('static', filename='scripts/modernizr.custom.js') }}"></script>
 {% endblock %}
 
+{% block header %}{% endblock %}
+
 {% block body %}
   <div class="container">
     {% if submitted %}
@@ -57,6 +59,8 @@
     {% endif %}
   </div><!-- /container -->
 {% endblock %}
+
+{% block footer %}{% endblock %}
 
 {% block javascripts %}
   {% if not submitted %}
