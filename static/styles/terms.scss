@@ -20,3 +20,9 @@ a {
   text-decoration: none;
   color: $accent;
 }
+
+@media (min-width: 320px) and (max-width: 768px) {
+  .terms, .privacy, .terms-links {
+    width: 85%;
+  }
+}

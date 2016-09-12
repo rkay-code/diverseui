@@ -172,4 +172,16 @@ footer {
       margin: 15px 0;
     }
   }
+  footer {
+    .footer-content-wrap {
+      flex-direction: column;
+      text-align: center;
+      .footer-section:nth-child(2) {
+        text-align: center;
+      }
+      p {
+        margin: 5px 0;
+      }
+    }
+  }
 }

@@ -154,4 +154,11 @@ footer .footer-content-wrap {
     flex-wrap: wrap;
     justify-content: center; }
     .header-content-wrap .header-section {
-      margin: 15px 0; } }
+      margin: 15px 0; }
+  footer .footer-content-wrap {
+    flex-direction: column;
+    text-align: center; }
+    footer .footer-content-wrap .footer-section:nth-child(2) {
+      text-align: center; }
+    footer .footer-content-wrap p {
+      margin: 5px 0; } }

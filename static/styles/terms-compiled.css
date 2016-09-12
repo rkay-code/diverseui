@@ -14,3 +14,7 @@
 a {
   text-decoration: none;
   color: #ED254E; }
+
+@media (min-width: 320px) and (max-width: 768px) {
+  .terms, .privacy, .terms-links {
+    width: 85%; } }
