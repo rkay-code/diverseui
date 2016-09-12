@@ -85,7 +85,7 @@ class Image(db.Model):
             'gender': self.gender,
         }
 
-# event.listen(Image, 'after_update', Image.after_update)
+event.listen(Image, 'after_update', Image.after_update)
 
 basic_auth = BasicAuth(app)
 
