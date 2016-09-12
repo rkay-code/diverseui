@@ -1,0 +1,22 @@
+@import 'colors';
+
+.terms, .privacy {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  margin: 40px auto;
+  ul {
+    list-style-type: disc;
+  }
+}
+
+.terms-links {
+  display: flex;
+  width: 60%;
+  margin: 40px auto 0;
+}
+
+a {
+  text-decoration: none;
+  color: $accent;
+}

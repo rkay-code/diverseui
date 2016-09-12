@@ -27,6 +27,9 @@
   <meta name="twitter:image" content="{{ url_for('static', filename='img/diverseuimeta.png', _external=True) }}">
 
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/normalize.css') }}" />
+  {% assets filters="cssmin", output="dist/styles-%(version)s.css", "styles/styles-compiled.css" %}
+    <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}" />
+  {% endassets %}
   {% block stylesheets %}{% endblock %}
   <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon.png', _external=True) }}" />
 

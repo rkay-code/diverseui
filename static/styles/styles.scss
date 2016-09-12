@@ -1,9 +1,5 @@
-/* site layout and general styles */
-$black: #37474F;
-$grey: #576972;
-$accent: #ED254E;
-$light-grey: lighten($grey, 48%);
-$light-accent: lighten($accent, 25%);
+@import 'colors';
+
 html {
   box-sizing: border-box;
 }

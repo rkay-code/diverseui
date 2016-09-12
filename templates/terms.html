@@ -1,8 +1,169 @@
 {% extends 'layout.html' %}
 
 {% block stylesheets %}
+  {% assets filters="cssmin", output="dist/terms-%(version)s.css", "styles/terms-compiled.css" %}
+    <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}" />
+  {% endassets %}
 {% endblock %}
 
+
 {% block body %}
-  <h1>Terms</h1>
+<header>
+  <div class="header-content-wrap">
+    <div class="header-section">
+      <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='img/diverselogo.png') }}" /></a>
+    </div>
+    <div class="header-section">
+      <a href="{{ url_for('about') }}" class="current">About</a>
+      <a href="{{ url_for('submit') }}" class="button">Submit</a>
+    </div>
+  </div>
+</header>
+<section class="terms-links">
+  <p>
+    Find our <a href="#terms">Terms of Service</a> and <a href="#privacy">Privacy Policy</a> below.
+  </p>
+</section>
+<section class="terms" id ="terms">
+  <h1>Terms of Service</h1>
+  <ol>
+    <li>
+      <b>Terms </b>
+      <p>
+        By accessing the website at http://www.diverseui.com, you are agreeing to be bound by these terms of service, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable local laws. If you do not
+        agree with any of these terms, you are prohibited from using or accessing this site. The materials contained in this website are protected by applicable copyright and trademark law.
+      </p>
+    </li>
+    <li>
+      <b>Use License</b>
+      <p>
+      Permission is granted to download the materials (information or software) on Diverse UI's website for personal or commercial use. This is the grant of a license, not a transfer of title, and under this license you may not:
+      <ul>
+        <li>
+          use our services to engage in illegal activities or to promote activities that are dangerous and illegal, such as terrorism, the sale of illegal drugs, or human trafficking;
+        </li>
+        <li>
+          use our services to create content that promotes or condones violence against individuals or groups based on race or ethnic origin, religion, disability, gender, age, nationality, veteran status, or sexual orientation/gender identity, or whose primary purpose is inciting hatred on the basis of these core characteristics;
+        </li>
+        <li>
+          use our services to distribute sexually explicit or pornographic material;
+        </li>
+        <li>
+          use our services to mislead or confuse users by pretending to be someone else;
+        </li>
+        <li>
+          engage in harassing, bullying, or threatening behavior, and do not incite others to engage in these activities;
+        </li>
+        <li>
+          attempt to decompile or reverse engineer any software contained on Diverse UI's website;
+        </li>
+        <li>
+          remove any copyright or other proprietary notations from the materials;
+        </li>
+        <li>
+          or transfer the materials to another person or "mirror" the materials on any other server.
+        </li>
+              </ul>
+      </p>
+        <p>
+          This license shall automatically terminate if you violate any of these restrictions and may be terminated by Diverse UI at any time. Upon terminating your viewing of these materials or upon the termination of this license, you must destroy any downloaded
+          materials in your possession whether in electronic or printed format.
+        </p>
+
+    </li>
+    <li>
+      <b>Disclaimer</b>
+      <p>
+        The materials on Diverse UI's website are provided on an 'as is' basis. Diverse UI makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions
+        of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.
+      </p>
+      <p>
+        Further, Diverse UI does not warrant or make any representations concerning the accuracy, likely results, or reliability
+        of the use of the materials on its website or otherwise relating to such materials or on any sites linked to this site.
+      </p>
+    </li>
+    <li>
+      <b>Limitations</b>
+      <p>
+        In no event shall Diverse UI or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on Diverse
+        UI's website, even if Diverse UI or a Diverse UI authorized representative has been notified orally or in writing of the possibility of such damage. Because some jurisdictions do not allow limitations on implied warranties, or limitations of liability
+        for consequential or incidental damages, these limitations may not apply to you.
+      </p>
+    </li>
+    <li>
+      <b>Accuracy of Materials</b>
+      <p>
+        The materials appearing on Diverse UI's website could include technical, typographical, or photographic errors. Diverse UI does not warrant that any of the materials on its website are accurate, complete or current. Diverse UI
+        may make changes to the materials contained on its website at any time without notice. However Diverse UI does not make any commitment to update the materials.
+      </p>
+    </li>
+    <li>
+      <b>Links</b>
+      <p>
+        Diverse UI has not reviewed all of the sites linked to its website and is not responsible for the contents of any such linked site. The inclusion of any link does not imply endorsement by Diverse UI of the site. Use of any such linked website
+        is at the user's own risk.
+      </p>
+    </li>
+    <li>
+      <b>Modifications</b>
+      <p>
+        Diverse UI may revise these terms of service for its website at any time without notice. By using this website you are agreeing to be bound by the then current version of these terms of service.
+      </p>
+    </li>
+    <li>
+      <b>Governing Law</b>
+      <p>
+        These terms and conditions are governed by and construed in accordance with the laws of California and you irrevocably submit to the exclusive jurisdiction of the courts in that State or location.
+      </p>
+    </li>
+  </ol>
+</section>
+<section class="privacy" id="privacy">
+  <h1>Privacy Policy</h1>
+  <p>
+    Your privacy is important to us.
+  </p>
+  <p>
+  It is Diverse UI's policy to respect your privacy regarding any information we may collect while operating our website. Accordingly, we have developed this privacy policy in order for you to understand how we collect,
+  use, communicate, disclose and otherwise make use of personal information. We have outlined our privacy policy below.
+</p>
+    <ul>
+      <li>
+        We will collect personal information by lawful and fair means and, where appropriate, with the knowledge or consent of the individual concerned.
+      </li>
+      <li>
+        Before or at the time of collecting personal information, we will identify the purposes for which information is being collected.
+      </li>
+      <li>
+        We will collect and use personal information solely for fulfilling those purposes specified by us and for other ancillary purposes, unless we obtain the consent of the individual concerned or as required by law.
+      </li>
+      <li>
+        Personal data should be relevant to the purposes for which it is to be used, and, to the extent necessary for those purposes, should be accurate, complete, and up-to-date.
+      </li>
+      <li>
+        We will protect personal information by using reasonable security safeguards against loss or theft, as well as unauthorized access, disclosure, copying, use or modification.
+      </li>
+      <li>
+        We will make readily available to customers information about our policies and practices relating to the management of personal information.
+      </li>
+      <li>
+        We will only retain personal information for as long as necessary for the fulfillment of those purposes.
+      </li>
+    </ul>
+    <p>
+      We are committed to conducting our business in accordance with these principles in order to ensure that the confidentiality of personal information is protected and maintained. Diverse UI may change this privacy policy from time to time at Diverse UI's sole discretion.
+    </p>
+</section>
+
+<footer>
+  <div class="footer-content-wrap">
+    <div class="footer-section">
+      <p>&copy; Diverse UI 2016  |  <a href="/terms">Terms of Service</a></p>
+    </div>
+    <div class="footer-section">
+      <p>Made with 💖 and ☕ in San Francisco by <a href="http://www.reneepadgham.com" target="_blank">Renee</a> and <a href="http://www.yef.im" target="_blank">Yefim</a>.</p>
+    </div>
+</div>
+</footer>
+
 {% endblock %}

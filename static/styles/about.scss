@@ -1,4 +1,4 @@
-@import 'styles';
+@import 'colors';
 
 .about {
   display: flex;
@@ -14,10 +14,10 @@
 }
 a {
   text-decoration: none;
-  color: #ED254E;
+  color: $accent;
 }
 .header-content-wrap .header-section .current {
-  color: #ED254E;
+  color: $accent;
   font-weight: 600;
 }
 
