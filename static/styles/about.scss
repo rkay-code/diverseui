@@ -16,10 +16,6 @@ a {
   text-decoration: none;
   color: $accent;
 }
-.header-content-wrap .header-section .current {
-  color: $accent;
-  font-weight: 600;
-}
 
 @media (min-width: 320px) and (max-width: 768px) {
   .about {

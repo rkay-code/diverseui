@@ -1,7 +1,9 @@
 html {
   box-sizing: border-box; }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit; }
 
 body {
@@ -25,7 +27,7 @@ h1 {
 h4 {
   font-weight: 500;
   font-size: 20px;
-  margin: 10px 0 0 0; }
+  margin: 10px 0 0; }
 
 h2 {
   font-size: 26px;
@@ -65,6 +67,9 @@ header {
       text-transform: uppercase;
       letter-spacing: 2px;
       font-size: 14px; }
+    .header-content-wrap .header-section .current {
+      color: #ED254E;
+      font-weight: 600; }
     .header-content-wrap .header-section .link:hover {
       color: #ED254E;
       font-weight: 600;
@@ -105,8 +110,8 @@ header {
     z-index: -1;
     -webkit-transform: rotate3d(0, 0, 1, -45deg) translate3d(0, -3em, 0);
     transform: rotate3d(0, 0, 1, -45deg) translate3d(0, -3em, 0);
-    -webkit-transform-origin: 0% 100%;
-    transform-origin: 0% 100%;
+    -webkit-transform-origin: 0 100%;
+    transform-origin: 0 100%;
     -webkit-transition: -webkit-transform 0.3s, opacity 0.3s, background-color 0.3s;
     transition: transform 0.3s, opacity 0.3s, background-color 0.3s; }
   .button:hover {
