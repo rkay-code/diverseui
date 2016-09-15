@@ -33,6 +33,26 @@ Environment(app)
 
 db = SQLAlchemy(app)
 
+TWEET_URL = ('https://twitter.com/intent/tweet?'
+             'text=I%20just%20uploaded%20my%20'
+             'photo%20to%20diverseui.com%21%20'
+             'See%20if%20you%20can%20find%20me%20:)')
+
+TEXT_BODY = ('Hello,\n\n'
+             'Thanks for submitting your photo to Diverse UI! '
+             'We wanted to let you know your photo is now live. '
+             'Go check it out and see if you can find yourself :)'
+             '\n\n- Renee\nwww.diverseui.com')
+
+HTML_BODY = ('<p style="margin-top: 0;">Hello,</p>'
+             '<p>Thanks for submitting your photo to Diverse UI! '
+             'We wanted to let you know your photo is now live.</p> '
+             '<p><a target="_blank" href="{}">Share on Twitter</a> '
+             'and see if your friends can find you :)</p>'
+             '<p style="margin-bottom: 0;">- Renee<br />'
+             '<a target="_blank" href="http://www.diverseui.com">'
+             'www.diverseui.com</a></p>').format(TWEET_URL)
+
 
 class Image(db.Model):
     __tablename__ = 'images'
@@ -72,12 +92,11 @@ class Image(db.Model):
             conn.send_email(
                 'Renee at Diverse UI <hello@diverseui.com>',
                 'Thanks for submitting to Diverse UI!',
-                ("Hello,\n\n"
-                 "Thanks for submitting your photo to Diverse UI. "
-                 "We wanted to let you know your photo is now live! "
-                 "Go check it out and see if you can find yourself :)"
-                 "\n\n- Renee\nwww.diverseui.com"),
-                [email])
+                None,
+                [email],
+                format='html',
+                text_body=TEXT_BODY,
+                html_body=HTML_BODY)
 
     def to_json(self):
         return {
