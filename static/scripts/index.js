@@ -86,10 +86,7 @@ $(document).ready(function() {
     for (i = 0; i < images.length; i++) {
       context.drawImage(images[i], 0, 0, size, size);
       imageData = canvas.toDataURL().replace(/^data:image\/(png|jpg);base64,/, '');
-      zip.file(folder + '/image-' + (i + 1) + '.png', imageData, {
-        base64: true,
-        unixPermissions: '644'
-      });
+      zip.file(folder + '/image-' + (i + 1) + '.png', imageData, {base64: true});
     }
 
     zip.generateAsync({type: 'blob'}).then(function(blob) {
