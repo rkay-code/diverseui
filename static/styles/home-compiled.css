@@ -102,7 +102,10 @@
     border: 1px solid #f4f5f5;
     flex-basis: auto;
     align-self: flex-start;
-    margin: 8px; }
+    margin: 8px;
+    cursor: pointer; }
+  #images .selected-image {
+    border: 3px solid #ED254E; }
 
 @media (min-width: 768px) {
   .site-body {

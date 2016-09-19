@@ -12,7 +12,7 @@
     <main class="faces">
       <div id="images">
         {% for image in images[:50] -%}
-          <img width="90" height="90" src="{{ image.url }}" />
+          <img crossOrigin="Anonymous" class="image" width="90" height="90" src="{{ image.url }}" />
         {%- endfor %}
       </div>
       <div id="load-more-container" class="load-more-container">
@@ -46,6 +46,10 @@
           </label>
         </div>
       </div>
+      <div class="downloads">
+        <button id="download-all" type="button" class="button">Download All</button>
+        <button id="download-selected" type="button" class="button">Download Selected</button>
+      </div>
     </nav>
     <aside class="ads">
       <div>
@@ -63,8 +67,12 @@
   <script>
     window.Data = {{ images|tojson|safe }};
   </script>
-  {% assets filters="jsmin", output="dist/index-%(version)s.js", "scripts/index.js" %}
-    <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+  {% assets filters="jsmin", output="dist/zip-%(version)s.js",
+            "scripts/vendor/jszip.js", "scripts/vendor/jszip-utils.js", "scripts/vendor/FileSaver.js" %}
+    <script src="{{ ASSET_URL }}"></script>
   {% endassets %}
-  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57ce4aa9dc707ca6"></script>
+  {% assets filters="jsmin", output="dist/index-%(version)s.js", "scripts/index.js" %}
+    <script src="{{ ASSET_URL }}"></script>
+  {% endassets %}
+  <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57ce4aa9dc707ca6"></script>
 {% endblock %}

@@ -67,7 +67,7 @@
   {% if not submitted %}
     {% assets filters="jsmin", output="dist/form-%(version)s.js",
               "scripts/classie.js", "scripts/fullscreenForm.js", "scripts/custom-file-input.js" %}
-      <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+      <script src="{{ ASSET_URL }}"></script>
     {% endassets %}
     <script>
       (function() {

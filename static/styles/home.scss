@@ -119,6 +119,10 @@ margin: auto;
     flex-basis: auto;
     align-self: flex-start;
     margin: 8px;
+    cursor: pointer;
+  }
+  .selected-image {
+    border: 3px solid $accent;
   }
 }
 @media (min-width: 768px) {
