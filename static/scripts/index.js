@@ -96,7 +96,7 @@ $(document).ready(function() {
     });
   }
 
-  $('.image').on('click', function() {
+  $('#images').on('click', '.image', function() {
     $(this).toggleClass('selected-image');
   });
 
