@@ -4,7 +4,7 @@ import boto
 import boto.s3
 import boto.ses
 from boto.s3.key import Key
-from flask import Flask, render_template, send_from_directory, request
+from flask import Flask, render_template, send_from_directory, request, jsonify
 from werkzeug.utils import secure_filename
 from flask_sqlalchemy import SQLAlchemy, event
 from sqlalchemy.sql.expression import func
@@ -182,6 +182,16 @@ def index():
 
     return render_template('index.html',
                            images=[image.to_json() for image in images])
+
+
+@app.route('/images', methods=['GET'])
+def images():
+    images = Image.query\
+        .filter_by(status='accepted')\
+        .order_by(func.random())\
+        .all()
+
+    return jsonify([image.to_json() for image in images])
 
 
 @app.route('/about', methods=['GET'])
