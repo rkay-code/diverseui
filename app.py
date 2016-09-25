@@ -186,10 +186,19 @@ def index():
 
 @app.route('/images', methods=['GET'])
 def images():
-    images = Image.query\
-        .filter_by(status='accepted')\
-        .order_by(func.random())\
-        .all()
+    images = Image.query.filter(Image.status == 'accepted')
+
+    gender = request.args.get('gender')
+    if gender:
+        images = images.filter(Image.gender == gender.lower())
+
+    images = images.order_by(func.random())
+
+    count = request.args.get('count', 0, type=int)
+    if count > 0:
+        images = images.limit(int(count))
+
+    images = images.all()
 
     return jsonify([image.to_json() for image in images])
 
