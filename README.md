@@ -1,30 +1,16 @@
 # Diverse UI
 
-## Requirements
+## API
 
-* `python`
+````
+GET /images
+````
 
-* `pip`
+| Parameter | Type   | Required? | Description |
+|-----------|--------|-----------|-------------|
+| `gender`  | string | optional  | The gender of the images. We currently only support `male` or `female`. By default, we return all genders. |
+| `count`   | number | optional  | The number of images. By default, we return all the images. |
 
-* `virtualenv`
-
-* `postgres`
-
-* `npm`
-
-## Development
-
-* `npm install`
-
-* `gulp`
-
-* `virtual env`
-
-* `source env/bin/activate`
-
-* `pip install -r requirements`
-
-* `python app.py`
 
 ## Contributors
 
