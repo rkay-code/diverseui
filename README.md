@@ -6,6 +6,8 @@
 GET /images
 ````
 
+With the following parameters:
+
 | Parameter | Type   | Required? | Description |
 |-----------|--------|-----------|-------------|
 | `gender`  | string | optional  | The gender of the images. We currently only support `male` or `female`. By default, we return all genders. |
