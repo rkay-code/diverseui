@@ -98,6 +98,8 @@ $(document).ready(function() {
 
   $('#images').on('click', '.image', function() {
     $(this).toggleClass('selected-image');
+
+    $('#download-selected').toggleClass('disabled', !$('.selected-image').length);
   });
 
   $('#download-all').on('click', function() {
