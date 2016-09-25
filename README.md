@@ -13,6 +13,23 @@ With the following parameters:
 | `gender`  | string | optional  | The gender of the images. We currently only support `male` or `female`. By default, we return all genders. |
 | `count`   | number | optional  | The number of images. By default, we return all the images. |
 
+The response is a array of objects each with an image URL and gender. Example response:
+
+````
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+[
+  {
+    "gender": "female",
+    "url": "https://d3iw72m71ie81c.cloudfront.net/female-34.jpg"
+  },
+  {
+    "gender": "male",
+    "url": "https://d3iw72m71ie81c.cloudfront.net/male-4.jpg"
+  }
+]
+````
 
 ## Contributors
 
