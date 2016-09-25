@@ -24,6 +24,10 @@
     font-size: 18px;
   }
 }
+.label h3 {
+    margin-bottom: 10px;
+    font-weight: 600;
+}
 .ui-slider {
   width: 80%;
   background: $light-grey;
@@ -47,10 +51,6 @@
 }
 .gender {
   margin-top: 50px;
-  h3 {
-    margin-bottom: 10px;
-    font-weight: 600;
-  }
   label:hover {
     color: darken($grey, 20%);
   }
@@ -94,6 +94,27 @@
     }
   }
 }
+
+.downloads {
+  display: flex;
+  flex-direction: column;
+  button {
+    margin-bottom: 10px;
+  }
+  .disabled {
+    opacity: .5;
+    pointer-events: none;
+    &:hover {
+      color: inherit;
+      border-color: inherit;
+      cursor: default;
+      &::before {
+        display: none;
+      }
+    }
+  }
+}
+
 /* ads styles */
 .ads div {
   display: flex;

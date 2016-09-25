@@ -19,6 +19,10 @@
     margin-left: 5px;
     font-size: 18px; }
 
+.label h3 {
+  margin-bottom: 10px;
+  font-weight: 600; }
+
 .ui-slider {
   width: 80%;
   background: #dbe0e3;
@@ -42,9 +46,6 @@
 
 .gender {
   margin-top: 50px; }
-  .gender h3 {
-    margin-bottom: 10px;
-    font-weight: 600; }
   .gender label:hover {
     color: #2b3438; }
   .gender .input-group {
@@ -78,6 +79,21 @@
     .gender .input-group .control:hover input:not([disabled]):checked ~ .control__indicator,
     .gender .input-group .control input:checked:focus ~ .control__indicator {
       background: #ED254E; }
+
+.downloads {
+  display: flex;
+  flex-direction: column; }
+  .downloads button {
+    margin-bottom: 10px; }
+  .downloads .disabled {
+    opacity: .5;
+    pointer-events: none; }
+    .downloads .disabled:hover {
+      color: inherit;
+      border-color: inherit;
+      cursor: default; }
+      .downloads .disabled:hover::before {
+        display: none; }
 
 /* ads styles */
 .ads div {
