@@ -12,6 +12,18 @@ $(document).ready(function() {
     });
   };
 
+  var resizeImages = function() {
+    var images = document.getElementsByClassName('image');
+    var i;
+    var image;
+
+    for (i = 0; i < images.length; i++) {
+      image = images[i];
+      image.height = size;
+      image.width = size;
+    }
+  };
+
   var showImages = function() {
     var filtered = filteredImages();
     var images = filtered.slice(0, count);
@@ -60,7 +72,7 @@ $(document).ready(function() {
       $('#slider-label').html(ui.value + 'px');
       size = ui.value;
 
-      showImages();
+      resizeImages();
     }
   });
 
