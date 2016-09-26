@@ -107,6 +107,16 @@ $(document).ready(function() {
     var folder = getFolderName();
     var initialText = button.innerHTML;
 
+    if (window.ga) {
+      ga('send', {
+        hitType: 'event',
+        eventCategory: 'Button',
+        eventAction: 'Download',
+        eventLabel: initialText,
+        eventValue: images.length
+      });
+    }
+
     // Show LOADING if downloading more than 10 images
     if (images.length > 10) {
       button.innerHTML = 'LOADING...';
