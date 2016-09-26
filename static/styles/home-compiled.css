@@ -86,14 +86,11 @@
   .downloads button {
     margin-bottom: 10px; }
   .downloads .disabled {
-    opacity: .5;
-    pointer-events: none; }
+    opacity: .5; }
     .downloads .disabled:hover {
       color: inherit;
       border-color: inherit;
       cursor: default; }
-      .downloads .disabled:hover::before {
-        display: none; }
 
 /* ads styles */
 .ads div {
@@ -106,18 +103,17 @@
   width: 50%;
   margin: auto; }
 
-#download-selected-container {
-  display: flex;
-  flex-wrap: wrap; }
-  #download-selected-container p {
-    display: none;
-    margin: 0;
-    text-align: center;
-    background-color: #eee;
-    border-radius: 2px;
-    padding: 10px 0; }
-  #download-selected-container:hover p {
-    display: block; }
+#download-selected-text {
+  flex-grow: 1;
+  display: none;
+  margin: 0;
+  text-align: center;
+  background-color: #eee;
+  border-radius: 2px;
+  padding: 10px 0; }
+
+#download-selected.disabled:hover + #download-selected-text {
+  display: block; }
 
 /* images styles */
 #images {
