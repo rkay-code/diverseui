@@ -113,6 +113,20 @@
     }
   }
 }
+#download-selected-text {
+  flex-grow: 1;
+  display: none;
+  margin: 0;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 2px;
+  padding: 10px;
+  font-weight: 500;
+  box-shadow: 0px 0px 5px #ccc;
+}
+#download-selected.disabled:hover + #download-selected-text {
+  display: block;
+}
 
 /* ads styles */
 .ads div {
@@ -125,18 +139,6 @@
 display: flex;
 width: 50%;
 margin: auto;
-}
-#download-selected-text {
-  flex-grow: 1;
-  display: none;
-  margin: 0;
-  text-align: center;
-  background-color: #eee;
-  border-radius: 2px;
-  padding: 10px 0;
-}
-#download-selected.disabled:hover + #download-selected-text {
-  display: block;
 }
 /* images styles */
 #images {
@@ -179,5 +181,8 @@ margin: auto;
   }
   .gender {
     margin-top: 25px;
+}
+.downloads {
+  display: none;
 }
 }
