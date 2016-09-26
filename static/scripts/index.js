@@ -48,6 +48,8 @@ $(document).ready(function() {
       $('#images').append(imageNodes.join(''));
     } else {
       $('#images').html(imageNodes.join(''));
+
+      $('#download-selected').addClass('disabled');
     }
 
     count = to;
