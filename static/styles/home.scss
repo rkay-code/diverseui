@@ -107,6 +107,9 @@
       color: inherit;
       border-color: inherit;
       cursor: default;
+      &:before {
+        display: none;
+      }
     }
   }
 }

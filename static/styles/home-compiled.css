@@ -91,6 +91,8 @@
       color: inherit;
       border-color: inherit;
       cursor: default; }
+      .downloads .disabled:hover:before {
+        display: none; }
 
 /* ads styles */
 .ads div {
