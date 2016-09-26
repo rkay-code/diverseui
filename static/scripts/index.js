@@ -96,7 +96,7 @@ $(document).ready(function() {
     return ['diverseui', month, date].join('-');
   };
 
-  var downloadImages = function(images) {
+  var downloadImages = function(images, button) {
     if (!images.length) {
       return;
     }
@@ -105,6 +105,12 @@ $(document).ready(function() {
     var i;
     var imageData;
     var folder = getFolderName();
+    var initialText = button.innerHTML;
+
+    // Show LOADING if downloading more than 10 images
+    if (images.length > 10) {
+      button.innerHTML = 'LOADING...';
+    }
 
     canvas.width = size;
     canvas.height = size;
@@ -116,8 +122,10 @@ $(document).ready(function() {
     }
 
     zip.generateAsync({type: 'blob'}).then(function(blob) {
+      button.innerHTML = initialText;
       saveAs(blob, folder + '.zip');
     }, function(err) {
+      button.innerHTML = initialText;
       console.log(err);
     });
   }
@@ -129,12 +137,14 @@ $(document).ready(function() {
   });
 
   $('#download-all').on('click', function() {
+    var button = this;
     var images = document.getElementsByClassName('image');
-    downloadImages(images);
+    downloadImages(images, button);
   });
 
   $('#download-selected').on('click', function() {
+    var button = this;
     var images = document.getElementsByClassName('selected-image');
-    downloadImages(images);
+    downloadImages(images, button);
   });
 });
