@@ -127,6 +127,25 @@ display: flex;
 width: 50%;
 margin: auto;
 }
+#download-selected-container {
+  display: flex;
+  flex-wrap: wrap;
+
+  p {
+    display: none;
+    margin: 0;
+    text-align: center;
+    background-color: #eee;
+    border-radius: 2px;
+    padding: 10px 0;
+  }
+
+  &:hover {
+    p {
+      display: block;
+    }
+  }
+}
 /* images styles */
 #images {
   margin: 0 -10px;
