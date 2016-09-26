@@ -24,9 +24,13 @@ $(document).ready(function() {
     }
   };
 
-  var showImages = function() {
+  var showImages = function(options) {
+    var from = options.from === undefined ? count : options.from;
+    var to = options.to === undefined ? (from + PER_PAGE) : options.to;
+    var append = !!options.append;
+
     var filtered = filteredImages();
-    var images = filtered.slice(0, count);
+    var images = filtered.slice(from, to);
 
     var imageNodes = _.map(images, function(i) {
       return ([
@@ -40,7 +44,13 @@ $(document).ready(function() {
       ].join(''));
     });
 
-    $('#images').html(imageNodes.join(''));
+    if (append) {
+      $('#images').append(imageNodes.join(''));
+    } else {
+      $('#images').html(imageNodes.join(''));
+    }
+
+    count = to;
 
     if (count >= filtered.length) {
       count = filtered.length;
@@ -51,15 +61,13 @@ $(document).ready(function() {
   };
 
   $('#load-more-container').on('click', '#load-more', function() {
-    count += PER_PAGE;
-
-    showImages();
+    showImages({append: true});
   });
 
   $('input[type=radio][name="gender"]').change(function() {
     gender = this.value;
 
-    showImages();
+    showImages({from: 0, to: count, append: false});
   });
 
   $('#size-slider').slider({
