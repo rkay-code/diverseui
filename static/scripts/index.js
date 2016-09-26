@@ -87,6 +87,10 @@ $(document).ready(function() {
   };
 
   var downloadImages = function(images) {
+    if (!images.length) {
+      return;
+    }
+
     var zip = new JSZip();
     var i;
     var imageData;
