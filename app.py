@@ -213,11 +213,6 @@ def terms():
     return render_template('terms.html')
 
 
-@app.route('/.well-known/acme-challenge/BtSZi1lJ-I_h2CHMhf66TSqfxXYkudNhl6OC3-WwBdU', methods=['GET'])
-def verify():
-    return 'BtSZi1lJ-I_h2CHMhf66TSqfxXYkudNhl6OC3-WwBdU.Fxdrv53EKXPe164bGI11rPaMm4eSunl1tusrRaFNnQo'
-
-
 @app.route('/submit', methods=['GET', 'POST'])
 def submit():
     if request.method == 'POST':
