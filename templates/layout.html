@@ -1,30 +1,34 @@
-
 <!DOCTYPE html>
 <html>
-
 <head>
-  <title>Diverse UI</title>
-
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- COMMON TAGS -->
+  <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Diverse UI</title>
+  <!-- Search Engine -->
   <meta name="author" content="Renee Padgham &amp; Yefim Vedernikoff">
   <meta name="description" content="Diverse user images for user interface design">
+  <meta name="image" content="https://www.diverseui.com/static/img/diverseuimeta.png">
   <meta name="robots" content="NOODP">
-
-  <!-- facebook -->
-  <meta property="og:title" content="Diverse UI">
-  <meta property="og:url" content="http://www.diverseui.com">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="{{ url_for('static', filename='img/diverseuimeta.png', _external=True) }}">
-  <meta property="og:description" content="Diverse user images for user interface design">
-
-  <!-- twitter -->
+  <!-- Schema.org for Google -->
+  <meta itemprop="name" content="Diverse UI">
+  <meta itemprop="description" content="Diverse user images for user interface design">
+  <meta itemprop="image" content="{{ url_for('static', filename='img/diverseuimeta.png', _external=True) }}">
+  <!-- Twitter -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:url" content="http://www.diverseui.com">
   <meta name="twitter:title" content="Diverse UI">
   <meta name="twitter:description" content="Diverse user images for user interface design">
-  <meta name="twitter:image" content="{{ url_for('static', filename='img/diverseuimeta.png', _external=True) }}">
+  <meta name="twitter:image:src" content="{{ url_for('static', filename='img/diverseuimeta.png', _external=True) }}">
+  <!-- Open Graph general (Facebook, Pinterest & Google+) -->
+  <meta name="og:title" content="Diverse UI">
+  <meta name="og:description" content="Diverse user images for user interface design">
+  <meta name="og:image" content="{{ url_for('static', filename='img/diverseuimeta.png', _external=True) }}">
+  <meta name="og:url" content="https://www.diverseui.com/">
+  <meta name="og:site_name" content="Diverse UI">
+  <meta name="og:locale" content="en_US">
+  <meta name="og:type" content="website">
 
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/normalize.css') }}" />
   {% assets filters="cssmin", output="dist/styles-%(version)s.css", "styles/styles-compiled.css" %}
