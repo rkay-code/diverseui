@@ -1,5 +1,7 @@
 {% extends 'layout.html' %}
 
+{% block description %}Submit your own real photo to Diverse UI.{% endblock %}
+
 {% block stylesheets %}
   {% assets filters="cssmin", output="dist/form-%(version)s.css", "styles/form-compiled.css" %}
     <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}" />

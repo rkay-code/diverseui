@@ -1,5 +1,7 @@
 {% extends 'layout.html' %}
 
+{% block description %}Diverse UI was created to address the problem of diversity in tech.{% endblock %}
+
 {% block stylesheets %}
   {% assets filters="cssmin", output="dist/about-%(version)s.css", "styles/about-compiled.css" %}
     <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}" />
@@ -13,7 +15,7 @@
     <h4>
       Who we assume our users are, and how we represent that in our visuals, affects who those users turn out to be.
       We want those users to be diverse, so we created Diverse UI, where you can find images representative of a diverse population.
-      For more information, we wrote <a href="https://medium.com/@reneepadgham/techs-diversity-problem-isn-t-only-in-the-hiring-numbers-edf00f7b5e95" target="_blank">a blog post</a> about why we think diversity in UI mockups is important.
+      For more information, we wrote <a href="https://uxdesign.cc/techs-diversity-problem-isn-t-only-in-the-hiring-numbers-edf00f7b5e95" target="_blank">a blog post</a> about why we think diversity in UI mockups is important.
     </h4>
   </div>
   <div class="about-section-container">
@@ -34,7 +36,7 @@
 
   <div class="question">
     <h2>How can I add my photo to the collection?</h2>
-    <h4>Our favorite question! Use this <a href="{{ url_for('submit') }}">submit form</a>.</h4>
+    <h4>Our favorite question! Use our <a href="{{ url_for('submit') }}">submit form</a>.</h4>
   </div>
 
   <div class="question">

@@ -9,21 +9,21 @@
   <title>Diverse UI</title>
   <!-- Search Engine -->
   <meta name="author" content="Renee Padgham &amp; Yefim Vedernikoff">
-  <meta name="description" content="Discover diverse user images for user interface design.">
+  <meta name="description" content="{% block description %}Discover diverse user images for user interface design.{% endblock %}">
   <meta name="image" content="https://www.diverseui.com/static/img/diverseuimeta.png">
   <meta name="robots" content="NOODP">
   <!-- Schema.org for Google -->
   <meta itemprop="name" content="Diverse UI">
-  <meta itemprop="description" content="Discover diverse user images for user interface design.">
+  <meta itemprop="description" content="{{ self.description() }}">
   <meta itemprop="image" content="{{ url_for('static', filename='img/diverseuimeta.png', _external=True) }}">
   <!-- Twitter -->
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Diverse UI">
-  <meta name="twitter:description" content="Discover diverse user images for user interface design.">
+  <meta name="twitter:description" content="{{ self.description() }}">
   <meta name="twitter:image:src" content="{{ url_for('static', filename='img/diverseuimeta.png', _external=True) }}">
   <!-- Open Graph general (Facebook, Pinterest and Google+) -->
   <meta name="og:title" content="Diverse UI">
-  <meta name="og:description" content="Discover diverse user images for user interface design.">
+  <meta name="og:description" content="{{ self.description() }}">
   <meta name="og:image" content="{{ url_for('static', filename='img/diverseuimeta.png', _external=True) }}">
   <meta name="og:url" content="https://www.diverseui.com/">
   <meta name="og:site_name" content="Diverse UI">
