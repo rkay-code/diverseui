@@ -16,6 +16,8 @@ from flask_admin.contrib.sqla import ModelView
 from flask_admin.model.template import macro
 from flask_assets import Environment
 
+from track import log_fetch
+
 app = Flask(__name__)
 app.config.from_object(__name__)
 app.config.update(dict(
@@ -197,6 +199,8 @@ def images():
     count = request.args.get('count', 0, type=int)
     if count > 0:
         images = images.limit(int(count))
+
+    log_fetch(count=images.count(), gender=gender)
 
     images = images.all()
 
