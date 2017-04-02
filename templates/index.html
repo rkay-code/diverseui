@@ -12,7 +12,7 @@
     <main class="faces">
       <div id="images">
         {% for image in images[:50] -%}
-          <img crossOrigin="Anonymous" class="image" width="90" height="90" src="{{ image.url }}" />
+          <img crossOrigin="Anonymous" class="image" width="78" height="78" src="{{ image.url }}" />
         {%- endfor %}
       </div>
       <div id="load-more-container" class="load-more-container">
@@ -21,15 +21,15 @@
     </main>
     <nav class="filter-nav">
       <div class="size">
-        <div class="size-label">
-          <h3>Size:</h3>
-          <h4 id="slider-label">90px</h4>
+        <div class="label">
+          <h3>Size</h3>
         </div>
         <div id="size-slider"></div>
+        <div id="slider-label">78px</div>
       </div>
       <div class="gender">
         <div class="label">
-          <h3>Gender:</h3>
+          <h3>Gender</h3>
         </div>
         <div class="input-group">
           <label for="gender-both" class="control control--radio"> All
@@ -48,18 +48,16 @@
       </div>
       <div class="downloads">
         <div class="downloads label">
-          <h3>Download:</h3>
+          <h3>Download</h3>
         </div>
         <button id="download-all" type="button" class="button">All</button>
         <button id="download-selected" type="button" class="button disabled">Selected</button>
         <p id="download-selected-text">Click on an image to select it.</p>
       </div>
-    </nav>
-    <aside class="ads">
-      <div>
+      <div class="donate">
         <a href="https://www.paypal.me/reneepadgham/5" target="_blank" class="button">coffee me</a>
       </div>
-    </aside>
+    </nav>
   </div>
 {% endblock %}
 

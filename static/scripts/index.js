@@ -2,7 +2,7 @@ $(document).ready(function() {
   var PER_PAGE = 50;
   var IMAGES = window.Data || [];
 
-  var size = 90;
+  var size = 78;
   var gender = 'both';
   var count = PER_PAGE;
 
@@ -81,9 +81,19 @@ $(document).ready(function() {
     slide: function(event, ui) {
       $('#slider-label').html(ui.value + 'px');
       size = ui.value;
-
+      $('#slider-label').position({
+        my: 'right top',
+        at: 'center bottom',
+        of: $('#size-slider .ui-slider-handle'),
+      });
       resizeImages();
     }
+  });
+
+  $('#slider-label').position({
+    my: 'right top',
+    at: 'center bottom',
+    of: $('.ui-slider-handle'),
   });
 
   var canvas = document.createElement('canvas');

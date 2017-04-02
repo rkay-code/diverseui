@@ -1,7 +1,9 @@
 node_modules
 output
 env
+venv
 *.pyc
+.DS_Store
 
 static/.webassets-cache/
 static/dist/

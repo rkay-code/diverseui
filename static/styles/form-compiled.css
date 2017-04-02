@@ -13,7 +13,7 @@ html, body, .container {
   height: 100%; }
 
 body {
-  background: #ED254E;
+  background: #428AFF;
   font-family: 'proxima-nova', sans-serif; }
 
 /* Main form wrapper */
@@ -67,7 +67,7 @@ body {
   padding: 2.5em 30% 6em;
   width: 100%;
   height: 100%;
-  background: #ED254E;
+  background: #428AFF;
   color: #fff;
   font-size: 1.2em; }
 
