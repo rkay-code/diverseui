@@ -76,7 +76,8 @@ header {
     }
     .button {
       color: #fff;
-      font-weight: 600;
+      background-color: #FF5964;
+      box-shadow: 0 4px 0 #D14952;
     }
     .current {
       color: $accent;
@@ -105,6 +106,7 @@ header {
   line-height: 36px;
   min-width: 128px;
   text-align: center;
+  padding: 0;
 }
 .button:focus {
   outline: none;
@@ -127,7 +129,7 @@ footer {
       flex-grow: 1;
       a {
         text-decoration: none;
-        color: #ED254E;
+        color: $accent;
       }
       &:nth-child(2) {
         text-align: right;

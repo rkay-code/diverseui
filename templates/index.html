@@ -11,42 +11,35 @@
   <div class="site-body">
     <main class="faces">
       <div id="images">
-        {% for image in images[:50] -%}
+        {% for image in images[:66] -%}
           <img crossOrigin="Anonymous" class="image" width="78" height="78" src="{{ image.url }}" />
         {%- endfor %}
       </div>
       <div id="load-more-container" class="load-more-container">
-        <button type="button" id="load-more" class="button">Load More</button>
+        <button type="button" id="load-more" class="load button">View more beautiful people :)</button>
       </div>
     </main>
     <nav class="filter-nav">
-      <div class="size">
+      <div class="size section">
         <div class="label">
           <h3>Size</h3>
         </div>
         <div id="size-slider"></div>
         <div id="slider-label">78px</div>
       </div>
-      <div class="gender">
+      <div class="gender section">
         <div class="label">
-          <h3>Gender</h3>
+          <h3>Sex</h3>
         </div>
-        <div class="input-group">
-          <label for="gender-both" class="control control--radio"> All
-            <input checked value="both" type="radio" name="gender" id="gender-both" />
-            <div class="control__indicator"></div>
-          </label>
-          <label for="gender-female" class="control control--radio"> Female
-            <input value="female" type="radio" name="gender" id="gender-female" />
-            <div class="control__indicator"></div>
-          </label>
-          <label for="gender-male" class="control control--radio"> Male
-            <input value="male" type="radio" name="gender" id="gender-male" />
-            <div class="control__indicator"></div>
-          </label>
+        <div class="sex-dropdown">
+          <select>
+              <option value="both" name="gender" id="gender-both">Neutral</option>
+              <option value="female" name="gender" id="gender-female">Female</option>
+              <option value="male" name="gender" id="gender-male">Male</option>
+          </select>
         </div>
       </div>
-      <div class="downloads">
+      <div class="downloads section">
         <div class="downloads label">
           <h3>Download</h3>
         </div>
@@ -55,7 +48,10 @@
         <p id="download-selected-text">Click on an image to select it.</p>
       </div>
       <div class="donate">
-        <a href="https://www.paypal.me/reneepadgham/5" target="_blank" class="button">coffee me</a>
+        <div class="downloads label">
+          <h3>Want to help out?</h3>
+        </div>
+        <a href="https://www.paypal.me/reneepadgham/5" target="_blank" class="button">Coffee Me</a>
       </div>
     </nav>
   </div>
@@ -76,5 +72,4 @@
   {% assets filters="jsmin", output="dist/index-%(version)s.js", "scripts/index.js" %}
     <script src="{{ ASSET_URL }}"></script>
   {% endassets %}
-  <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57ce4aa9dc707ca6"></script>
 {% endblock %}

@@ -72,7 +72,8 @@ header {
       height: 24px; }
     .header-content-wrap .header-section .button {
       color: #fff;
-      font-weight: 600; }
+      background-color: #FF5964;
+      box-shadow: 0 4px 0 #D14952; }
     .header-content-wrap .header-section .current {
       color: #428AFF;
       font-weight: 600; }
@@ -95,7 +96,8 @@ header {
   font-size: 16px;
   line-height: 36px;
   min-width: 128px;
-  text-align: center; }
+  text-align: center;
+  padding: 0; }
 
 .button:focus {
   outline: none; }
@@ -117,7 +119,7 @@ footer .footer-content-wrap {
     flex-grow: 1; }
     footer .footer-content-wrap .footer-section a {
       text-decoration: none;
-      color: #ED254E; }
+      color: #428AFF; }
     footer .footer-content-wrap .footer-section:nth-child(2) {
       text-align: right; }
 

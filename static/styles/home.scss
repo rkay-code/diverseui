@@ -5,6 +5,10 @@
   flex: 0 0 15em;
   padding: 1em 3em 0 0;
   border-radius: 3px;
+
+  .section {
+    margin-bottom: 24px;
+  }
 }
 /* filter navigation styles */
 .label h3 {
@@ -34,46 +38,19 @@
 .ui-slider-horizontal .ui-slider-range {
   background: $light-accent;
 }
-.gender {
-  margin-top: 50px;
-  .input-group {
-    margin-left: 10px;
-    display: flex;
-    flex-direction: column;
-    .control {
-      position: relative;
-      padding-left: 30px;
-      margin-bottom: 10px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-    .control input {
-      position: absolute;
-      z-index: -1;
-      opacity: 0;
-    }
-    .control__indicator {
-      position: absolute;
-      top: 2px;
-      left: 0;
-      height: 16px;
-      width: 16px;
-      background: $light-grey;
-    }
-    .control--radio .control__indicator {
-      border-radius: 50%;
-    }
-    .control:hover input ~ .control__indicator,
-    .control input:focus ~ .control__indicator {
-      background: $light-accent;
-    }
-    .control input:checked ~ .control__indicator {
-      background: $accent;
-    }
-    .control:hover input:not([disabled]):checked ~ .control__indicator,
-    .control input:checked:focus ~ .control__indicator {
-      background: $accent;
-    }
+
+#slider-label {
+  height: 28px;
+}
+
+.sex-dropdown {
+  select {
+    background: #fff;
+    border: 1px solid #565D5F;
+    width: 100%;
+    height: 32px;
+    font-size: 14px;
+    line-height: 32px;
   }
 }
 
@@ -110,9 +87,13 @@
   display: block;
 }
 
-/* ads styles */
-.ads div {
-  display: flex;
+.donate {
+  padding-top: 112px;
+  a {
+    display: block;
+    background-color: $light-accent;
+    box-shadow: 0 4px 0 $accent;
+  }
 }
 
 /* load more button styles */
@@ -143,6 +124,14 @@ margin: auto;
     box-shadow: 0 3px 6px rgba(0,0,0,.3);
   }
 }
+
+.load {
+  color: $accent;
+  background: #fff;
+  box-shadow: none;
+  width: 100%;
+}
+
 @media (min-width: 768px) {
   .site-body {
     flex-direction: row;
