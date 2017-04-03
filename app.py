@@ -1,10 +1,12 @@
 import os
 import uuid
+import requests
 import boto
 import boto.s3
 import boto.ses
 from boto.s3.key import Key
-from flask import Flask, render_template, send_from_directory, request, jsonify
+from flask import Flask, render_template, send_from_directory, \
+    request, jsonify, redirect, url_for
 from werkzeug.utils import secure_filename
 from flask_sqlalchemy import SQLAlchemy, event
 from sqlalchemy.sql.expression import func
@@ -15,6 +17,8 @@ from flask_admin import Admin, AdminIndexView, expose
 from flask_admin.contrib.sqla import ModelView
 from flask_admin.model.template import macro
 from flask_assets import Environment
+from flask_login import login_user, logout_user, login_required, \
+    LoginManager, current_user
 
 from track import log_fetch
 
@@ -30,6 +34,20 @@ app.config.update(dict(
     TEMPLATES_AUTO_RELOAD=os.environ.get('TEMPLATES_RELOAD', 'True') == 'True'
 ))
 app.secret_key = os.environ.get('SECRET_KEY', 'somethingsecret')
+
+login_manager = LoginManager()
+login_manager.login_view = 'index'
+login_manager.init_app(app)
+
+
+@login_manager.user_loader
+def user_loader(user_id):
+    user = User.query.get(user_id)
+
+    if user:
+        user.is_authenticated = True
+
+    return user
 
 Environment(app)
 
@@ -54,6 +72,36 @@ HTML_BODY = ('<p style="margin-top: 0;">Hello,</p>'
              '<p style="margin-bottom: 0;">- Renee<br />'
              '<a target="_blank" href="http://www.diverseui.com">'
              'www.diverseui.com</a></p>').format(TWEET_URL)
+
+FB_BASE_URL = 'https://graph.facebook.com/v2.8'
+FB_CLIENT_ID = os.environ.get('FB_CLIENT_ID', '')
+FB_REDIRECT_URI = os.environ.get('FB_REDIRECT_URI', '')
+FB_SECRET = os.environ.get('FB_SECRET', '')
+
+
+class User(db.Model):
+    __tablename__ = 'users'
+
+    id = db.Column(db.Integer, primary_key=True)
+    fb_id = db.Column(db.String(), unique=True)
+    first_name = db.Column(db.String())
+    last_name = db.Column(db.String())
+    gender = db.Column(db.String())
+    created_at = db.Column(db.DateTime, server_default=db.func.now())
+
+    is_active = True
+    is_anonymous = False
+    is_authenticated = False
+
+    def __init__(self, fb_id='', first_name='', last_name='', gender=''):
+        self.is_authenticated = True
+        self.fb_id = fb_id
+        self.first_name = first_name
+        self.last_name = last_name
+        self.gender = gender
+
+    def get_id(self):
+        return self.id
 
 
 class Image(db.Model):
@@ -215,6 +263,59 @@ def about():
 @app.route('/terms', methods=['GET'])
 def terms():
     return render_template('terms.html')
+
+
+@app.route('/s', methods=['GET'])
+def s():
+    return render_template('s.html',
+                           client_id=FB_CLIENT_ID,
+                           redirect_uri=FB_REDIRECT_URI)
+
+
+@app.route('/auth', methods=['GET'])
+def auth():
+    code = request.args['code']
+
+    # Get access_token from Facebook
+    auth = requests.get('%s/oauth/access_token' % FB_BASE_URL, params={
+        'client_id': FB_CLIENT_ID,
+        'redirect_uri': FB_REDIRECT_URI,
+        'client_secret': FB_SECRET,
+        'code': code
+    })
+
+    access_token = auth.json()['access_token']
+
+    # Get necessary fields from Facebook
+    me = requests.get('%s/me' % FB_BASE_URL, params={
+        'access_token': access_token,
+        'fields': 'id,first_name,last_name,gender'
+    })
+
+    fields = me.json()
+    fb_id = fields.pop('id')
+    user = User.query.filter_by(fb_id=fb_id).first()
+
+    if user is None:
+        user = User(fb_id=fb_id, **fields)
+        db.session.add(user)
+        db.session.commit()
+
+    login_user(user)
+
+    return redirect(url_for('review'))
+
+
+@app.route('/review', methods=['GET'])
+@login_required
+def review():
+    return render_template('review.html', user=current_user)
+
+
+@app.route('/logout', methods=['POST'])
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
 
 
 @app.route('/submit', methods=['GET', 'POST'])
