@@ -9,25 +9,35 @@
 {% endblock %}
 
 {% block body %}
-<section class="about">
-  <div class="about-section-container">
-    <h1>Why</h1>
+<section class="page-container">
+  <div>
+    <h1>About</h1>
     <h4>
-      Who we assume our users are, and how we represent that in our visuals, affects who those users turn out to be.
-      We want those users to be diverse, so we created Diverse UI, where you can find images representative of a diverse population.
+      Diverse UI is a free set of user images that can be used in personal or commercial projects.
+      <br><br>
+      We built Diverse UI because who we assume our users are, and how we represent that in our visuals, affects who those users turn out to be.
+      We want those users to be diverse.
       For more information, we wrote <a href="https://uxdesign.cc/techs-diversity-problem-isn-t-only-in-the-hiring-numbers-edf00f7b5e95" target="_blank">a blog post</a> about why we think diversity in UI mockups is important.
     </h4>
-  </div>
-  <div class="about-section-container">
-    <h1>Known Shortcomings</h1>
+    <br><br>
     <h4>
-      Finding these images wasn’t easy. They aren’t perfect. We avoided caricatures, but that doesn’t mean some images don’t feel a bit exaggerated, staged, or professional.
+      <b>For v2 - we're using Facebook auth which will make it easier to get more images with better demographic information.</b>
+      <br><br>
+      In the meantime, some of the v1 database will remain - which we admit isn't perfect. We avoided caricatures, but that doesn’t mean some images don’t feel a bit exaggerated, staged, or professional.
       We didn’t have a good way to recognize or account for preferred gender representation. In fact, <a href="{{ url_for('submit') }}">submitting your photo</a> is one of the best ways to help out.
       You can help us make the most awesome set of real people on the internet.
     </h4>
   </div>
-  <div class="about-section-container">
-    <h1>Q & A</h1>
+  <div class="question">
+    <h2>How do I use Diverse UI?</h2>
+    <h4><b>There are four easy ways to use Diverse UI</b></h4>
+    <ul class="how-list">
+      <li>Download and use our <a href="#">Sketch Plugin</a></li>
+      <li>Download images from the home page and insert them into your designs</li>
+      <li>Go to diverseui.com from the <a href="#">Invision Craft</a> plugin for Sketch</li>
+      <li>Use our <a href="#">api</a></li>
+    </ul>
+  </div>
 
   <div class="question">
     <h2>Who built this?</h2>
@@ -52,13 +62,6 @@
   <div class="question">
     <h2>Why don’t you have xyz feature?</h2>
     <h4>We wanted to get this out as quickly, in one weekend to be exact, so we went with the bare necessities. We’d love to hear your recommendations for things we should add at <a href="mailto:hello@diverseui.com?subject=Recommendation">hello@diverseui.com!</a></h4>
-  </div>
-
-  <div class="question">
-    <h2>Why do you have a donate button?</h2>
-    <h4>We’re paying out of pocket to cover hosting/database costs, and while we love what we’ve made, we’d also love to find a way to cover those costs.</h4>
-  </div>
-
   </div>
 
 </section>

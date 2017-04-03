@@ -1,12 +1,13 @@
-.about {
-  display: flex;
-  flex-direction: column;
-  width: 60%;
-  margin: auto; }
-  .about .about-section-container {
-    margin: 40px 0; }
-  .about .question {
-    margin: 30px 0; }
+.question {
+  margin: 56px 0; }
+
+.how-list {
+  list-style-type: decimal;
+  margin: 16px auto 0; }
+  .how-list li {
+    margin-bottom: 16px;
+    font-size: 20px;
+    line-height: 24px; }
 
 a {
   text-decoration: none;
