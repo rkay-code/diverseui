@@ -18,6 +18,7 @@ from flask_login import login_user, logout_user, login_required, \
     LoginManager, current_user
 
 from track import log_fetch
+from utils import upload_url_to_s3
 
 app = Flask(__name__)
 app.config.from_object(__name__)
