@@ -98,6 +98,9 @@ class User(db.Model):
     last_name = db.Column(db.String())
     gender = db.Column(db.String())
     created_at = db.Column(db.DateTime, server_default=db.func.now())
+    image = db.relationship('Image',
+                            uselist=False,
+                            backref='user')
 
     is_active = True
     is_anonymous = False
@@ -118,6 +121,7 @@ class Image(db.Model):
     __tablename__ = 'images'
 
     id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     url = db.Column(db.String(), unique=True)
     email = db.Column(db.String())
     gender = db.Column(db.String())
@@ -127,12 +131,15 @@ class Image(db.Model):
     created_at = db.Column(db.DateTime, server_default=db.func.now())
 
     def __init__(self, url='', email='', gender='',
-                 race='', verification_url=''):
+                 race='', verification_url='', user_id=''):
         self.url = url
         self.email = email
         self.gender = gender
         self.race = race
         self.verification_url = verification_url
+
+        if user_id:
+            self.user_id = user_id
 
     def __repr__(self):
         return '<Image url={0} gender={1}>'.format(self.url, self.gender)
@@ -317,10 +324,32 @@ def auth():
     return redirect(url_for('review', _anchor=' '))
 
 
-@app.route('/review', methods=['GET'])
+@app.route('/review', methods=['GET', 'POST'])
 @login_required
 def review():
-    return render_template('review.html', user=current_user)
+    user = current_user
+
+    if request.method == 'POST':
+        image_url = (
+            '%s/%s/picture?width=500&height=500'
+        ) % (FB_BASE_URL, user.fb_id)
+
+        url = image_url
+        email = request.form['email']
+        gender = request.form['gender']
+        race = request.form['race']
+
+        i = Image(url=url,
+                  email=email,
+                  gender=gender,
+                  race=race,
+                  user_id=user.id)
+        db.session.add(i)
+        db.session.commit()
+
+        return redirect(url_for('index'))
+
+    return render_template('review.html', user=user)
 
 
 @app.route('/logout', methods=['POST'])
