@@ -1,18 +1,14 @@
 import os
-import uuid
 import requests
 import boto
 import boto.s3
 import boto.ses
-from boto.s3.key import Key
 from functools import wraps
 from flask import Flask, render_template, send_from_directory, \
     request, jsonify, redirect, url_for
-from werkzeug.utils import secure_filename
 from flask_sqlalchemy import SQLAlchemy, event
 from sqlalchemy.sql.expression import func
 from sqlalchemy.orm.attributes import get_history
-from sqlalchemy.exc import IntegrityError
 from flask_basicauth import BasicAuth
 from flask_admin import Admin, AdminIndexView, expose
 from flask_admin.contrib.sqla import ModelView
@@ -285,14 +281,6 @@ def terms():
     return render_template('terms.html')
 
 
-@app.route('/s', methods=['GET'])
-@bounce_user
-def s():
-    return render_template('s.html',
-                           client_id=FB_CLIENT_ID,
-                           redirect_uri=FB_REDIRECT_URI)
-
-
 @app.route('/auth', methods=['GET'])
 def auth():
     code = request.args['code']
@@ -359,48 +347,12 @@ def logout():
     return redirect(url_for('index'))
 
 
-@app.route('/submit', methods=['GET', 'POST'])
+@app.route('/submit', methods=['GET'])
+@bounce_user
 def submit():
-    if request.method == 'POST':
-        permissions = request.form['permissions']
-
-        if not (permissions == 'y' or permissions == 'yes'):
-            return render_template('submit.html',
-                                   submitted=False,
-                                   fields=request.form)
-
-        image = request.files['image']
-        fname = '{0}-{1}'.format(str(uuid.uuid4()),
-                                 secure_filename(image.filename))
-
-        conn = boto.connect_s3(os.environ['AWS_ACCESS_KEY_ID_DIVERSEUI'],
-                               os.environ['AWS_SECRET_KEY_DIVERSEUI'])
-        bucket = conn.get_bucket('diverse-ui')
-
-        k = Key(bucket, 'faces/{}'.format(fname))
-        k.set_contents_from_file(image)
-        k.make_public()
-
-        url = 'https://d3iw72m71ie81c.cloudfront.net/{}'.format(fname)
-        email = request.form['email']
-        gender = request.form['gender']
-        race = request.form['race']
-        verification_url = request.form['verification_url']
-
-        i = Image(url, email, gender, race, verification_url)
-
-        db.session.add(i)
-
-        try:
-            db.session.commit()
-        except IntegrityError:
-            return render_template('submit.html',
-                                   submitted=False,
-                                   fields=request.form)
-
-        return render_template('submit.html', submitted=True, fields={})
-    else:
-        return render_template('submit.html', submitted=False, fields={})
+    return render_template('submit.html',
+                           client_id=FB_CLIENT_ID,
+                           redirect_uri=FB_REDIRECT_URI)
 
 
 @app.errorhandler(413)
