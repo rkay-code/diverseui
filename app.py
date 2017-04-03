@@ -5,6 +5,7 @@ import boto
 import boto.s3
 import boto.ses
 from boto.s3.key import Key
+from functools import wraps
 from flask import Flask, render_template, send_from_directory, \
     request, jsonify, redirect, url_for
 from werkzeug.utils import secure_filename
@@ -38,6 +39,15 @@ app.secret_key = os.environ.get('SECRET_KEY', 'somethingsecret')
 login_manager = LoginManager()
 login_manager.login_view = 'index'
 login_manager.init_app(app)
+
+
+def bounce_user(func):
+    @wraps(func)
+    def decorated_view(*args, **kwargs):
+        if current_user and current_user.is_authenticated:
+            return redirect(url_for('review'))
+        return func(*args, **kwargs)
+    return decorated_view
 
 
 @login_manager.user_loader
@@ -266,6 +276,7 @@ def terms():
 
 
 @app.route('/s', methods=['GET'])
+@bounce_user
 def s():
     return render_template('s.html',
                            client_id=FB_CLIENT_ID,
@@ -303,7 +314,7 @@ def auth():
 
     login_user(user)
 
-    return redirect(url_for('review'))
+    return redirect(url_for('review', _anchor=' '))
 
 
 @app.route('/review', methods=['GET'])
