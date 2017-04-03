@@ -331,6 +331,7 @@ def auth():
 @login_required
 def review():
     user = current_user
+    image = user.image or Image(user_id=user.id)
 
     if request.method == 'POST':
         image_url = (
@@ -338,21 +339,18 @@ def review():
         ) % (FB_BASE_URL, user.fb_id)
 
         url = image_url
-        email = request.form['email']
-        gender = request.form['gender']
-        race = request.form['race']
 
-        i = Image(url=url,
-                  email=email,
-                  gender=gender,
-                  race=race,
-                  user_id=user.id)
-        db.session.add(i)
+        image.url = url
+        image.email = request.form['email']
+        image.gender = request.form['gender']
+        image.race = request.form['race']
+
+        db.session.add(image)
         db.session.commit()
 
         return redirect(url_for('index'))
 
-    return render_template('review.html', user=user)
+    return render_template('review.html', user=user, image=image)
 
 
 @app.route('/logout', methods=['POST'])
