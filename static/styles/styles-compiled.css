@@ -7,7 +7,7 @@ html {
   box-sizing: inherit; }
 
 body {
-  font-family: 'canada-type-gibson', sans-serif;
+  font-family: 'proxima-nova-soft', sans-serif;
   color: #565D5F;
   font-weight: 300;
   margin: 0;
@@ -20,19 +20,32 @@ h3 {
   font-weight: 500; }
 
 h1 {
-  font-size: 40px;
+  font-size: 32px;
   font-weight: 700;
+  line-height: 40px;
   margin: 0; }
 
 h4 {
-  font-weight: 500;
+  font-weight: 400;
   font-size: 20px;
-  margin: 10px 0 0; }
+  line-height: 24px;
+  margin: 0; }
 
 h2 {
   font-size: 26px;
   font-weight: 700;
   margin: 0; }
+
+p {
+  font-size: 18px;
+  line-height: 24px;
+  color: #565D5F;
+  margin: 0; }
+
+li {
+  font-size: 18px;
+  line-height: 24px;
+  margin-bottom: 16px; }
 
 :focus {
   outline: none; }
@@ -41,6 +54,10 @@ h2 {
   display: flex;
   min-height: 100vh;
   flex-direction: column; }
+
+.page-container {
+  width: 520px;
+  margin: 32px auto 120px; }
 
 header {
   display: flex;
@@ -117,11 +134,15 @@ footer .footer-content-wrap {
   padding: 25px 0; }
   footer .footer-content-wrap .footer-section {
     flex-grow: 1; }
-    footer .footer-content-wrap .footer-section a {
-      text-decoration: none;
-      color: #428AFF; }
     footer .footer-content-wrap .footer-section:nth-child(2) {
       text-align: right; }
+
+a {
+  text-decoration: none;
+  color: #428AFF; }
+
+ul {
+  margin: 36px auto; }
 
 @media (min-width: 320px) and (max-width: 768px) {
   .header-content-wrap {

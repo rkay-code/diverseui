@@ -104,7 +104,7 @@
     border-radius: 5px; }
   #images .selected-image {
     border: 4px solid #428AFF;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3); }
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); }
 
 .load {
   color: #428AFF;
