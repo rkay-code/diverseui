@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <form method="post" action="{{ url_for('logout') }}">
+    <button type="submit">Log out</button>
+  </form>
+
+  <h1>Hi {{ user.first_name }}!</h1>
+
+  <form method="post" action="{{ url_for('review') }}">
+    <input name="gender" type="text" value="{{ image.gender or user.gender }}" placeholder="Gender" />
+    <input name="email" type="email" value="{{ image.email or user.email }}" placeholder="Email" />
+    <input name="race" type="text" value="{{ image.race }}" placeholder="Race" />
+    <img width="500" height="500" src="https://graph.facebook.com/{{ user.fb_id }}/picture?width=500&height=500" />
+    <button type="submit">Submit</button>
+  </form>
+{% endblock %}
