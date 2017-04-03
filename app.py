@@ -97,6 +97,7 @@ class User(db.Model):
     first_name = db.Column(db.String())
     last_name = db.Column(db.String())
     gender = db.Column(db.String())
+    email = db.Column(db.String())
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     image = db.relationship('Image',
                             uselist=False,
@@ -106,12 +107,14 @@ class User(db.Model):
     is_anonymous = False
     is_authenticated = False
 
-    def __init__(self, fb_id='', first_name='', last_name='', gender=''):
+    def __init__(self, fb_id='', first_name='',
+                 last_name='', gender='', email=''):
         self.is_authenticated = True
         self.fb_id = fb_id
         self.first_name = first_name
         self.last_name = last_name
         self.gender = gender
+        self.email = email
 
     def get_id(self):
         return self.id
@@ -307,7 +310,7 @@ def auth():
     # Get necessary fields from Facebook
     me = requests.get('%s/me' % FB_BASE_URL, params={
         'access_token': access_token,
-        'fields': 'id,first_name,last_name,gender'
+        'fields': 'id,email,first_name,last_name,gender'
     })
 
     fields = me.json()
