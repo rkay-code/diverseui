@@ -1,20 +1,6 @@
-.terms, .privacy {
+.terms, .privacy, .terms-links {
   display: flex;
   flex-direction: column;
-  width: 60%;
-  margin: 40px auto; }
-  .terms ul, .privacy ul {
+  margin-bottom: 0; }
+  .terms ul, .privacy ul, .terms-links ul {
     list-style-type: disc; }
-
-.terms-links {
-  display: flex;
-  width: 60%;
-  margin: 40px auto 0; }
-
-a {
-  text-decoration: none;
-  color: #428AFF; }
-
-@media (min-width: 320px) and (max-width: 768px) {
-  .terms, .privacy, .terms-links {
-    width: 85%; } }

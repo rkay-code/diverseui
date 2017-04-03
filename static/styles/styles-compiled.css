@@ -32,7 +32,7 @@ h4 {
   margin: 0; }
 
 h2 {
-  font-size: 26px;
+  font-size: 24px;
   font-weight: 700;
   margin: 0; }
 
@@ -69,8 +69,8 @@ header {
 .header-content-wrap {
   display: flex;
   justify-content: space-between;
-  margin: auto 88px;
-  width: 100%; }
+  margin: auto;
+  width: 90%; }
   .header-content-wrap .header-section {
     display: flex;
     align-items: center; }
@@ -145,11 +145,22 @@ ul {
   margin: 36px auto; }
 
 @media (min-width: 320px) and (max-width: 768px) {
+  .page-container {
+    width: 90%;
+    margin: 32px auto 120px; }
+  header {
+    height: 120px; }
   .header-content-wrap {
     flex-wrap: wrap;
     justify-content: center; }
     .header-content-wrap .header-section {
-      margin: 15px 0; }
+      margin: 8px 0; }
+      .header-content-wrap .header-section .button {
+        min-width: 112px;
+        line-height: 32px;
+        box-shadow: 0 4px 0 #D14952; }
+      .header-content-wrap .header-section a {
+        font-size: 14px; }
   footer .footer-content-wrap {
     flex-direction: column;
     text-align: center; }

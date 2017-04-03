@@ -18,7 +18,6 @@
     margin: 0;
 }
 .ui-slider {
-  width: 80%;
   background: $light-grey;
   border: none;
   height: 0.3em;
@@ -45,13 +44,37 @@
 
 .sex-dropdown {
   select {
-    background: #fff;
-    border: 1px solid #565D5F;
+    margin: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: white;
+    border: thin solid $light-accent;
+    border-radius: 4px;
+    display: inline-block;
+    padding-left: 16px;
+    line-height: 36px;
+    background-image:
+    linear-gradient(45deg, transparent 50%, $grey 50%),
+    linear-gradient(135deg, $grey 50%, transparent 50%),
+    linear-gradient(to right, #ccc, #ccc);
+    background-position:
+      calc(100% - 20px),
+      calc(100% - 15px),
+      calc(100% - 2.5em);
+    background-size:
+      5px 5px,
+      5px 5px,
+      1px 1.5em;
+    background-repeat: no-repeat;
     width: 100%;
-    height: 32px;
-    font-size: 14px;
-    line-height: 32px;
-  }
+    height: 36px;
+    &:hover {
+      cursor: pointer;
+    }
+    }
 }
 
 .downloads {
@@ -153,5 +176,8 @@ margin: auto;
 }
 .downloads {
   display: none;
+}
+.filter-nav {
+  padding: 0;
 }
 }

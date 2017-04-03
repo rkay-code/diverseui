@@ -1,28 +1,10 @@
 @import 'colors';
 
-.terms, .privacy {
+.terms, .privacy, .terms-links {
   display: flex;
   flex-direction: column;
-  width: 60%;
-  margin: 40px auto;
+  margin-bottom: 0;
   ul {
     list-style-type: disc;
-  }
-}
-
-.terms-links {
-  display: flex;
-  width: 60%;
-  margin: 40px auto 0;
-}
-
-a {
-  text-decoration: none;
-  color: $accent;
-}
-
-@media (min-width: 320px) and (max-width: 768px) {
-  .terms, .privacy, .terms-links {
-    width: 85%;
   }
 }

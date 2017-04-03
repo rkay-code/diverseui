@@ -56,8 +56,7 @@
         </div>
         <div class="header-section">
           <a href="{{ url_for('about') }}" {% if request.path == url_for('about') %}class="current"{% endif %}>About</a>
-          <a href="{{ url_for('about') }}" {% if request.path == url_for('about') %}class="current"{% endif %}>How to Use</a>
-          <a href="{{ url_for('about') }}" {% if request.path == url_for('about') %}class="current"{% endif %}>Sketch Plugin</a>
+          <a href="{{ url_for('about') }}">Sketch Plugin</a>
           <a href="{{ url_for('submit') }}" class="button">Submit</a>
         </div>
       </div>
