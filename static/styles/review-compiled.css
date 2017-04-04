@@ -1,8 +1,8 @@
 .review-container {
   display: flex;
   flex-wrap: wrap;
-  margin: 0 auto;
-  max-width: 900px;
+  margin: 32px auto 120px;
+  max-width: 880px;
   width: 100%; }
 
 .photo {
@@ -11,7 +11,7 @@
 
 .review-form {
   margin: 0 0 0 auto;
-  max-width: 304px; }
+  max-width: 320px; }
 
 .review-field {
   display: flex;
@@ -46,3 +46,8 @@
   margin: 0;
   order: -1;
   padding: 0; }
+
+.logout {
+  margin: 40px auto 0;
+  color: #FF5964;
+  float: right; }
