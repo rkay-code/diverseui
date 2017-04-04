@@ -127,16 +127,18 @@ class Image(db.Model):
     email = db.Column(db.String())
     gender = db.Column(db.String())
     race = db.Column(db.String())
+    second_race = db.Column(db.String())
     status = db.Column(db.String(), nullable=False, server_default='pending')
     verification_url = db.Column(db.String())
     created_at = db.Column(db.DateTime, server_default=db.func.now())
 
-    def __init__(self, url='', email='', gender='',
-                 race='', verification_url='', user_id=''):
+    def __init__(self, url='', email='', gender='', race='',
+                 second_race='', verification_url='', user_id=''):
         self.url = url
         self.email = email
         self.gender = gender
         self.race = race
+        self.second_race = second_race
         self.verification_url = verification_url
 
         if user_id:
@@ -344,6 +346,7 @@ def review():
         image.email = request.form['email']
         image.gender = request.form['gender']
         image.race = request.form['race']
+        image.second_race = request.form['second_race']
 
         if image.status:
             db.session.commit()
