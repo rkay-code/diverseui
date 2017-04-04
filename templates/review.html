@@ -18,7 +18,7 @@
     </div>
   {% endif %}
   <div class="review-container">
-    <img class="photo" width="500" height="500" src="https://graph.facebook.com/{{ user.fb_id }}/picture?width=500&height=500" />
+    <img class="photo" width="500" height="500" src="{{ image.url or 'https://graph.facebook.com/{}/picture?width=500&height=500'.format(user.fb_id) }}" />
     <div class="review-form">
       <h2 style="margin: 0 0 4px 0;">Hello {{ user.first_name }} - lookin' good!</h2>
       <p style="margin: 0 0 24px 0;">To make sure we're keeping our site diverse, we need to keep up with the breakdown of images. Could you help us out by clarifying a few things?</p>

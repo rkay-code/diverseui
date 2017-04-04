@@ -1,10 +1,25 @@
+import os
+import boto
+import boto.s3
+from boto.s3.key import Key
+import requests
+import uuid
+
+
 # http://stackoverflow.com/a/42493144
 def upload_url_to_s3(image_url):
-    """
-    req_for_image = requests.get(internet_image_url, stream=True)
-    file_object_from_req = req_for_image.raw
-    req_data = file_object_from_req.read()
+    image_res = requests.get(image_url, stream=True)
+    image = image_res.raw
+    image_data = image.read()
 
-    # Do the actual upload to s3
-    s3.Bucket(bucket_name_to_upload_image_to).put_object(Key=s3_image_filename, Body=req_data)
-    """
+    fname = '{}.jpg'.format(str(uuid.uuid4()))
+
+    conn = boto.connect_s3(os.environ['AWS_ACCESS_KEY_ID_DIVERSEUI'],
+                           os.environ['AWS_SECRET_KEY_DIVERSEUI'])
+    bucket = conn.get_bucket('diverse-ui')
+
+    k = Key(bucket, 'faces/{}'.format(fname))
+    k.set_contents_from_string(image_data)
+    k.make_public()
+
+    return 'https://d3iw72m71ie81c.cloudfront.net/{}'.format(fname)

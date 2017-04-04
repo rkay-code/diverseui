@@ -19,7 +19,7 @@ from flask_login import login_user, logout_user, login_required, \
     LoginManager, current_user
 
 from track import log_fetch
-# from utils import upload_url_to_s3
+from utils import upload_url_to_s3
 
 app = Flask(__name__)
 app.config.from_object(__name__)
@@ -341,13 +341,6 @@ def review():
             logout_user()
             return redirect('/?removed')
 
-        image_url = (
-            '%s/%s/picture?width=500&height=500'
-        ) % (FB_BASE_URL, user.fb_id)
-
-        url = image_url
-
-        image.url = url
         image.email = request.form['email']
         image.gender = request.form['gender']
         image.race = request.form['race']
@@ -359,6 +352,12 @@ def review():
                                    user=user,
                                    image=image)
         else:
+            image_url = (
+                '%s/%s/picture?width=500&height=500'
+            ) % (FB_BASE_URL, user.fb_id)
+
+            image.url = upload_url_to_s3(image_url)
+
             db.session.add(image)
             db.session.commit()
             return redirect('/?submitted')
