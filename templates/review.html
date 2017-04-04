@@ -31,7 +31,7 @@
         </div>
         <div class="review-buttons">
           {% if image.status %}
-            <button name="action" value="remove" type="submit" class="text-button">Remove Photo</button>
+            <button onclick="javascript:return confirm('Are you sure?');" name="action" value="remove" type="submit" class="text-button">Remove Photo</button>
           {% endif %}
           <button name="action" value="submit" class="button" type="submit" style="margin: 0 0 0 auto;">{% if image.status %}Save{% else %}Submit{% endif %}</button>
         </div>

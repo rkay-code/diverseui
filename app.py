@@ -323,6 +323,14 @@ def review():
     image = user.image or Image(user_id=user.id)
 
     if request.method == 'POST':
+        action = request.form['action']
+
+        if action == 'remove':
+            db.session.delete(image)
+            db.session.commit()
+            logout_user()
+            return redirect(url_for('index'))
+
         image_url = (
             '%s/%s/picture?width=500&height=500'
         ) % (FB_BASE_URL, user.fb_id)
@@ -334,7 +342,9 @@ def review():
         image.gender = request.form['gender']
         image.race = request.form['race']
 
-        db.session.add(image)
+        if not image.status:
+            db.session.add(image)
+
         db.session.commit()
 
         return redirect(url_for('index'))
