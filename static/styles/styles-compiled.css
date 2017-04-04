@@ -168,3 +168,14 @@ ul {
       text-align: center; }
     footer .footer-content-wrap p {
       margin: 5px 0; } }
+
+.banner {
+  background: red;
+  padding: 0 32px;
+  width: 100%; }
+
+.close-banner {
+  cursor: pointer;
+  float: right;
+  margin: -5px;
+  padding: 5px; }

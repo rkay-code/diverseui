@@ -9,7 +9,11 @@
 {% block body %}
   {% if updated %}
     <div class="banner">
-      <i class="close-banner">CLOSE</i>
+      <span class="close-banner">
+        <svg width="12" height="12" viewBox="0 0 12 12">
+          <path d="M7.06 6l4.72-4.72A.75.75 0 0 0 10.72.22L6 4.94 1.28.22A.75.75 0 1 0 .22 1.28L4.94 6 .22 10.72a.75.75 0 1 0 1.06 1.06L6 7.06l4.72 4.72a.75.75 0 1 0 1.06-1.06L7.06 6z" fill-rule="nonzero" fill="#FFF"/>
+        </svg>
+      </span>
       <p>Your changes have been saved</p>
     </div>
   {% endif %}
