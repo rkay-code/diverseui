@@ -12,14 +12,25 @@
 .review-form {
   margin: 0 0 0 auto;
   max-width: 304px; }
-  .review-form input {
+
+.review-field {
+  display: flex;
+  flex-wrap: wrap; }
+  .review-field label {
+    display: block;
+    order: 1;
+    width: 100%; }
+  .review-field input {
     border: 0;
     border-bottom: 1px solid #565D5F;
     display: block;
     font-size: 16px;
     line-height: 32px;
     margin: 0 0 24px;
+    order: 2;
     transition: all .1s linear;
     width: 100%; }
-    .review-form input:focus {
-      border-bottom: 1px solid #428AFF; }
+  .review-field input:focus {
+    border-bottom: 1px solid #428AFF; }
+    .review-field input:focus + label {
+      color: #428AFF; }

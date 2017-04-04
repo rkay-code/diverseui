@@ -16,6 +16,17 @@
 .review-form {
   margin: 0 0 0 auto;
   max-width: 304px;
+}
+
+.review-field {
+  display: flex;
+  flex-wrap: wrap;
+
+  label {
+    display: block;
+    order: 1;
+    width: 100%;
+  }
 
   input {
     border: 0;
@@ -24,11 +35,16 @@
     font-size: 16px;
     line-height: 32px;
     margin: 0 0 24px;
+    order: 2;
     transition: all .1s linear;
     width: 100%;
+  }
 
-    &:focus {
-      border-bottom: 1px solid $accent;
+  input:focus {
+    border-bottom: 1px solid $accent;
+
+    + label {
+      color: $accent;
     }
   }
 }
