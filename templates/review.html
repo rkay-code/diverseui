@@ -29,7 +29,12 @@
           <input id="email" name="email" type="email" value="{{ image.email or user.email }}" placeholder="Email" />
           <label for="email">Email</label>
         </div>
-        <button class="button" type="submit">Submit</button>
+        <div class="review-buttons">
+          {% if image.status %}
+            <button name="action" value="remove" type="submit" class="text-button">Remove Photo</button>
+          {% endif %}
+          <button name="action" value="submit" class="button" type="submit" style="margin: 0 0 0 auto;">{% if image.status %}Save{% else %}Submit{% endif %}</button>
+        </div>
       </form>
       <form method="post" action="{{ url_for('logout') }}">
         <button type="submit">Log out</button>

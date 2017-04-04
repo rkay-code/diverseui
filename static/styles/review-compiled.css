@@ -34,3 +34,14 @@
     border-bottom: 1px solid #428AFF; }
     .review-field input:focus + label {
       color: #428AFF; }
+
+.review-buttons {
+  align-items: center;
+  display: flex; }
+
+.text-button {
+  background: none;
+  border: 0;
+  font-weight: 600;
+  margin: 0;
+  padding: 0; }
