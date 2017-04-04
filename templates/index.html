@@ -8,6 +8,23 @@
 {% endblock %}
 
 {% block body %}
+  {% if status == 'submitted' %}
+    <div class="banner">
+      <i class="close-banner">CLOSE</i>
+      <p>Success! Your photo has been submitted for approval.</p>
+    </div>
+  {% elif status == 'removed' %}
+    <div class="banner">
+      <i class="close-banner">CLOSE</i>
+      <p>Your photo has been removed - we'll miss you :(</p>
+    </div>
+  {% elif not dismissed %}
+    <div class="remember-close banner">
+      <i class="close-banner">CLOSE</i>
+      <a href="">Hey you&#8230; we have a fancy new Sketch Plugin - check it out!</a>
+    </div>
+  {% endif %}
+
   <div class="site-body">
     <main class="faces">
       <div id="images">
@@ -63,7 +80,8 @@
             "scripts/vendor/jszip.js", "scripts/vendor/jszip-utils.js", "scripts/vendor/FileSaver.js" %}
     <script src="{{ ASSET_URL }}"></script>
   {% endassets %}
-  {% assets filters="jsmin", output="dist/index-%(version)s.js", "scripts/index.js" %}
+  {% assets filters="jsmin", output="dist/index-%(version)s.js",
+            "scripts/index.js", "scripts/banner.js" %}
     <script src="{{ ASSET_URL }}"></script>
   {% endassets %}
 {% endblock %}

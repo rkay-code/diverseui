@@ -7,6 +7,12 @@
 {% endblock %}
 
 {% block body %}
+  {% if updated %}
+    <div class="banner">
+      <i class="close-banner">CLOSE</i>
+      <p>Your changes have been saved</p>
+    </div>
+  {% endif %}
   <div class="review-container">
     <img class="photo" width="500" height="500" src="https://graph.facebook.com/{{ user.fb_id }}/picture?width=500&height=500" />
     <div class="review-form">
@@ -14,7 +20,7 @@
       <p style="margin: 0 0 24px 0;">To make sure we're keeping our site diverse, we need to keep up with the breakdown of images. Could you help us out by clarifying a few things?</p>
       <form method="post" action="{{ url_for('review') }}">
         <div class="review-field">
-          <input autofocus id="gender" name="gender" type="text" value="{{ image.gender or user.gender }}" placeholder="Gender" />
+          <input {% if not image.status %}autofocus{% endif %} id="gender" name="gender" type="text" value="{{ image.gender or user.gender }}" placeholder="Gender" />
           <label for="gender">Gender</label>
         </div>
         <div class="review-field">
@@ -41,4 +47,10 @@
       </form>
     </div>
   </div>
+{% endblock %}
+
+{% block javascripts %}
+  {% assets filters="jsmin", output="dist/banner-%(version)s.js", "scripts/banner.js" %}
+    <script src="{{ ASSET_URL }}"></script>
+  {% endassets %}
 {% endblock %}

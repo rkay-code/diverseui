@@ -4,6 +4,7 @@ import boto
 import boto.s3
 import boto.ses
 from functools import wraps
+from itertools import ifilter
 from flask import Flask, render_template, send_from_directory, \
     request, jsonify, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy, event
@@ -247,8 +248,17 @@ def index():
         .order_by(func.random())\
         .all()
 
+    status = next(ifilter(
+        lambda s: request.args.get(s) is not None,
+        ['submitted', 'removed']
+    ), None)
+
+    dismissed = request.cookies.get('dismissed') is not None
+
     return render_template('index.html',
-                           images=[image.to_json() for image in images])
+                           images=[image.to_json() for image in images],
+                           status=status,
+                           dismissed=dismissed)
 
 
 @app.route('/images', methods=['GET'])
@@ -329,7 +339,7 @@ def review():
             db.session.delete(image)
             db.session.commit()
             logout_user()
-            return redirect(url_for('index'))
+            return redirect('/?removed')
 
         image_url = (
             '%s/%s/picture?width=500&height=500'
@@ -342,14 +352,21 @@ def review():
         image.gender = request.form['gender']
         image.race = request.form['race']
 
-        if not image.status:
+        if image.status:
+            db.session.commit()
+            return render_template('review.html',
+                                   updated=True,
+                                   user=user,
+                                   image=image)
+        else:
             db.session.add(image)
+            db.session.commit()
+            return redirect('/?submitted')
 
-        db.session.commit()
-
-        return redirect(url_for('index'))
-
-    return render_template('review.html', user=user, image=image)
+    return render_template('review.html',
+                           updated=False,
+                           user=user,
+                           image=image)
 
 
 @app.route('/logout', methods=['POST'])
