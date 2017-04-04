@@ -30,10 +30,10 @@
           <label for="email">Email</label>
         </div>
         <div class="review-buttons">
+          <button name="action" value="submit" class="button" type="submit" style="margin: 0 0 0 auto;">{% if image.status %}Save{% else %}Submit{% endif %}</button>
           {% if image.status %}
             <button onclick="javascript:return confirm('Are you sure?');" name="action" value="remove" type="submit" class="text-button">Remove Photo</button>
           {% endif %}
-          <button name="action" value="submit" class="button" type="submit" style="margin: 0 0 0 auto;">{% if image.status %}Save{% else %}Submit{% endif %}</button>
         </div>
       </form>
       <form method="post" action="{{ url_for('logout') }}">
