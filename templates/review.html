@@ -1,17 +1,31 @@
 {% extends 'layout.html' %}
 
+{% block stylesheets %}
+  {% assets filters="cssmin", output="dist/review-%(version)s.css", "styles/review-compiled.css" %}
+    <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}" />
+  {% endassets %}
+{% endblock %}
+
 {% block body %}
-  <form method="post" action="{{ url_for('logout') }}">
-    <button type="submit">Log out</button>
-  </form>
-
-  <h1>Hi {{ user.first_name }}!</h1>
-
-  <form method="post" action="{{ url_for('review') }}">
-    <input name="gender" type="text" value="{{ image.gender or user.gender }}" placeholder="Gender" />
-    <input name="email" type="email" value="{{ image.email or user.email }}" placeholder="Email" />
-    <input name="race" type="text" value="{{ image.race }}" placeholder="Race" />
-    <img width="500" height="500" src="https://graph.facebook.com/{{ user.fb_id }}/picture?width=500&height=500" />
-    <button type="submit">Submit</button>
-  </form>
+  <div class="review-container">
+    <img class="photo" width="500" height="500" src="https://graph.facebook.com/{{ user.fb_id }}/picture?width=500&height=500" />
+    <div class="review-form">
+      <h2 style="margin: 0 0 4px 0;">Hello {{ user.first_name }} - lookin' good!</h2>
+      <p style="margin: 0 0 24px 0;">To make sure we're keeping our site diverse, we need to keep up with the breakdown of images. Could you help us out by clarifying a few things?</p>
+      <form method="post" action="{{ url_for('review') }}">
+        <label for="gender">Gender</label>
+        <input autofocus id="gender" name="gender" type="text" value="{{ image.gender or user.gender }}" placeholder="Gender" />
+        <label for="race">Race</label>
+        <input id="race" name="race" type="text" value="{{ image.race }}" placeholder="Race" />
+        <label for="race">Second Race</label>
+        <input id="race" name="second_race" type="text" value="" placeholder="Second Race" />
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" value="{{ image.email or user.email }}" placeholder="Email" />
+        <button class="button" type="submit">Submit</button>
+      </form>
+      <form method="post" action="{{ url_for('logout') }}">
+        <button type="submit">Log out</button>
+      </form>
+    </div>
+  </div>
 {% endblock %}

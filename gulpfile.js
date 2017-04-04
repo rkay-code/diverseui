@@ -1,4 +1,4 @@
-var gulp  = require('gulp');
+var gulp = require('gulp');
 var rename = require('gulp-rename');
 var sass = require('gulp-sass');
 var watch = require('gulp-watch');

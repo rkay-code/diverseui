@@ -313,7 +313,7 @@ def auth():
 
     login_user(user)
 
-    return redirect(url_for('review', _anchor=' '))
+    return redirect(url_for('review', _anchor='success'))
 
 
 @app.route('/review', methods=['GET', 'POST'])

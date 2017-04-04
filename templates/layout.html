@@ -57,7 +57,11 @@
         <div class="header-section">
           <a href="{{ url_for('about') }}" {% if request.path == url_for('about') %}class="current"{% endif %}>About</a>
           <a href="{{ url_for('about') }}">Sketch Plugin</a>
-          <a href="{{ url_for('submit') }}" class="button">Submit</a>
+          {% if current_user and current_user.is_authenticated %}
+            <a href="{{ url_for('review') }}" {% if request.path == url_for('review') %}class="current"{% endif %}>Manage Photo</a>
+          {% else %}
+            <a href="{{ url_for('submit') }}" class="button">Submit</a>
+          {% endif %}
         </div>
       </div>
     </header>

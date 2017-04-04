@@ -1,0 +1,25 @@
+.review-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  max-width: 900px;
+  width: 100%; }
+
+.photo {
+  height: 500px;
+  width: 500px; }
+
+.review-form {
+  margin: 0 0 0 auto;
+  max-width: 304px; }
+  .review-form input {
+    border: 0;
+    border-bottom: 1px solid #565D5F;
+    display: block;
+    font-size: 16px;
+    line-height: 32px;
+    margin: 0 0 24px;
+    transition: all .1s linear;
+    width: 100%; }
+    .review-form input:focus {
+      border-bottom: 1px solid #428AFF; }
