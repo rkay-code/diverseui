@@ -12,7 +12,7 @@ def upload_url_to_s3(image_url):
     image = image_res.raw
     image_data = image.read()
 
-    fname = '{}.jpg'.format(str(uuid.uuid4()))
+    fname = str(uuid.uuid4())
 
     conn = boto.connect_s3(os.environ['AWS_ACCESS_KEY_ID_DIVERSEUI'],
                            os.environ['AWS_SECRET_KEY_DIVERSEUI'])
