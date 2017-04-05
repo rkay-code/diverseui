@@ -268,6 +268,27 @@ ul {
     font-size: 24px;
     line-height: 48px;
   }
+  .button {
+    color: #fff;
+    background-color: #FF5964;
+    box-shadow: 0 4px 0 #D14952;
+    text-align: center;
+    display: block;
+    margin-top: 16px;
+    &:after {
+      content: '';
+      position: absolute;
+      z-index: -1;
+    }
+    &:hover {
+      box-shadow: 0 6px 0 #D14952;
+      top: -2px;
+    }
+    &:active {
+      box-shadow: 0 0 #D14952;
+      top: 6px;
+    }
+  }
 }
 
 body.open {

@@ -342,6 +342,23 @@ ul {
   .menu .logout {
     font-size: 24px;
     line-height: 48px; }
+  .menu .button {
+    color: #fff;
+    background-color: #FF5964;
+    box-shadow: 0 4px 0 #D14952;
+    text-align: center;
+    display: block;
+    margin-top: 16px; }
+    .menu .button:after {
+      content: '';
+      position: absolute;
+      z-index: -1; }
+    .menu .button:hover {
+      box-shadow: 0 6px 0 #D14952;
+      top: -2px; }
+    .menu .button:active {
+      box-shadow: 0 0 #D14952;
+      top: 6px; }
 
 body.open {
   overflow: hidden; }
