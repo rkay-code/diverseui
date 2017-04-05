@@ -1,3 +1,3 @@
 User-agent: *
 Disallow: /admin/
-Sitemap: http://www.diverseui.com/sitemap.xml
+Sitemap: https://www.diverseui.com/sitemap.xml

@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://www.diverseui.com/</loc>
+    <loc>https://www.diverseui.com/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>http://www.diverseui.com/submit</loc>
+    <loc>https://www.diverseui.com/submit</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>http://www.diverseui.com/about</loc>
+    <loc>https://www.diverseui.com/about</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://www.diverseui.com/terms</loc>
+    <loc>https://www.diverseui.com/terms</loc>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
