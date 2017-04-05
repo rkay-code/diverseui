@@ -3,12 +3,12 @@ $(document).ready(function() {
   var IMAGES = window.Data || [];
 
   var size = 78;
-  var gender = 'both';
+  var gender = 'neutral';
   var count = PER_PAGE;
 
   var filteredImages = function() {
     return _.filter(IMAGES, function(image) {
-      return gender === 'both' || image.gender === gender;
+      return gender === 'neutral' || image.gender === gender;
     });
   };
 
@@ -66,7 +66,7 @@ $(document).ready(function() {
     showImages({append: true});
   });
 
-  $('input[type=radio][name="gender"]').change(function() {
+  $('select').change(function() {
     gender = this.value;
 
     showImages({from: 0, to: count, append: false});
