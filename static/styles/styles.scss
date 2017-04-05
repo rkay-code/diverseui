@@ -157,6 +157,36 @@ a {
 ul {
   margin: 36px auto;
 }
+.banner {
+  background: $accent;
+  color: #fff;
+  padding: 16px 32px;
+  width: 100%;
+  text-align: center;
+  margin: -24px auto 16px;
+  z-index: -1;
+  display: flex;
+  align-items: center;
+  a, p {
+    color: #fff;
+    margin: auto;
+    width: 90%;
+  }
+}
+
+.success {
+  background: #45CB85;
+}
+.announce {
+  background: #FF5964;
+}
+
+.close-banner {
+  cursor: pointer;
+  margin: -5px;
+  padding: 5px;
+}
+
 @media (min-width: 320px) and (max-width: 768px) {
   .page-container {
     width: 90%;
@@ -171,7 +201,7 @@ ul {
     .header-section {
       margin: 8px 0;
       .button {
-        min-width: 112px;        
+        min-width: 112px;
         line-height: 32px;
         box-shadow: 0 4px 0 #D14952;
       }
@@ -193,17 +223,4 @@ ul {
       }
     }
   }
-}
-
-.banner {
-  background: red;
-  padding: 0 32px;
-  width: 100%;
-}
-
-.close-banner {
-  cursor: pointer;
-  float: right;
-  margin: -5px;
-  padding: 5px;
 }
