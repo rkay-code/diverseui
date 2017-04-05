@@ -17,10 +17,15 @@
     line-height: 40px;
     margin: 0;
 }
+
+.size {
+  height: 74px;
+}
+
 .ui-slider {
-  background: $light-grey;
+  background: $black;
   border: none;
-  height: 0.3em;
+  height: 8px;
   cursor: pointer;
 }
 .ui-state-default,
@@ -29,19 +34,26 @@
   background: $accent;
   border-radius: 50%;
   border: none;
-  top: -.3em;
-  height: 1em;
-  width: 1em;
+  height: 16px;
+  width: 16px;
   cursor: pointer;
+  box-shadow: 0 0 1px rgba(0,0,0,.25);
+  top: -4px;
 }
 .ui-slider-horizontal .ui-slider-range {
-  background: $light-accent;
+  background: -webkit-linear-gradient(#3C73CC, #3E7FE8);
+  background: -o-linear-gradient(#3C73CC, #3E7FE8);
+  background: -moz-linear-gradient(#3C73CC, #3E7FE8);
+  background: linear-gradient(#3C73CC, #3E7FE8);
 }
 
 .slider-label {
   left: -10px;
   position: relative;
-  top: 20px;
+  top: 16px;
+  font-size: 12px;
+  font-weight: 600;
+  color: $black;
 }
 
 .sex-dropdown {
