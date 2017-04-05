@@ -72,28 +72,22 @@ $(document).ready(function() {
     showImages({from: 0, to: count, append: false});
   });
 
+  var $sliderLabel = $('<span class="slider-label">78px</span>');
+
   $('#size-slider').slider({
     range: 'min',
     value: size,
     min: 32,
     max: 180,
     step: 1,
+    create: function() {
+      $('.ui-slider-handle').append($sliderLabel);
+    },
     slide: function(event, ui) {
-      $('#slider-label').html(ui.value + 'px');
+      $sliderLabel.html(ui.value + 'px');
       size = ui.value;
-      $('#slider-label').position({
-        my: 'right top',
-        at: 'center bottom',
-        of: $('#size-slider .ui-slider-handle'),
-      });
       resizeImages();
     }
-  });
-
-  $('#slider-label').position({
-    my: 'right top',
-    at: 'center bottom',
-    of: $('.ui-slider-handle'),
   });
 
   var canvas = document.createElement('canvas');

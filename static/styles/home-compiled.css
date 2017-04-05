@@ -33,8 +33,10 @@
 .ui-slider-horizontal .ui-slider-range {
   background: #649FFF; }
 
-#slider-label {
-  height: 28px; }
+.slider-label {
+  left: -10px;
+  position: relative;
+  top: 20px; }
 
 .sex-dropdown select {
   margin: 0;

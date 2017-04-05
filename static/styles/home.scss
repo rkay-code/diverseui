@@ -38,8 +38,10 @@
   background: $light-accent;
 }
 
-#slider-label {
-  height: 28px;
+.slider-label {
+  left: -10px;
+  position: relative;
+  top: 20px;
 }
 
 .sex-dropdown {
