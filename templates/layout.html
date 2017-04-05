@@ -74,7 +74,7 @@
           <form method="post" action="{{ url_for('logout') }}">
             <button type="submit" class="text-button logout">Log Out</button>
           </form>
-        {% else %}
+        {% elif request.path != url_for('submit') %}
           <a href="{{ url_for('submit') }}" class="button">Submit</a>
         {% endif %}
       </div>
