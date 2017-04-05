@@ -8,6 +8,7 @@ test:
 
 deployment:
   production:
-    branch: master
+    branch: prod
     commands:
       - gulp build
+      - git push git@heroku.com:diverseui.git $CIRCLE_SHA1:master
