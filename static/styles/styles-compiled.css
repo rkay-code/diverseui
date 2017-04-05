@@ -324,6 +324,7 @@ ul {
   overflow: hidden;
   position: absolute;
   top: 0;
+  transform: translate3d(0, 0, 0);
   transition: height .5s ease-in-out;
   width: 100%;
   z-index: 9000;
