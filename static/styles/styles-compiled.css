@@ -228,3 +228,27 @@ ul {
       text-align: center; }
     footer .footer-content-wrap p {
       margin: 5px 0; } }
+
+.menu-button {
+  font-size: 40px;
+  position: relative;
+  z-index: 9001; }
+
+.menu {
+  background: red;
+  height: 0;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  transition: height .5s ease-in-out;
+  width: 100%;
+  z-index: 9000; }
+  .menu a {
+    display: block;
+    font-size: 30px; }
+
+body.open {
+  overflow: hidden; }
+  body.open .menu {
+    height: 100%; }
