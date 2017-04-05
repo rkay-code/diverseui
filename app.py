@@ -296,7 +296,10 @@ def terms():
 
 @app.route('/auth', methods=['GET'])
 def auth():
-    code = request.args['code']
+    code = request.args.get('code')
+
+    if code is None:
+        return redirect(url_for('submit', _anchor='failure'))
 
     # Get access_token from Facebook
     auth = requests.get('%s/oauth/access_token' % FB_BASE_URL, params={
