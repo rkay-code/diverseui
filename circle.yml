@@ -10,4 +10,4 @@ deployment:
   production:
     branch: master
     commands:
-      - gulp
+      - gulp build
