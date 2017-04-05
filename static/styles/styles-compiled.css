@@ -151,7 +151,6 @@ ul {
   width: 100%;
   text-align: center;
   margin: -24px auto 16px;
-  z-index: -1;
   display: flex;
   align-items: center; }
   .banner a, .banner p {
