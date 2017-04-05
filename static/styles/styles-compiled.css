@@ -92,6 +92,16 @@ header {
       color: #fff;
       background-color: #FF5964;
       box-shadow: 0 4px 0 #D14952; }
+      .header-content-wrap .header-section .button:after {
+        content: '';
+        position: absolute;
+        z-index: -1; }
+      .header-content-wrap .header-section .button:hover {
+        box-shadow: 0 6px 0 #D14952;
+        top: -2px; }
+      .header-content-wrap .header-section .button:active {
+        box-shadow: 0 0 #D14952;
+        top: 6px; }
     .header-content-wrap .header-section .current {
       color: #428AFF;
       font-weight: 600; }
@@ -115,7 +125,19 @@ header {
   line-height: 36px;
   min-width: 128px;
   text-align: center;
-  padding: 0; }
+  display: inline-block;
+  padding: 0;
+  position: relative; }
+  .button:after {
+    content: '';
+    position: absolute;
+    z-index: -1; }
+  .button:hover {
+    box-shadow: 0 6px 0 #3771D1;
+    top: -2px; }
+  .button:active {
+    box-shadow: 0 0 #3771D1;
+    top: 6px; }
 
 .button:focus {
   outline: none; }
