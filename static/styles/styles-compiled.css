@@ -171,7 +171,8 @@ header {
   margin-bottom: 24px;
   height: 88px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-  z-index: 2; }
+  position: relative;
+  z-index: 9001; }
 
 .header-content-wrap {
   display: flex;
@@ -313,9 +314,7 @@ ul {
   margin: 0 20px; }
 
 .mobile-menu-button {
-  font-size: 40px;
-  position: relative;
-  z-index: 9001; }
+  font-size: 40px; }
 
 .menu {
   background: #fff;
