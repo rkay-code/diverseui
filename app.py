@@ -212,6 +212,7 @@ class ImageView(BasicAuthModelView):
     list_template = 'admin/model/object_list.html'
     form_excluded_columns = ['created_at', 'verification_url']
     page_size = 50
+    column_exclude_list = ('user')
     column_filters = ('gender', 'status')
     column_formatters = dict(
         url=macro('render_url'),
