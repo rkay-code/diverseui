@@ -1,3 +1,4 @@
+@import 'vendor/hamburgers/hamburgers';
 @import 'colors';
 html {
   box-sizing: border-box;
@@ -124,6 +125,9 @@ header {
       color: #fff;
     }
   }
+  .mobile {
+    display: none;
+  }
 }
 .button {
   background-color: $accent;
@@ -229,17 +233,63 @@ ul {
   margin: 0 20px;
 }
 
+.mobile-menu-button {
+  font-size: 40px;
+  position: relative;
+  z-index: 9001;
+}
+
+.menu {
+  background: #fff;
+  height: 0;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  transition: height .5s ease-in-out;
+  width: 100%;
+  z-index: 9000;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+
+  a {
+    display: flex;
+    font-size: 24px;
+    color: $grey;
+    line-height: 48px;
+  }
+  .current {
+    color: $accent;
+  }
+  .logout {
+    font-size: 24px;
+    line-height: 48px;
+  }
+}
+
+body.open {
+  overflow: hidden;
+
+  .menu {
+    height: 100%;
+  }
+}
+
+.hamburger-inner {
+  color: $grey;
+  border-radius: 4px;
+}
+
 @media (min-width: 320px) and (max-width: 768px) {
   .page-container {
     width: 90%;
     margin: 32px auto 120px;
   }
-  header {
-    height: 120px;
-  }
   .header-content-wrap {
     flex-wrap: wrap;
-    justify-content: center;
     .header-section {
       margin: 8px 0;
       .button {
@@ -250,6 +300,12 @@ ul {
       a {
         font-size: 14px;
       }
+    }
+    .mobile {
+      display: block;
+    }
+    .links {
+      display: none;
     }
 
   }
@@ -264,36 +320,5 @@ ul {
         margin: 5px 0;
       }
     }
-  }
-}
-
-.menu-button {
-  font-size: 40px;
-  position: relative;
-  z-index: 9001;
-}
-
-.menu {
-  background: red;
-  height: 0;
-  left: 0;
-  overflow: hidden;
-  position: absolute;
-  top: 0;
-  transition: height .5s ease-in-out;
-  width: 100%;
-  z-index: 9000;
-
-  a {
-    display: block;
-    font-size: 30px;
-  }
-}
-
-body.open {
-  overflow: hidden;
-
-  .menu {
-    height: 100%;
   }
 }

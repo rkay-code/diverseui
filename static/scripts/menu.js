@@ -1,4 +1,4 @@
-var menuButton = document.querySelector('.menu-button');
+var menuButton = document.querySelector('.mobile-menu-button');
 
 if (menuButton) {
   menuButton.addEventListener('click', function() {
