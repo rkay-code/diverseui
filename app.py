@@ -210,7 +210,7 @@ class BasicAuthAdminView(AdminIndexView):
 
 class ImageView(BasicAuthModelView):
     list_template = 'admin/model/object_list.html'
-    form_excluded_columns = ['created_at', 'verification_url']
+    form_excluded_columns = ['created_at', 'verification_url', 'user']
     page_size = 50
     column_exclude_list = ('user')
     column_filters = ('gender', 'status')
