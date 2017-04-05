@@ -2,6 +2,10 @@ machine:
   node:
     version: 6.1.0
 
+test:
+  override:
+    - /bin/true
+
 deployment:
   production:
     branch: master
