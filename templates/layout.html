@@ -64,7 +64,7 @@
   <header>
     <div class="header-content-wrap">
       <div class="header-section">
-        <a href="{{ url_for('index') }}" class="logo"><img src="{{ url_for('static', filename='img/logo-alt4.png') }}" /></a>
+        <a href="{{ url_for('index') }}" class="logo"><img src="{{ url_for('static', filename='img/logo.png') }}" /></a>
       </div>
       <div class="header-section links">
         <a href="{{ url_for('about') }}" {% if request.path == url_for('about') %}class="current"{% endif %}>About</a>
