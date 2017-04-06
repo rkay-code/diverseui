@@ -95,6 +95,7 @@ class User(db.Model):
     first_name = db.Column(db.String())
     last_name = db.Column(db.String())
     gender = db.Column(db.String())
+    picture = db.Column(db.String())
     email = db.Column(db.String())
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     image = db.relationship('Image',
@@ -105,13 +106,14 @@ class User(db.Model):
     is_anonymous = False
     is_authenticated = False
 
-    def __init__(self, fb_id='', first_name='',
+    def __init__(self, fb_id='', first_name='', picture='',
                  last_name='', gender='', email=''):
         self.is_authenticated = True
         self.fb_id = fb_id
         self.first_name = first_name
         self.last_name = last_name
         self.gender = gender
+        self.picture = picture
         self.email = email
 
     def get_id(self):
@@ -210,7 +212,7 @@ class BasicAuthAdminView(AdminIndexView):
 
 class ImageView(BasicAuthModelView):
     list_template = 'admin/model/object_list.html'
-    form_excluded_columns = ['created_at', 'verification_url']
+    form_excluded_columns = ['created_at', 'verification_url', 'user']
     page_size = 50
     column_exclude_list = ('user')
     column_filters = ('gender', 'status')
@@ -315,15 +317,20 @@ def auth():
     # Get necessary fields from Facebook
     me = requests.get('%s/me' % FB_BASE_URL, params={
         'access_token': access_token,
-        'fields': 'id,email,first_name,last_name,gender'
+        'fields': (
+            'id,email,first_name,last_name,'
+            'gender,picture.height(500).width(500)'
+        )
     })
 
     fields = me.json()
     fb_id = fields.pop('id')
     user = User.query.filter_by(fb_id=fb_id).first()
 
+    picture = fields.pop('picture').get('data', {}).get('url')
+
     if user is None:
-        user = User(fb_id=fb_id, **fields)
+        user = User(fb_id=fb_id, picture=picture, **fields)
         db.session.add(user)
         db.session.commit()
 
@@ -359,11 +366,7 @@ def review():
                                    user=user,
                                    image=image)
         else:
-            image_url = (
-                '%s/%s/picture?width=500&height=500'
-            ) % (FB_BASE_URL, user.fb_id)
-
-            image.url = upload_url_to_s3(image_url)
+            image.url = upload_url_to_s3(user.picture)
 
             db.session.add(image)
             db.session.commit()

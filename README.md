@@ -1,6 +1,8 @@
 # Diverse UI
 
-Discover diverse user images for user interface design.
+Diverse UI is a free collection of diverse user-submitted images that can be used in your design work.
+
+This is a repository of the code that powers both the website and the API.
 
 ## API
 

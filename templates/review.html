@@ -18,7 +18,7 @@
     </div>
   {% endif %}
   <div class="review-container">
-    <img class="photo" width="500" height="500" src="{{ image.url or 'https://graph.facebook.com/{}/picture?width=500&height=500'.format(user.fb_id) }}" />
+    <img class="photo" width="500" height="500" src="{{ image.url or user.picture or 'https://graph.facebook.com/{}/picture?width=500&height=500'.format(user.fb_id) }}" />
     <div class="review-form">
       <h2 style="margin: 0 0 4px 0;">Hello {{ user.first_name }} - lookin' good!</h2>
       <p style="margin: 0 0 24px 0;">{% if image.status %}You've already submitted your photo. You can edit your info or delete the image below.{% else %}To make sure we're keeping our site diverse, we need to keep up with the breakdown of images. Could you help us out by clarifying a few things?{% endif %}</p>
@@ -40,7 +40,7 @@
           <label for="email">Email</label>
         </div>
         <div class="review-buttons">
-          <button name="action" value="submit" class="button" type="submit" style="margin: 0 0 0 auto;">{% if image.status %}Save{% else %}Submit{% endif %}</button>
+          <button onclick="javascript:(function(_this) { setTimeout(function() { _this.disabled = true; }, 0); })(this);" name="action" value="submit" class="button" type="submit" style="margin: 0 0 0 auto;">{% if image.status %}Save{% else %}Submit{% endif %}</button>
           {% if image.status %}
             <button onclick="javascript:return confirm('Are you sure?');" name="action" value="remove" type="submit" class="text-button">Remove Photo</button>
           {% endif %}
