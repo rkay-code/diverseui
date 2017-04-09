@@ -32,6 +32,7 @@
     order: 1;
     width: 100%; }
   .review-field input {
+    -webkit-appearance: none;
     border: 0;
     border-bottom: 1px solid #565D5F;
     display: block;
