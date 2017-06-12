@@ -15,6 +15,7 @@ from flask_admin import Admin, AdminIndexView, expose
 from flask_admin.contrib.sqla import ModelView
 from flask_admin.model.template import macro
 from flask_assets import Environment
+from flask_cors import CORS
 from flask_login import login_user, logout_user, login_required, \
     LoginManager, current_user
 
@@ -33,6 +34,8 @@ app.config.update(dict(
     TEMPLATES_AUTO_RELOAD=os.environ.get('TEMPLATES_RELOAD', 'True') == 'True'
 ))
 app.secret_key = os.environ.get('SECRET_KEY', 'somethingsecret')
+
+CORS(app)
 
 login_manager = LoginManager()
 login_manager.login_view = 'index'
