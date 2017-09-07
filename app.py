@@ -173,9 +173,12 @@ class Image(db.Model):
                 text_body=TEXT_BODY,
                 html_body=HTML_BODY)
 
-    def to_json(self):
+    def to_json(self, options={}):
+        include_domain = options.get('domain', True)
+        url = self.url if include_domain else os.path.basename(self.url)
+
         return {
-            'url': self.url,
+            'url': url,
             'gender': self.gender,
         }
 
@@ -264,7 +267,11 @@ def index():
     dismissed = request.cookies.get('dismissed') is not None
 
     return render_template('index.html',
-                           images=[image.to_json() for image in images],
+                           images=[
+                             image.to_json({
+                               'domain': False
+                             }) for image in images
+                           ],
                            status=status,
                            dismissed=dismissed)
 
@@ -287,7 +294,13 @@ def images():
 
     images = images.all()
 
-    return jsonify([image.to_json() for image in images])
+    return jsonify(
+      [
+        image.to_json({
+          'domain': request.args.get('domain', True, type=bool)
+        }) for image in images
+      ]
+    )
 
 
 @app.route('/about', methods=['GET'])

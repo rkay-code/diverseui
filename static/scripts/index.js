@@ -39,7 +39,7 @@ $(document).ready(function() {
           'class="image" ',
           'width="', size,
           '" height="', size,
-          '" src="', i.url, '"',
+          '" src="https://d3iw72m71ie81c.cloudfront.net/', i.url, '"',
         ' />'
       ].join(''));
     });
