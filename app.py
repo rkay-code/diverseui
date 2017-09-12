@@ -368,7 +368,7 @@ def review():
             db.session.delete(image)
             db.session.commit()
             logout_user()
-            return redirect('/?removed')
+            return redirect('https://diverseui.com/?removed')
 
         image.email = request.form['email']
         image.gender = request.form['gender']
@@ -386,7 +386,7 @@ def review():
 
             db.session.add(image)
             db.session.commit()
-            return redirect('/?submitted')
+            return redirect('https://diverseui.com/?submitted')
 
     return render_template('review.html',
                            updated=False,
@@ -397,7 +397,7 @@ def review():
 @app.route('/logout', methods=['POST'])
 def logout():
     logout_user()
-    return redirect(url_for('index'))
+    return redirect('https://diverseui.com/')
 
 
 @app.route('/submit', methods=['GET'])
