@@ -16,10 +16,10 @@ def upload_url_to_s3(image_url):
 
     conn = boto.connect_s3(os.environ['AWS_ACCESS_KEY_ID_DIVERSEUI'],
                            os.environ['AWS_SECRET_KEY_DIVERSEUI'])
-    bucket = conn.get_bucket('diverse-ui')
+    bucket = conn.get_bucket('static.diverseui.com')
 
-    k = Key(bucket, 'faces/{}'.format(fname))
+    k = Key(bucket, fname)
     k.set_contents_from_string(image_data)
     k.make_public()
 
-    return 'https://d3iw72m71ie81c.cloudfront.net/{}'.format(fname)
+    return 'https://static.diverseui.com/{}'.format(fname)
