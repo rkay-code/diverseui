@@ -1,7 +1,6 @@
 import os
 from boto import connect_s3
 from boto.s3.key import Key
-from boto.s3.connection import OrdinaryCallingFormat
 import requests
 import uuid
 
@@ -17,14 +16,11 @@ def upload_url_to_s3(image_url):
     conn = connect_s3(
         os.environ['AWS_ACCESS_KEY_ID_DIVERSEUI'],
         os.environ['AWS_SECRET_KEY_DIVERSEUI'],
-        is_secure = True,
-        calling_format = OrdinaryCallingFormat(),
     )
-    conn.host = 's3-us-east-1.amazonaws.com'
-    bucket = conn.get_bucket('static.diverseui.com')
+    bucket = conn.get_bucket('diverse-ui')
 
     k = Key(bucket, fname)
     k.set_contents_from_string(image_data)
     k.make_public()
 
-    return 'https://static.diverseui.com/{}'.format(fname)
+    return 'https://s3-us-west-2.amazonaws.com/diverse-ui/faces/{}'.format(fname)
