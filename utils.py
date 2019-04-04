@@ -20,6 +20,7 @@ def upload_url_to_s3(image_url):
         is_secure = True,
         calling_format = OrdinaryCallingFormat(),
     )
+    conn.host = 's3-us-east-1.amazonaws.com'
     bucket = conn.get_bucket('static.diverseui.com')
 
     k = Key(bucket, fname)
