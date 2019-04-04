@@ -18,8 +18,10 @@ def upload_url_to_s3(image_url):
     conn = boto.connect_s3(
         aws_access_key_id = os.environ['AWS_ACCESS_KEY_ID_DIVERSEUI'],
         aws_secret_access_key = os.environ['AWS_SECRET_KEY_DIVERSEUI'],
+        is_secure = True,
         calling_format = OrdinaryCallingFormat(),
     )
+    conn.host = 'us-east-1'
     bucket = conn.get_bucket('static.diverseui.com')
 
     k = Key(bucket, fname)
