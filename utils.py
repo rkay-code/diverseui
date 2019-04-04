@@ -1,5 +1,5 @@
 import os
-from boto import s3
+from boto import connect_s3
 from boto.s3.key import Key
 from boto.s3.connection import OrdinaryCallingFormat
 import requests
@@ -14,12 +14,12 @@ def upload_url_to_s3(image_url):
 
     fname = str(uuid.uuid4())
 
-    conn = s3.connect_to_region('us-east-1',
-                                aws_access_key_id = os.environ['AWS_ACCESS_KEY_ID_DIVERSEUI'],
-                                aws_secret_access_key = os.environ['AWS_SECRET_KEY_DIVERSEUI'],
-                                is_secure = True,
-                                calling_format = OrdinaryCallingFormat(),
-                                )
+    conn = connect_s3(
+        os.environ['AWS_ACCESS_KEY_ID_DIVERSEUI'],
+        os.environ['AWS_SECRET_KEY_DIVERSEUI'],
+        is_secure = True,
+        calling_format = OrdinaryCallingFormat(),
+    )
     bucket = conn.get_bucket('static.diverseui.com')
 
     k = Key(bucket, fname)
