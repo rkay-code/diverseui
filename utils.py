@@ -23,4 +23,4 @@ def upload_url_to_s3(image_url):
     k.set_contents_from_string(image_data)
     k.make_public()
 
-    return 'https://s3-us-west-2.amazonaws.com/diverse-ui/faces/{}'.format(fname)
+    return 'https://s3-us-west-2.amazonaws.com/diverse-ui/{}'.format(fname)
