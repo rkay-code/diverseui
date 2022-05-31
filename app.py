@@ -4,7 +4,7 @@ import boto
 import boto.s3
 import boto.ses
 from functools import wraps
-from itertools import ifilter
+# from itertools import ifilter
 from flask import Flask, render_template, send_from_directory, \
     request, jsonify, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy, event
@@ -259,10 +259,12 @@ def index():
         .order_by(func.random())\
         .all()
 
+    """
     status = next(ifilter(
         lambda s: request.args.get(s) is not None,
         ['submitted', 'removed']
     ), None)
+    """
 
     dismissed = request.cookies.get('dismissed') is not None
 
@@ -272,7 +274,7 @@ def index():
                                'domain': False
                              }) for image in images
                            ],
-                           status=status,
+                           status=None,
                            dismissed=dismissed)
 
 
