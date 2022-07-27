@@ -1,5 +1,5 @@
 flask
-boto
+boto3
 flask-sqlalchemy
 requests
 gunicorn
