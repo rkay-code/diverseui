@@ -1,7 +1,5 @@
 import os
 import boto3
-from boto import connect_s3
-from boto.s3.key import Key
 import requests
 import uuid
 
