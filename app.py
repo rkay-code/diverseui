@@ -1,8 +1,8 @@
 import os
 import requests
-import boto
-import boto.s3
-import boto.ses
+# import boto
+# import boto.s3
+# import boto.ses
 from functools import wraps
 from flask import Flask, render_template, send_from_directory, \
     request, jsonify, redirect, url_for
