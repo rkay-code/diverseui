@@ -4,6 +4,15 @@ Diverse UI is a free collection of diverse user-submitted images that can be use
 
 This is a repository of the code that powers both the website and the API.
 
+## Development
+
+```
+python3 -m pipenv shell --three
+
+>>> from app import db
+>>> db.create_all()
+```
+
 ## API
 
 ````

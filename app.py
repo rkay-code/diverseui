@@ -4,7 +4,6 @@ import boto
 import boto.s3
 import boto.ses
 from functools import wraps
-from itertools import ifilter
 from flask import Flask, render_template, send_from_directory, \
     request, jsonify, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy, event
@@ -157,6 +156,7 @@ class Image(db.Model):
         status_history = get_history(target, 'status')
         email = target.email
         # If the image went from pending to accepted, send an email
+        """
         if status_history.has_changes() and\
                 status_history.deleted[0] == 'pending' and\
                 status_history.added[0] == 'accepted':
@@ -172,6 +172,7 @@ class Image(db.Model):
                 format='html',
                 text_body=TEXT_BODY,
                 html_body=HTML_BODY)
+        """
 
     def to_json(self, options={}):
         include_domain = options.get('domain', True)
@@ -259,10 +260,13 @@ def index():
         .order_by(func.random())\
         .all()
 
-    status = next(ifilter(
-        lambda s: request.args.get(s) is not None,
-        ['submitted', 'removed']
-    ), None)
+    status = None
+
+    if request.args.get('submitted') is not None:
+        status = 'submitted'
+    elif request.args.get('removed') is not None:
+        status = 'removed'
+
 
     dismissed = request.cookies.get('dismissed') is not None
 
@@ -368,7 +372,7 @@ def review():
             db.session.delete(image)
             db.session.commit()
             logout_user()
-            return redirect('https://diverseui.com/?removed')
+            return redirect(url_for('index') + '?removed')
 
         image.email = request.form['email']
         image.gender = request.form['gender']
@@ -386,7 +390,7 @@ def review():
 
             db.session.add(image)
             db.session.commit()
-            return redirect('https://diverseui.com/?submitted')
+            return redirect(url_for('index') + '?submitted')
 
     return render_template('review.html',
                            updated=False,
@@ -397,7 +401,7 @@ def review():
 @app.route('/logout', methods=['POST'])
 def logout():
     logout_user()
-    return redirect('https://diverseui.com/')
+    return redirect(url_for('index'))
 
 
 @app.route('/submit', methods=['GET'])
